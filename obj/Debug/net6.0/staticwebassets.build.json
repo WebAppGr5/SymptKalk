@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "XH7/g5AqLlFzCGbrrLchrn1c3S9aE9oYYXsL+QNSIIE=",
+  "Source": "DiagnoseKalkulator",
+  "BasePath": "_content/DiagnoseKalkulator",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "DiagnoseKalkulator\\wwwroot",
+      "Source": "DiagnoseKalkulator",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\DiagnoseKalkulator\\wwwroot\\",
+      "BasePath": "_content/DiagnoseKalkulator",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\rober\\source\\repos\\DiagnoseKalkulator\\wwwroot\\index.html",
+      "SourceId": "DiagnoseKalkulator",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\DiagnoseKalkulator\\wwwroot\\",
+      "BasePath": "_content/DiagnoseKalkulator",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
+}
