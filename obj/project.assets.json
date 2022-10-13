@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rober\\source\\repos\\obligDiagnoseVerktøyy\\obligDiagnoseVerktøyy.csproj",
+      "projectUniqueName": "C:\\Users\\rober\\source\\repos\\obligDiagnoseVerktøyet\\obligDiagnoseVerktøyy.csproj",
       "projectName": "obligDiagnoseVerktøyy",
-      "projectPath": "C:\\Users\\rober\\source\\repos\\obligDiagnoseVerktøyy\\obligDiagnoseVerktøyy.csproj",
+      "projectPath": "C:\\Users\\rober\\source\\repos\\obligDiagnoseVerktøyet\\obligDiagnoseVerktøyy.csproj",
       "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rober\\source\\repos\\obligDiagnoseVerktøyy\\obj\\",
+      "outputPath": "C:\\Users\\rober\\source\\repos\\obligDiagnoseVerktøyet\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
