@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "e9sOiEIzgELLKGA+Ov6CdVpcm88l+jBI/+JUkbqGupZVhEYTU2r3FG7vdU52IWLchM70g5mAsnKs7y7OrnQq1Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rober\\source\\repos\\DiagnoseKalkulatorenOblig\\DiagnoseKalkulatorenOblig.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://packages.nuget.org/v1/FeedService.svc/'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    }
+  ]
+}
