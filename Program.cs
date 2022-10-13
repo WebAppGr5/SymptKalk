@@ -58,7 +58,7 @@ app.UseCookiePolicy();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Diagnose}/{action=test}/{id?}");
 
 /*
 app.PrepareDatabase()

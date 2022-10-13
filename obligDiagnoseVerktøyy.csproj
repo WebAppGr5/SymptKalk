@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controller\implementations\" />
     <Folder Include="Controller\interfaces\" />
     <Folder Include="Model\viewModels\" />
     <Folder Include="wwwroot\css\" />
