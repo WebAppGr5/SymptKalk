@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="Model\" />
-    <Folder Include="Repository\" />
-    <Folder Include="wwwroot\" />
+    <Folder Include="Controller\implementations\" />
+    <Folder Include="Controller\interfaces\" />
+    <Folder Include="Model\entities\" />
+    <Folder Include="Model\viewModels\" />
+    <Folder Include="Repository\implementation\" />
+    <Folder Include="Repository\interfaces\" />
   </ItemGroup>
 
 </Project>
