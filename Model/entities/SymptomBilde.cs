@@ -2,6 +2,7 @@
 {
     public class SymptomBilde
     {
+        [Key]
         public int symptomBildeId { get; set; }
     }
 }

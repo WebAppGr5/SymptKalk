@@ -18,6 +18,7 @@ namespace ObligDiagnoseVerktøyy.Data
         public DbSet<SymptomBilde> symptomBilde { get; set; }
         public DbSet<SymptomGruppe> symptomGruppe { get; set; }
         public DbSet<Diagnose> diagnose { get; set; }
+        public DbSet<SymptomSymptomBilde> symptomSymptomBilde { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -29,6 +30,7 @@ namespace ObligDiagnoseVerktøyy.Data
 
             modelBuilder.Entity<SymptomGruppe>().ToTable("symptomGruppe").HasKey(k => k.symptomGruppeId);
             modelBuilder.Entity<SymptomBilde>().ToTable("symptomBilde").HasKey(k => k.symptomBildeId);
+            modelBuilder.Entity<SymptomSymptomBilde>().ToTable("SymptomSymptomBilde").HasKey(nameof(SymptomSymptomBilde.symptomId), nameof(SymptomSymptomBilde.symptomBildeId));
 
         }
 

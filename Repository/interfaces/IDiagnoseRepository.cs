@@ -1,6 +1,9 @@
-﻿namespace obligDiagnoseVerktøyy.Repository.interfaces
+﻿using obligDiagnoseVerktøyy.Model.entities;
+
+namespace obligDiagnoseVerktøyy.Repository.interfaces
 {
-    public class IDiagnoseRepository
+    public interface IDiagnoseRepository
     {
+        public List<SymptomBilde> hentSymptomBilder(List<Symptom> symptomer);
     }
 }
