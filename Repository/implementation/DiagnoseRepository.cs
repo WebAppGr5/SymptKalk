@@ -2,6 +2,7 @@
 using obligDiagnoseVerktøyy.Model.entities;
 using obligDiagnoseVerktøyy.Repository.interfaces;
 using ObligDiagnoseVerktøyy.Data;
+using System.Linq;
 
 namespace obligDiagnoseVerktøyy.Repository.implementation
 {
@@ -17,7 +18,7 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
 
         public List<SymptomBilde> hentSymptomBilder(List<Symptom> symptomer)
         {
-
+            List<int> symptomIdEnTrenger = symptomer.ConvertAll((x) => x.symptomId);
             List<SymptomBilde> symptomBilder = db.symptomBilde.ToList();
             List<SymptomBilde> tilRetunering = new List<SymptomBilde>();
 
@@ -27,11 +28,14 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
 
                 //Med spesifikt symptombilde
                 List<int> syptomIder = db.symptomSymptomBilde.Where((x) => x.symptomBildeId == symptomBilde.symptomBildeId).ToList().ConvertAll((x) => x.symptomId);
-                foreach (var symptomId in syptomIder)
+                foreach (int symptomId in syptomIder)
                 {
+                    if(symptomer.Contains(symptomId))
+                        counter++;
+
                     if (counter == symptomer.Count)
                     {
-                        counter++;
+                       
                         tilRetunering.Add(symptomBilde);
                         break;
                     }
