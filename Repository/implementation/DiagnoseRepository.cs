@@ -15,6 +15,12 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         {
             this.db = db;
         }
+
+        public List<Diagnose> hentDiagnoser(List<SymptomBilde> symptomer)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<SymptomBilde> hentSymptomBilder(List<string> symptomer)
         {
             return new List<SymptomBilde>();

@@ -10,9 +10,12 @@ namespace obligDiagnoseVerktøyy.Model.entities
         public string navn {get; set; } 
 
 
-        public string description {get; set; } //Forklaringen kan hentes ut herfra
+        public string beskrivelse { get; set; } //Forklaringen kan hentes ut herfra
 
-        List<SymptomBilde> symptomBilde { get; set; }
+        public List<SymptomBilde> symptomBilde { get; set; }
+
+        public int diagnoseGruppeId { get; set; }
+        public DiagnoseGruppe diagnoseGruppe { get; set; }
 
    
     }
