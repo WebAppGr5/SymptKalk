@@ -15,10 +15,14 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         {
             this.db = db;
         }
-
-        public List<SymptomBilde> hentSymptomBilder(List<Symptom> symptomer)
+        public List<SymptomBilde> hentSymptomBilder(List<string> symptomer)
+        {
+            return new List<SymptomBilde>();
+        }
+            public List<SymptomBilde> hentSymptomBilder(List<Symptom> symptomer)
         {
             List<int> symptomIdEnTrenger = symptomer.ConvertAll((x) => x.symptomId);
+
             List<SymptomBilde> symptomBilder = db.symptomBilde.ToList();
             List<SymptomBilde> tilRetunering = new List<SymptomBilde>();
 
@@ -30,7 +34,7 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
                 List<int> syptomIder = db.symptomSymptomBilde.Where((x) => x.symptomBildeId == symptomBilde.symptomBildeId).ToList().ConvertAll((x) => x.symptomId);
                 foreach (int symptomId in syptomIder)
                 {
-                    if(symptomer.Contains(symptomId))
+                    if(symptomIdEnTrenger.Contains(symptomId))
                         counter++;
 
                     if (counter == symptomer.Count)
