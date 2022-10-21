@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace obligDiagnoseVerktøyy.Model.entities
 {
@@ -7,9 +8,14 @@ namespace obligDiagnoseVerktøyy.Model.entities
         [Key]
         public int symptomBildeId { get; set; }
 
-        List<SymptomSymptomBilde> symptomSymptomBilde { get; set; }
+        [JsonIgnore]
+        public List<SymptomSymptomBilde> symptomSymptomBilde { get; set; }
 
         public int diagnoseId { get; set; }
-        Diagnose diagnose { get; set; }
+
+        public string navn { get; set; }
+
+        public string beskrivelse { get; set; }
+        public Diagnose diagnose { get; set; }
     }
 }

@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "0SS3m+oGkiY1/iSEP6c3/daI3f6mn8q+PgWO8hYkDlE=",
+  "Source": "obligDiagnoseVerktøyy",
+  "BasePath": "_content/obligDiagnoseVerktøyy",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "obligDiagnoseVerktøyy\\wwwroot",
+      "Source": "obligDiagnoseVerktøyy",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\obligDiagnoseVerktøyet\\wwwroot\\",
+      "BasePath": "_content/obligDiagnoseVerktøyy",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\rober\\source\\repos\\obligDiagnoseVerktøyet\\wwwroot\\index.html",
+      "SourceId": "obligDiagnoseVerktøyy",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\obligDiagnoseVerktøyet\\wwwroot\\",
+      "BasePath": "_content/obligDiagnoseVerktøyy",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
+}
