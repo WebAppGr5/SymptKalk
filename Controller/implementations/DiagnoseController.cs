@@ -40,16 +40,35 @@ namespace obligDiagnoseVerktøyy.Controller.implementations
 
         public class teller
         {
-            List<String> symptImg = new List<string>();
-            /**
-            symptKalk symptL = string1;
-            symptImg = string2;
+                    List<int> symptomIdEnTrenger = symptomer.ConvertAll((x) => x.symptomId);
 
-        while (string1 != null){
-            //Må fortsatte i kveld
-        }
+                    List<SymptomBilde> symptomBilder = db.symptomBilde.ToList();
+                    List<SymptomBilde> tilRetunering = new List<SymptomBilde>();
 
-        }*/
+                    foreach (var symptomBilde in symptomBilder)
+                    {
+                        int counter = 0;
+
+                        //Med spesifikt symptombilde
+                        List<int> syptomIder = db.symptomSymptomBilde.Where((x) => x.symptomBildeId == symptomBilde.symptomBildeId).ToList().ConvertAll((x) => x.symptomId);
+                        foreach (int symptomId in syptomIder)
+                        {
+                            if(symptomIdEnTrenger.Contains(symptomId))
+                                counter++;
+
+                            if (counter == symptomer.Count)
+                            {
+
+                                tilRetunering.Add(symptomBilde);
+                                break;
+                            }
+                        }
+                    }
+                    return tilRetunering;
+                }
+
+        public bool hent(symptom){
+            
         }
 
         public bool hent(Symptom symptImg)
