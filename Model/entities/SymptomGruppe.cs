@@ -1,4 +1,6 @@
-﻿namespace obligDiagnoseVerktøyy.Model.entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace obligDiagnoseVerktøyy.Model.entities
 {
     public class SymptomGruppe
     {
