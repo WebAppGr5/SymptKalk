@@ -60,9 +60,9 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Diagnose}/{action=test}/{id?}");
 
-/*
+
 app.PrepareDatabase()
     .GetAwaiter()
     .GetResult();
-*/
+
 app.Run();

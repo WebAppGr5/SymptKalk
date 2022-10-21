@@ -12,8 +12,8 @@ namespace obligDiagnoseVerktøyy.Model.entities
         [Column(Order =2)]
         public int symptomBildeId { get; set; }
 
-        List<Symptom> symptomer { get; set; }
-        List<SymptomBilde> SymptomBilder { get; set; }
+        public Symptom symptom { get; set; }
+        public SymptomBilde symptomBilde { get; set; }
 
     }
 }
