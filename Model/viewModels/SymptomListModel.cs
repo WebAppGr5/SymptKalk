@@ -6,7 +6,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
     public class SymptomListModel
     {
 
-
+        public int symptomId { get; set; }
         public String navn { get; set; }
 
         public int symptomGruppeId { get; set; }

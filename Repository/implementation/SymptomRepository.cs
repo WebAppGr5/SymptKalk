@@ -16,7 +16,7 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         {
             List<Symptom> symptomer = db.symptom.ToList();
 
-            List<SymptomListModel> symptomList = symptomer.ConvertAll((x) => new SymptomListModel {beskrivelse=x.beskrivelse,navn=x.navn,symptomGruppeId=x.symptomGruppeId });
+            List<SymptomListModel> symptomList = symptomer.ConvertAll((x) => new SymptomListModel {beskrivelse=x.beskrivelse,navn=x.navn,symptomGruppeId=x.symptomGruppeId,symptomId=x.symptomId });
             return symptomList;
         }
 
