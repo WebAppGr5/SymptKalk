@@ -99,12 +99,13 @@ namespace obligDiagnoseVerktøyy.Controller.implementations
             return diagnoser;
         }
         //Ikke ferdig
+
         public List<DiagnoseListModel> getDiagnoserGittSymptomer2(String symtpomer)
         {
             if (symtpomer == null)
                 return new List<DiagnoseListModel>();
 
-            List<int> symptomListe = symtpomer.Split("-").ToList().ConvertAll((x)=> Convert.ToInt32(x));
+            List<int> symptomListe = symtpomer.Split("-").ToList().ConvertAll((x)=> int.Parse(x.ToString()));
             List<SymptomBilde> symptombilder = symptomBildeRepository.hentSymptomBilder(symptomListe);
             List<DiagnoseListModel> diagnoser = diagnoseRepository.hentDiagnoser(symptombilder);
             return diagnoser;

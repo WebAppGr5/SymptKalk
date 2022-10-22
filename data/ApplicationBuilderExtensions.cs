@@ -262,10 +262,35 @@ namespace ObligDiagnoseVerktøyy.data
                 },
                 new SymptomSymptomBilde
                 {
-                    symptomBildeId = 1,
+                    symptomBildeId = 2,
+                    symptomId =3
+                },
+                    new SymptomSymptomBilde
+                {
+                    symptomBildeId = 2,
+                    symptomId =4
+                },
+                new SymptomSymptomBilde
+                {
+                    symptomBildeId =5,
+                    symptomId =1
+                },
+                    new SymptomSymptomBilde
+                {
+                    symptomBildeId = 3,
                     symptomId =2
                 },
-            };
+                new SymptomSymptomBilde
+                {
+                    symptomBildeId = 1,
+                    symptomId =4
+                },
+                new SymptomSymptomBilde
+                {
+                    symptomBildeId = 3,
+                    symptomId =1
+                }
+        };
             symptomSymptomBilder.ForEach((x) => db.symptomSymptomBilde.Add(x));
             db.SaveChanges();
 
