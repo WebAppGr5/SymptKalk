@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9LV8x/F/SsEIvjM/3EeBxjBZauG6TYN8jDKjPbsEYdK0gBCpyv1pKfsNEvlZh9U1ZxWm74Tk0APsf15fGuCHQg==",
+  "dgSpecHash": "wQQSKP4WPBbqu1gt/nbVva+UHuCIwJ177dt8W4rXMl9RIxQcO2A73WOcrrtEB40ZPi3/TsC6W9GDT3r8dsQ1lQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\rober\\source\\repos\\obligDiagnoseVerktøyet\\obligDiagnoseVerktøyy.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\rober\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.10\\microsoft.entityframeworkcore.design.6.0.10.nupkg.sha512",
     "C:\\Users\\rober\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.10\\microsoft.entityframeworkcore.relational.6.0.10.nupkg.sha512",
     "C:\\Users\\rober\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.10\\microsoft.entityframeworkcore.sqlserver.6.0.10.nupkg.sha512",
+    "C:\\Users\\rober\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.10\\microsoft.entityframeworkcore.tools.6.0.10.nupkg.sha512",
     "C:\\Users\\rober\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\rober\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
     "C:\\Users\\rober\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",

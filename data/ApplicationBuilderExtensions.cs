@@ -19,6 +19,7 @@ namespace ObligDiagnoseVerktøyy.data
             db.diagnose.ToList().ForEach((x) => db.Remove(x));
             db.diagnoseGruppe.ToList().ForEach((x) => db.Remove(x));
             db.symptom.ToList().ForEach((x) => db.Remove(x));
+            db.symptomGruppe.ToList().ForEach((x) => db.Remove(x));
             db.symptomBilde.ToList().ForEach((x) => db.Remove(x));
             db.symptomSymptomBilde.ToList().ForEach((x) => db.Remove(x));
             db.Database.Migrate();
@@ -30,6 +31,7 @@ namespace ObligDiagnoseVerktøyy.data
             List<Diagnose> diagnoser;
             List<DiagnoseGruppe> diagnoseGrupper;
             List<Symptom> symptomer;
+            List<SymptomGruppe> symptomGrupper;
             List<SymptomBilde> symptomBilder;
             List<SymptomSymptomBilde> symptomSymptomBilder;
 
@@ -58,6 +60,41 @@ namespace ObligDiagnoseVerktøyy.data
             diagnoseGrupper.ForEach((x) => db.diagnoseGruppe.Add(x));
             db.SaveChanges();
             db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT diagnoseGruppe OFF;");
+
+
+            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT symptomGruppe ON;");
+            symptomGrupper = new List<SymptomGruppe>
+            {
+                new SymptomGruppe
+                {
+                    symptomGruppeId=1,
+                    beskrivelse="Hjerte problem",
+                    navn="hjerte"
+                },
+                new SymptomGruppe
+                {
+                    symptomGruppeId=2,
+                    beskrivelse="Lunge problem",
+                    navn="lunge"
+                },
+                new SymptomGruppe
+                {
+                    symptomGruppeId=3,
+                    beskrivelse="mage problem",
+                    navn="mage"
+                }
+                ,
+                new SymptomGruppe
+                {
+                    symptomGruppeId=4,
+                    beskrivelse="andre problem",
+                    navn="annet"
+                }
+            };
+            symptomGrupper.ForEach((x) => db.symptomGruppe.Add(x));
+            db.SaveChanges();
+            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT symptomGruppe OFF;");
+
 
             db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT diagnose ON;");
 
@@ -116,33 +153,39 @@ namespace ObligDiagnoseVerktøyy.data
                 {
                     beskrivelse = "vondt i mage",
                     navn = "vondt i mage",
-                    symptomId = 1
+                    symptomId = 1,
+                    symptomGruppeId =3
                 },
                    new Symptom
                 {
                     beskrivelse = "vondt i lunge",
                     navn = "vondt i lunge",
-                    symptomId = 2
+                    symptomId = 2,
+                    symptomGruppeId= 2
                 },   new Symptom
                 {
                     beskrivelse = "vondt i mage",
                     navn = "vondt i lunge",
-                    symptomId = 3
+                    symptomId = 3,
+                    symptomGruppeId =2
                 },   new Symptom
                 {
                     beskrivelse = "vondt i hjerte",
                     navn = "vondt i hjerte",
-                    symptomId = 4
+                    symptomId = 4,
+                   symptomGruppeId=4
                 },   new Symptom
                 {
                     beskrivelse = "har hodepine",
                     navn = "hodepine",
-                    symptomId = 5
+                    symptomId = 5,
+                   symptomGruppeId=4
                 },   new Symptom
                 {
                     beskrivelse = "er kvalm",
                     navn = "opplever kvalme",
-                    symptomId = 6
+                    symptomId = 6,
+                   symptomGruppeId=4
                 }
             };
             symptomer.ForEach((x) => db.symptom.Add(x));
