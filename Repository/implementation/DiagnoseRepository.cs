@@ -17,7 +17,16 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         }
         public List<DiagnoseListModel> hentDiagnoser(List<SymptomBilde> symptomBilder)
         {
-            throw new NotImplementedException();
+            List<Diagnose> diagnoser = new List<Diagnose>();
+            symptomBilder.ForEach((x) =>
+            {
+                Diagnose diagnose = db.diagnose.Where((y) => x.diagnoseId == y.diagnoseId).First();
+                diagnoser.Add(diagnose);
+
+            });
+
+            List<DiagnoseListModel> diagnoseListModel = diagnoser.ConvertAll((x) => new DiagnoseListModel { beskrivelse = x.beskrivelse, diagnoseGruppeId = x.diagnoseGruppeId, navn = x.navn });
+            return diagnoseListModel;
         }
 
         public List<DiagnoseListModel> hentDiagnoserListModels()
