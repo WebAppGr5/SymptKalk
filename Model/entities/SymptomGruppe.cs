@@ -7,7 +7,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
         [Key]
         public int symptomGruppeId { get; set; }
         public string navn { get; set; } //Forklaringen kan hentes ut herfra
-        public List<Symptom> symptom { get; set; }
+        public List<Symptom> symptomer { get; set; }
 
         public string beskrivelse { get; set; } //Forklaringen kan hentes ut herfra
 

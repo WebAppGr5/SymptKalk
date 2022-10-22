@@ -10,8 +10,9 @@ namespace obligDiagnoseVerktøyy.Model.entities
 
         public String navn { get; set; }
 
-        public SymptomGruppe symptomGruppe { get; set; }
         public int symptomGruppeId { get; set; }
+        public SymptomGruppe symptomGruppe { get; set; }
+     
 
         public String beskrivelse { get; set; }
 

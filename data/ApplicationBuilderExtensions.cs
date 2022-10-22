@@ -15,10 +15,10 @@ namespace ObligDiagnoseVerktøyy.data
 
             var serviceProvider = scopedServices.ServiceProvider;
             var db = serviceProvider.GetRequiredService<ApplicationDbContext>();
-
+            db.symptom.ToList().ForEach((x) => db.Remove(x));
             db.diagnose.ToList().ForEach((x) => db.Remove(x));
             db.diagnoseGruppe.ToList().ForEach((x) => db.Remove(x));
-            db.symptom.ToList().ForEach((x) => db.Remove(x));
+       
             db.symptomGruppe.ToList().ForEach((x) => db.Remove(x));
             db.symptomBilde.ToList().ForEach((x) => db.Remove(x));
             db.symptomSymptomBilde.ToList().ForEach((x) => db.Remove(x));
