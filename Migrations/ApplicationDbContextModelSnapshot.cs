@@ -84,7 +84,12 @@ namespace obligDiagnoseVerktøyy.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("symptomGruppeId")
+                        .HasColumnType("int");
+
                     b.HasKey("symptomId");
+
+                    b.HasIndex("symptomGruppeId");
 
                     b.ToTable("symptom", (string)null);
                 });
@@ -115,6 +120,27 @@ namespace obligDiagnoseVerktøyy.Migrations
                     b.ToTable("symptomBilde", (string)null);
                 });
 
+            modelBuilder.Entity("obligDiagnoseVerktøyy.Model.entities.SymptomGruppe", b =>
+                {
+                    b.Property<int>("symptomGruppeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("symptomGruppeId"), 1L, 1);
+
+                    b.Property<string>("beskrivelse")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("navn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("symptomGruppeId");
+
+                    b.ToTable("symptomGruppe", (string)null);
+                });
+
             modelBuilder.Entity("obligDiagnoseVerktøyy.Model.entities.SymptomSymptomBilde", b =>
                 {
                     b.Property<int>("symptomId")
@@ -141,6 +167,17 @@ namespace obligDiagnoseVerktøyy.Migrations
                         .IsRequired();
 
                     b.Navigation("diagnoseGruppe");
+                });
+
+            modelBuilder.Entity("obligDiagnoseVerktøyy.Model.entities.Symptom", b =>
+                {
+                    b.HasOne("obligDiagnoseVerktøyy.Model.entities.SymptomGruppe", "symptomGruppe")
+                        .WithMany("symptom")
+                        .HasForeignKey("symptomGruppeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("symptomGruppe");
                 });
 
             modelBuilder.Entity("obligDiagnoseVerktøyy.Model.entities.SymptomBilde", b =>
@@ -191,6 +228,11 @@ namespace obligDiagnoseVerktøyy.Migrations
             modelBuilder.Entity("obligDiagnoseVerktøyy.Model.entities.SymptomBilde", b =>
                 {
                     b.Navigation("symptomSymptomBilde");
+                });
+
+            modelBuilder.Entity("obligDiagnoseVerktøyy.Model.entities.SymptomGruppe", b =>
+                {
+                    b.Navigation("symptom");
                 });
 #pragma warning restore 612, 618
         }
