@@ -172,7 +172,7 @@ namespace obligDiagnoseVerktøyy.Migrations
             modelBuilder.Entity("obligDiagnoseVerktøyy.Model.entities.Symptom", b =>
                 {
                     b.HasOne("obligDiagnoseVerktøyy.Model.entities.SymptomGruppe", "symptomGruppe")
-                        .WithMany("symptom")
+                        .WithMany("symptomer")
                         .HasForeignKey("symptomGruppeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -232,7 +232,7 @@ namespace obligDiagnoseVerktøyy.Migrations
 
             modelBuilder.Entity("obligDiagnoseVerktøyy.Model.entities.SymptomGruppe", b =>
                 {
-                    b.Navigation("symptom");
+                    b.Navigation("symptomer");
                 });
 #pragma warning restore 612, 618
         }
