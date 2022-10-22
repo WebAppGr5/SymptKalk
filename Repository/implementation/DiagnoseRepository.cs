@@ -15,43 +15,23 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         {
             this.db = db;
         }
-
-        public List<Diagnose> hentDiagnoser(List<SymptomBilde> symptomer)
+        public List<DiagnoseListModel> hentDiagnoser(List<SymptomBilde> symptomBilder)
         {
             throw new NotImplementedException();
         }
 
-        public List<SymptomBilde> hentSymptomBilder(List<string> symptomer)
+        public List<DiagnoseListModel> hentDiagnoserListModels()
         {
-            return new List<SymptomBilde>();
+            List<Diagnose> diagnoser = db.diagnose.ToList();
+
+            List<DiagnoseListModel> diagnoseListModel = diagnoser.ConvertAll((x) => new DiagnoseListModel {beskrivelse=x.beskrivelse,diagnoseGruppeId=x.diagnoseGruppeId,navn=x.navn});
+            return diagnoseListModel;
         }
-            public List<SymptomBilde> hentSymptomBilder(List<Symptom> symptomer)
+        public List<Diagnose> hentDiagnoser()
         {
-            List<int> symptomIdEnTrenger = symptomer.ConvertAll((x) => x.symptomId);
+            List<Diagnose> diagnoser = db.diagnose.ToList();
 
-            List<SymptomBilde> symptomBilder = db.symptomBilde.ToList();
-            List<SymptomBilde> tilRetunering = new List<SymptomBilde>();
-
-            foreach (var symptomBilde in symptomBilder)
-            {
-                int counter = 0;
-
-                //Med spesifikt symptombilde
-                List<int> syptomIder = db.symptomSymptomBilde.Where((x) => x.symptomBildeId == symptomBilde.symptomBildeId).ToList().ConvertAll((x) => x.symptomId);
-                foreach (int symptomId in syptomIder)
-                {
-                    if(symptomIdEnTrenger.Contains(symptomId))
-                        counter++;
-
-                    if (counter == symptomer.Count)
-                    {
-                       
-                        tilRetunering.Add(symptomBilde);
-                        break;
-                    }
-                }
-            }
-            return tilRetunering;
+            return diagnoser;
         }
 
     }

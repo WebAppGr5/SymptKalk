@@ -25,6 +25,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddLogging();
 builder.Services.AddOptions();
 builder.Services.AddTransient<IDiagnoseRepository, DiagnoseRepository>();
+builder.Services.AddTransient<IDiagnoseGruppeRepository, DiagnoseGruppeRepository>();
+builder.Services.AddTransient<ISymptomBildeRepository, SymptomBildeRepository>();
+builder.Services.AddTransient<ISymptomGruppeRepository, SymptomGruppeRepository>();
+builder.Services.AddTransient<ISymptomRepository, SymptomRepository>();
 // Add services to the container.
 
 //builder.Services.AddDefaultIdentity<IdentityUser>()

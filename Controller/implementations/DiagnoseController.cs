@@ -20,10 +20,16 @@ namespace obligDiagnoseVerktøyy.Controller.implementations
     public class DiagnoseController : ControllerBase
     {
         private IDiagnoseRepository diagnoseRepository;
+        private IDiagnoseGruppeRepository diagnoseGruppeRepository;
+        private ISymptomBildeRepository symptomBildeRepository;
+        private ISymptomGruppeRepository symptomGruppeRepository;
+        private ISymptomRepository symptomRepository;
 
-        public DiagnoseController(IDiagnoseRepository diagnoseRepository)
+
+
+        public DiagnoseController(IDiagnoseRepository diagnoseRepository, IDiagnoseGruppeRepository diagnoseGruppeRepository, ISymptomBildeRepository symptomBildeRepository, ISymptomGruppeRepository symptomGruppeRepository, ISymptomRepository symptomRepository)
         {
-            /**
+                      /**
             while ((symptL != null) && (!symptL.Any()))
             {
                 List<string> symptL = new List<string>();
@@ -33,9 +39,10 @@ namespace obligDiagnoseVerktøyy.Controller.implementations
                 }
             }*/
             this.diagnoseRepository = diagnoseRepository;
-           
-
-
+            this.diagnoseGruppeRepository = diagnoseGruppeRepository;
+            this.symptomBildeRepository = symptomBildeRepository;
+            this.symptomGruppeRepository = symptomGruppeRepository;
+            this.symptomRepository = symptomRepository;
         }
 
         public class teller
@@ -66,27 +73,48 @@ namespace obligDiagnoseVerktøyy.Controller.implementations
             return false;
         }
         //Ikke ferdig
-        public List<Diagnose> getDiagnoser(List<Symptom> symptomer)
+        public List<DiagnoseListModel> getDiagnoserGittSymptomer1(List<Symptom> symptomer)
         {
-            List<SymptomBilde> symptombilder = diagnoseRepository.hentSymptomBilder(symptomer);
-            List<Diagnose> diagnoser = diagnoseRepository.hentDiagnoser(symptombilder);
+            List<SymptomBilde> symptombilder = symptomBildeRepository.hentSymptomBilder(symptomer);
+            List<DiagnoseListModel> diagnoser = diagnoseRepository.hentDiagnoser(symptombilder);
             return diagnoser;
         }
         //Ikke ferdig
-        public List<Diagnose> getDiagnoser(String symtpomer)
+        public List<DiagnoseListModel> getDiagnoserGittSymptomer2(String symtpomer)
         {
             if (symtpomer == null)
-                return new List<Diagnose>();
+                return new List<DiagnoseListModel>();
 
             List<string> symptomListe = symtpomer.Split("-").ToList();
-            List<SymptomBilde> symptomBilde = diagnoseRepository.hentSymptomBilder(symptomListe);
-            List<Diagnose> diagnoser = diagnoseRepository.hentDiagnoser(symptomBilde);
+            List<SymptomBilde> symptombilder = symptomBildeRepository.hentSymptomBilder(symptomListe);
+            List<DiagnoseListModel> diagnoser = diagnoseRepository.hentDiagnoser(symptombilder);
             return diagnoser;
 
 
 
         }
 
+
+        public List<Symptom> getSymptomer()
+        {
+            return symptomRepository.hentSymptomer();
+        }
+        public List<DiagnoseGruppe> getDiagnoseGrupper()
+        {
+            return diagnoseGruppeRepository.hentDiagnoseGrupper();
+        }
+        public List<Diagnose> getDiagnoser()
+        {
+            return diagnoseRepository.hentDiagnoser();
+        }
+        public List<Symptom> GetSymptomer()
+        {
+            return symptomRepository.hentSymptomer();
+        }
+        public List<SymptomGruppe> getSymptomGruppe()
+        {
+            return symptomGruppeRepository.hentSymptomGrupper();
+        }
         public String test()
         {
             return "det giikk";
