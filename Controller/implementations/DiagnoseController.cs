@@ -104,7 +104,7 @@ namespace obligDiagnoseVerktøyy.Controller.implementations
             if (symtpomer == null)
                 return new List<DiagnoseListModel>();
 
-            List<string> symptomListe = symtpomer.Split("-").ToList();
+            List<int> symptomListe = symtpomer.Split("-").ToList().ConvertAll((x)=> Convert.ToInt32(x));
             List<SymptomBilde> symptombilder = symptomBildeRepository.hentSymptomBilder(symptomListe);
             List<DiagnoseListModel> diagnoser = diagnoseRepository.hentDiagnoser(symptombilder);
             return diagnoser;
