@@ -44,7 +44,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             this._symptomRepository = symptomRepository;
         }
 
-        public IActionResult listen1([FromBody] List<string> symptomliste)  {
+        public IActionResult listen1(List<string> symptomliste)  {
 
             try
             {
@@ -74,7 +74,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         }
 
         //Liste over streng av int, tilsvarende id; "1" "2" "3" ...
-        public IActionResult listen2([FromBody] List<string> symptomliste)
+        public IActionResult listen2( List<string> symptomliste)
         {
 
             try {
@@ -94,7 +94,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
 
         }
         //Liste over int id, f.eks 1 2 4 6 7
-        public IActionResult listen3([FromBody] List<int> symptomliste)
+        public IActionResult listen3( List<int> symptomliste)
         {
 
             try
@@ -174,7 +174,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
          }
 
-        public IActionResult getSymptomerGittGruppeId([FromBody] int id)
+        public IActionResult getSymptomerGittGruppeId(int id)
         {
             try
             {
@@ -211,7 +211,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
 
-        public IActionResult getDiagnoserGittId([FromBody] int id)
+        public IActionResult getDiagnoserGittId( int id)
         {
             try
             {

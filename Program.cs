@@ -5,12 +5,20 @@ using ObligDiagnoseVerktøyy.data;
 using ObligDiagnoseVerktøyy.Data;
 using obligDiagnoseVerktøyy.Repository.implementation;
 using obligDiagnoseVerktøyy.Repository.interfaces;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddLogging(logging =>
+{
+    logging.ClearProviders(); // optional (clear providers already added)
+    logging.AddFile("Logs/diagnoseLog.txt");
+});
+
+builder.Logging.AddConsole();
 builder.Services.AddControllersWithViews();
-// Authorization handlers.
+
 
 //Database setup
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -21,8 +29,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 
 
-
 builder.Services.AddLogging();
+
 builder.Services.AddOptions();
 builder.Services.AddTransient<IDiagnoseRepository, DiagnoseRepository>();
 builder.Services.AddTransient<IDiagnoseGruppeRepository, DiagnoseGruppeRepository>();
@@ -31,8 +39,7 @@ builder.Services.AddTransient<ISymptomGruppeRepository, SymptomGruppeRepository>
 builder.Services.AddTransient<ISymptomRepository, SymptomRepository>();
 // Add services to the container.
 
-//builder.Services.AddDefaultIdentity<IdentityUser>()
-//    .AddEntityFrameworkStores<ApplicationDbContext>();
+
 
 var app = builder.Build();
 
@@ -58,7 +65,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseCookiePolicy();
-
+var loggerFactory = app.Services.GetService<ILoggerFactory>();
 
 app.MapControllerRoute(
     name: "default",

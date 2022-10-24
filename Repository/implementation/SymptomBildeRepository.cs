@@ -26,6 +26,7 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         {
             List<SymptomBilde> symptomBilde = db.symptomBilde.ToList();
             return symptomBilde;
+
         }
 
         public List<SymptomBilde> hentSymptomBilder(List<int> symptomIdEnTrenger)

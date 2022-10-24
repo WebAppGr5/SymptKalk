@@ -8,5 +8,6 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
         public List<Diagnose> hentDiagnoser();
         public List<DiagnoseListModel> hentDiagnoserListModels();
         public List<DiagnoseListModel> hentDiagnoser(List<SymptomBilde> symptomBilder);
+        public List<Diagnose> hentDiagnoser(int diagnoseGruppeId);
     }
 }
