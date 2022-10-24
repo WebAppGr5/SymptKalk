@@ -5,6 +5,7 @@ using ObligDiagnoseVerktøyy.data;
 using ObligDiagnoseVerktøyy.Data;
 using obligDiagnoseVerktøyy.Repository.implementation;
 using obligDiagnoseVerktøyy.Repository.interfaces;
+using Microsoft.Extensions.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,8 +14,7 @@ builder.Services.AddControllersWithViews();
 
 //Database setup
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+            options.UseSqlite("Data source=diagnoseVerktoy.db"));
 
 
 
