@@ -5,13 +5,15 @@ namespace obligDiagnoseVerktøyy.Model.entities
 {
     public class SymptomSymptomBilde
     {
-        [Key]
-        [Column(Order = 1)]
+        [Key,Column(Order = 0)]
+        [MaxLength(3)]
+        [RegularExpression(@"^[0-9]{1,3}$")]
         public int symptomId { get; set; }
-        [Key]
-        [Column(Order =2)]
+        [Key,Column(Order =1)]
+        [MaxLength(3)]
+        [RegularExpression(@"^[0-9]{1,3}$")]
         public int symptomBildeId { get; set; }
-
+        
         public Symptom symptom { get; set; }
         public SymptomBilde symptomBilde { get; set; }
 

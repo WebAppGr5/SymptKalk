@@ -8,5 +8,6 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
 
         public List<SymptomGruppeListModel> hentSymptomGrupperListModels();
         public List<SymptomGruppe> hentSymptomGrupper();
+
     }
 }

@@ -11,7 +11,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
         [MaxLength(15)]
         [RegularExpression(@"^[a-zA-Z]{3,20}$")]
         public string navn { get; set; } //Forklaringen kan hentes ut herfra
-
+      //
 
         public List<Diagnose> diagnose { get; set;}
 
