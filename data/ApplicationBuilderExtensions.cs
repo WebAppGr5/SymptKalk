@@ -22,10 +22,9 @@ namespace ObligDiagnoseVerktøyy.data
             db.symptomGruppe.ToList().ForEach((x) => db.Remove(x));
             db.symptomBilde.ToList().ForEach((x) => db.Remove(x));
             db.symptomSymptomBilde.ToList().ForEach((x) => db.Remove(x));
-            db.Database.Migrate();
 
             db.SaveChanges();
-            db.Database.Migrate();
+  
             db.Database.OpenConnection();
 
             List<Diagnose> diagnoser;
@@ -35,7 +34,7 @@ namespace ObligDiagnoseVerktøyy.data
             List<SymptomBilde> symptomBilder;
             List<SymptomSymptomBilde> symptomSymptomBilder;
 
-            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT diagnoseGruppe ON;");
+        
             diagnoseGrupper = new List<DiagnoseGruppe>
             {
                 new DiagnoseGruppe
@@ -59,10 +58,7 @@ namespace ObligDiagnoseVerktøyy.data
             };
             diagnoseGrupper.ForEach((x) => db.diagnoseGruppe.Add(x));
             db.SaveChanges();
-            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT diagnoseGruppe OFF;");
-
-
-            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT symptomGruppe ON;");
+        
             symptomGrupper = new List<SymptomGruppe>
             {
                 new SymptomGruppe
@@ -93,10 +89,7 @@ namespace ObligDiagnoseVerktøyy.data
             };
             symptomGrupper.ForEach((x) => db.symptomGruppe.Add(x));
             db.SaveChanges();
-            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT symptomGruppe OFF;");
 
-
-            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT diagnose ON;");
 
             diagnoser = new List<Diagnose>()
             {
@@ -143,10 +136,7 @@ namespace ObligDiagnoseVerktøyy.data
             };
             diagnoser.ForEach((x) => db.diagnose.Add(x));
             db.SaveChanges();
-            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT diagnose OFF;");
 
- 
-            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT symptom ON;");
             symptomer = new List<Symptom>()
             {
                 new Symptom
@@ -190,9 +180,7 @@ namespace ObligDiagnoseVerktøyy.data
             };
             symptomer.ForEach((x) => db.symptom.Add(x));
             db.SaveChanges();
-            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT symptom OFF;");
 
-            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT symptomBilde ON;");
 
             symptomBilder = new List<SymptomBilde>
             {
@@ -248,10 +236,6 @@ namespace ObligDiagnoseVerktøyy.data
             };
             symptomBilder.ForEach((x) => db.symptomBilde.Add(x));
             db.SaveChanges();
-
-           
-
-            db.Database.ExecuteSqlRaw("SET IDENTITY_INSERT symptomBilde OFF;");
 
             symptomSymptomBilder = new List<SymptomSymptomBilde>
             {
