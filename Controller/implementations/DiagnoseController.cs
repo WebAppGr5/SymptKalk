@@ -1,143 +1,243 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
+
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+
 using Microsoft.Extensions.WebEncoders.Testing;
 using Microsoft.VisualBasic;
 using obligDiagnoseVerktøyy.Model.entities;
 using obligDiagnoseVerktøyy.Repository.interfaces;
-using System;
-//using Systems.Collections.Generic;
+
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
+
 //using System.Web.Mcv;
 //using System.Web.Mcv.Ajax;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using obligDiagnoseVerktøyy.Repository.implementation;
+using Microsoft.Extensions.Logging;
 
-namespace obligDiagnoseVerktøyy.Controller.implementations
+
+namespace obligDiagnoseVerktøyy.Controllers.implementations
 {
-
+    [Route("[controller]/[action]")]
     public class DiagnoseController : ControllerBase
     {
-        private IDiagnoseRepository diagnoseRepository;
-        private IDiagnoseGruppeRepository diagnoseGruppeRepository;
-        private ISymptomBildeRepository symptomBildeRepository;
-        private ISymptomGruppeRepository symptomGruppeRepository;
-        private ISymptomRepository symptomRepository;
+        private IDiagnoseRepository _diagnoseRepository;
+        private IDiagnoseGruppeRepository _diagnoseGruppeRepository;
+        private ISymptomBildeRepository _symptomBildeRepository;
+        private ISymptomGruppeRepository _symptomGruppeRepository;
+        private ISymptomRepository _symptomRepository;
+
+        private ILogger<DiagnoseController> _logger;
 
 
-
-        public DiagnoseController(IDiagnoseRepository diagnoseRepository, IDiagnoseGruppeRepository diagnoseGruppeRepository, ISymptomBildeRepository symptomBildeRepository, ISymptomGruppeRepository symptomGruppeRepository, ISymptomRepository symptomRepository)
+        public DiagnoseController(IDiagnoseRepository diagnoseRepository, IDiagnoseGruppeRepository diagnoseGruppeRepository, ISymptomBildeRepository symptomBildeRepository, ISymptomGruppeRepository symptomGruppeRepository, ISymptomRepository symptomRepository, ILogger<DiagnoseController> logger)
         {
-                      /**
-            while ((symptL != null) && (!symptL.Any()))
+            List<string> symptomListe = new List<string>();
+            this._logger = logger;
+            this._diagnoseRepository = diagnoseRepository;
+            this._diagnoseGruppeRepository = diagnoseGruppeRepository;
+            this._symptomBildeRepository = symptomBildeRepository;
+            this._symptomGruppeRepository = symptomGruppeRepository;
+            this._symptomRepository = symptomRepository;
+        }
+
+        public IActionResult listen1([FromBody] List<string> symptomliste)  {
+
+            try
             {
-                List<string> symptL = new List<string>();
-                while (sympt not in symptL) //Så lenge symptomet ikke er i lista
-                            {
-                    symptL.Add(sympt); //legger til symptomet i lista laget av bruker.
-                }
-            }*/
-            this.diagnoseRepository = diagnoseRepository;
-            this.diagnoseGruppeRepository = diagnoseGruppeRepository;
-            this.symptomBildeRepository = symptomBildeRepository;
-            this.symptomGruppeRepository = symptomGruppeRepository;
-            this.symptomRepository = symptomRepository;
-        }
-
-        public class teller
-        {
-                    List<int> symptomIdEnTrenger = symptomer.ConvertAll((x) => x.symptomId);
-
-                    List<SymptomBilde> symptomBilder = db.symptomBilde.ToList();
-                    List<SymptomBilde> tilRetunering = new List<SymptomBilde>();
-
-                    foreach (var symptomBilde in symptomBilder)
+                //Liste over id(som i database id) av symptomer i entitet Symptom
+                List<int> ids = new List<int>();
+                //Relativt til første id i databasen, med tanke på symptomer
+                for (int i = 0; i < symptomliste.Count; i++)
+                {
+                    string val = symptomliste.ElementAt(i);
+                    //Hvorvidt en har symptomet
+                    if (val == "checked")
                     {
-                        int counter = 0;
-
-                        //Med spesifikt symptombilde
-                        List<int> syptomIder = db.symptomSymptomBilde.Where((x) => x.symptomBildeId == symptomBilde.symptomBildeId).ToList().ConvertAll((x) => x.symptomId);
-                        foreach (int symptomId in syptomIder)
-                        {
-                            if(symptomIdEnTrenger.Contains(symptomId))
-                                counter++;
-
-                            if (counter == symptomer.Count)
-                            {
-
-                                tilRetunering.Add(symptomBilde);
-                                break;
-                            }
-                        }
+                        ids.Add(i);
                     }
-                    return tilRetunering;
+
+                }
+                List<SymptomBilde> symptombilder = _symptomBildeRepository.hentSymptomBilder(ids);
+                List<DiagnoseListModel> diagnoser = _diagnoseRepository.hentDiagnoser(symptombilder);
+                return Ok(diagnoser);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError("Klarte ikke å konverte mellom listen over false/true kinda strenger for at et symptom er tilstede, til liste over diagnoser");
+                return BadRequest(new List<Diagnose>());
+            }
+        //=50
+        }
+
+        //Liste over streng av int, tilsvarende id; "1" "2" "3" ...
+        public IActionResult listen2([FromBody] List<string> symptomliste)
+        {
+
+            try {
+
+                List<int> ids = new List<int>();
+
+                List<int> symptomListe = symptomliste.ConvertAll((x) => int.Parse(x.ToString()));
+                List<SymptomBilde> symptombilder = _symptomBildeRepository.hentSymptomBilder(ids);
+                List<DiagnoseListModel> diagnoser = _diagnoseRepository.hentDiagnoser(symptombilder);
+                return Ok(diagnoser);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Klarte ikke å konverte mellom listen over false/true kinda strenger for at et symptom er tilstede, til liste over diagnoser");
+                return BadRequest(new List<Diagnose>());
+            }
+
+        }
+        //Liste over int id, f.eks 1 2 4 6 7
+        public IActionResult listen3([FromBody] List<int> symptomliste)
+        {
+
+            try
+            {
+
+                List<SymptomBilde> symptombilder = _symptomBildeRepository.hentSymptomBilder(symptomliste);
+                List<DiagnoseListModel> diagnoser = _diagnoseRepository.hentDiagnoser(symptombilder);
+                return Ok(diagnoser);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Klarte ikke å konverte mellom listen over false/true kinda strenger for at et symptom er tilstede, til liste over diagnoser");
+                return BadRequest(new List<Diagnose>());
+            }
+        }
+
+
+        public IActionResult getDiagnoserGittSymptomer1(List<Symptom> symptomer)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    List<SymptomBilde> symptombilder = _symptomBildeRepository.hentSymptomBilder(symptomer);
+                    List<DiagnoseListModel> diagnoser = _diagnoseRepository.hentDiagnoser(symptombilder);
+                    return Ok(diagnoser);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError("listen over symptomer klarte ikke input valideringen");
+                    return BadRequest("Something went wrong");
+                }
+            }
+
+
+            else
+    {
+        _logger.LogError("Listen av symptomene feilet input valideringen");
+        return BadRequest("Something went wrong");
+
+            }
+          }
+
+        //Ikke ferdig
+
+        public IActionResult getDiagnoserGittSymptomer2( String symptomer)
+        {
+
+                try
+                {
+                    if (symptomer == null)
+                        return NotFound(new List<DiagnoseListModel>());
+
+                    List<int> symptomListe = symptomer.Split("-").ToList().ConvertAll((x) => int.Parse(x.ToString()));
+                    List<SymptomBilde> symptombilder = _symptomBildeRepository.hentSymptomBilder(symptomListe);
+                    List<DiagnoseListModel> diagnoser = _diagnoseRepository.hentDiagnoser(symptombilder);
+                    return Ok(diagnoser);
                 }
 
-        public bool hent(symptom){
-            
+                catch (Exception ex)
+                {
+                   _logger.LogError("Kunne ikke konvertere streng av symptom id'er til liste over diagnoser");
+                  return BadRequest("Something went wrong");
+                }
+            }
+
+        public IActionResult getSymptomer()
+        {
+            try
+            {
+                return Ok(_symptomRepository.hentSymptomer());
+             }
+
+            catch (Exception ex) {
+               _logger.LogError("Kunne ikke hente symptomer");
+               return BadRequest("Something went wrong");
+            }
+         }
+
+        public IActionResult getSymptomerGittGruppeId([FromBody] int id)
+        {
+            try
+            {
+                return Ok(_symptomRepository.hentSymptomer(id));
+            }
+
+            catch (Exception ex)
+            {
+                _logger.LogError("Kunne ikke hente symptomer gitt id");
+                return BadRequest("Something went wrong");
+            }
         }
 
-        public bool hent(Symptom symptImg)
+        public IActionResult getDiagnoseGrupper()
         {
-            //Her må vi hente ut symptom bildene fra en annen fil, og sammenligne lista med symptomer med bildene,
-            //deretter må vi på et eller annet vis øke en satt verdi med 1 for hvert symptom som passer. Kanskje bruke prosent, slik at det ikke blir urettferdig bias mot de bildene med flere symptomer?
-            //Usikker på hvordan vi gjør det eller om vi kan forenkle det på et eller annet vis?
-            return false;
+            try
+            {
+                return Ok(_diagnoseGruppeRepository.hentDiagnoseGrupper());
+            }
+            catch (Exception ex) {
+                _logger.LogError("Kunne ikke hente diagnose grupper");
+                return BadRequest("Something went wrong");
+            }
         }
-        //Ikke ferdig
-        public bool slett(Symptom symptL)
+        public IActionResult getDiagnoser()
         {
-            //må hente info fra front end hvor de har tatt vekk et symptom, deretter fjerne den fra lista.
-            return false;
-        }
-        //Ikke ferdig
-        public List<DiagnoseListModel> getDiagnoserGittSymptomer1(List<Symptom> symptomer)
-        {
-            List<SymptomBilde> symptombilder = symptomBildeRepository.hentSymptomBilder(symptomer);
-            List<DiagnoseListModel> diagnoser = diagnoseRepository.hentDiagnoser(symptombilder);
-            return diagnoser;
-        }
-        //Ikke ferdig
-
-        public List<DiagnoseListModel> getDiagnoserGittSymptomer2(String symtpomer)
-        {
-            if (symtpomer == null)
-                return new List<DiagnoseListModel>();
-
-            List<int> symptomListe = symtpomer.Split("-").ToList().ConvertAll((x)=> int.Parse(x.ToString()));
-            List<SymptomBilde> symptombilder = symptomBildeRepository.hentSymptomBilder(symptomListe);
-            List<DiagnoseListModel> diagnoser = diagnoseRepository.hentDiagnoser(symptombilder);
-            return diagnoser;
-
-
-
+            try
+            {
+                return Ok(_diagnoseRepository.hentDiagnoser());
+            }
+            catch (Exception ex){
+                _logger.LogError("Kunne ikke hente diagnoser");
+                return BadRequest("Something went wrong");
+            }
         }
 
+        public IActionResult getDiagnoserGittId([FromBody] int id)
+        {
+            try
+            {
+                return Ok(_diagnoseRepository.hentDiagnoser(id));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Kunne ikke hente diagnoser gitt id");
+                return BadRequest("Something went wrong");
+            }
+        }
 
-        public List<Symptom> getSymptomer()
+        public IActionResult getSymptomGrupper()
         {
-            return symptomRepository.hentSymptomer();
-        }
-        public List<DiagnoseGruppe> getDiagnoseGrupper()
-        {
-            return diagnoseGruppeRepository.hentDiagnoseGrupper();
-        }
-        public List<Diagnose> getDiagnoser()
-        {
-            return diagnoseRepository.hentDiagnoser();
-        }
-        public List<Symptom> GetSymptomer()
-        {
-            return symptomRepository.hentSymptomer();
-        }
-        public List<SymptomGruppe> getSymptomGruppe()
-        {
-            return symptomGruppeRepository.hentSymptomGrupper();
+            try
+            {
+                return Ok(_symptomGruppeRepository.hentSymptomGrupper());
+            }
+            catch (Exception ex){
+                _logger.LogError("Kunne ikke hente symptom grupper");
+                return BadRequest("Something went wrong");
+            }
         }
         public String test()
         {
-            return "det giikk";
+            return "det gikk";
         }
     }
 
