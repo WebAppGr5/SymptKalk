@@ -39,9 +39,12 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         public List<Diagnose> hentDiagnoser()
         {
             List<Diagnose> diagnoser = db.diagnose.ToList();
-
             return diagnoser;
         }
-
+        public List<Diagnose> hentDiagnoser(int diagnoseGruppeId)
+        {
+            List<Diagnose> diagnoser = db.diagnose.Where((x) => x.diagnoseGruppeId == diagnoseGruppeId).ToList();
+            return diagnoser;
+        }
     }
 }

@@ -6,6 +6,6 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
     {
         public List<SymptomListModel> hentSymptomerListModels();
         public List<Symptom> hentSymptomer();
-
+        public List<SymptomListModel> hentSymptomer(int symptomGruppeId);
     }
 }

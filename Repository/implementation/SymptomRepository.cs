@@ -19,7 +19,13 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
             List<SymptomListModel> symptomList = symptomer.ConvertAll((x) => new SymptomListModel {beskrivelse=x.beskrivelse,navn=x.navn,symptomGruppeId=x.symptomGruppeId,symptomId=x.symptomId });
             return symptomList;
         }
+        public List<SymptomListModel> hentSymptomer(int symptomGruppeId)
+        {
+            List<Symptom> symptomer = db.symptom.Where((x) => x.symptomGruppeId == symptomGruppeId).ToList();
 
+            List<SymptomListModel> symptomList = symptomer.ConvertAll((x) => new SymptomListModel { beskrivelse = x.beskrivelse, navn = x.navn, symptomGruppeId = x.symptomGruppeId, symptomId = x.symptomId });
+            return symptomList;
+        }
         public List<Symptom> hentSymptomer()
         {
             List<Symptom> symptomer = db.symptom.ToList();
