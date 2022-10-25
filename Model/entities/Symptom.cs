@@ -21,7 +21,8 @@ namespace obligDiagnoseVerktøyy.Model.entities
         public SymptomGruppe symptomGruppe { get; set; }
 
         [Required]
-        [MaxLength(150)]
+        [MaxLength(700)]
+        [RegularExpression(@"^[a-zA-Z0-9]{0,700}$")]
         public String beskrivelse { get; set; }
 
         [JsonIgnore]
