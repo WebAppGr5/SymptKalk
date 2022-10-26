@@ -1,14 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/css/index.css">
-    <script src="dropdown.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/dropdown.js"></script>
+    <script src="js/ajax.js"></script>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.1.js"
             integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
             crossorigin="anonymous"></script>
-    <script src="/js/dropdown.js"></script>
-    <script src="/js/ajax.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <title>Title</title>
@@ -27,7 +26,7 @@
 
     <div class="header">
 
-        <img class="doktor-ikon" src="/img/user-doctor-solid.svg" alt="doktor-ikon" />
+        <img class="doktor-ikon" src="img/docImg.svg" alt="doktor-ikon" />
         Symptomkalkulator
 
     </div>
@@ -44,11 +43,11 @@
                 <button class="knapp" onclick="kategoriHode()">Hode</button>
 
                 <div id="hode" style="display:none">
-                    <input type="checkbox" id="vondt bak øyne" name="1" value="Hode">
-                    <label for="vondt bak øyne"> Vondt bak øynene</label>
+                    <input type="checkbox" id="001" name="1" value="Hode">
+                    <label for="001"> Vondt bak øynene</label>
 
-                    <label class="varighet" for="varighet1">Velg varighet</label>
-                    <select id="varighet1">
+                    <label class="varighet" for="varighet001">Velg varighet</label>
+                    <select id="varighet001">
                         <option>--</option>
                         <option>1-3 dager</option>
                         <option>Flere dager</option>
@@ -61,11 +60,11 @@
 
                     <br>
 
-                    <input type="checkbox" id="vondt i nakken" name="1" value="Hode">
-                    <label for="vondt i nakken">Vondt bak i nakken</label>
+                    <input type="checkbox" id="002" name="1" value="Hode">
+                    <label for="002">Vondt bak i nakken</label>
 
-                    <label class="varighet" for="varighet2">Velg varighet</label>
-                    <select id="varighet2">
+                    <label class="varighet" for="varighet102">Velg varighet</label>
+                    <select id="varighet002">
                         <option>--</option>
                         <option>1-3 dager</option>
                         <option>Flere dager</option>
@@ -83,12 +82,34 @@
 
                 <div id="overkropp" style="display:none">
                     <p>
-                        <input type="checkbox" id="vondt i bryst" name="1" value="Hode">
-                        <label for="vondt bak øyne"> Vondt bak øynene</label>
+                        <input type="checkbox" id="101" name="1" value="Hode">
+                        <label for="101"> vondt i bryst</label>
+                        <label class="varighet" for="varighet101">Velg varighet</label>
+                        <select id="varighet101">
+                            <option>--</option>
+                            <option>1-3 dager</option>
+                            <option>Flere dager</option>
+                            <option>1-3 uker</option>
+                            <option>1-3 måneder</option>
+                            <option>Flere måneder</option>
+                            <option>1-3 år</option>
+                            <option>Flere år</option>
+                        </select>
                     </p>
                     <p>
-                        <input type="checkbox" id="armesmerter" name="1" value="Hode">
-                        <label for="vondt i nakken">Vondt bak i nakken</label>
+                        <input type="checkbox" id="102" name="1" value="Hode">
+                        <label for="102">smerter i armene</label>
+                        <label class="varighet" for="varighet102">Velg varighet</label>
+                        <select id="varighet102">
+                            <option>--</option>
+                            <option>1-3 dager</option>
+                            <option>Flere dager</option>
+                            <option>1-3 uker</option>
+                            <option>1-3 måneder</option>
+                            <option>Flere måneder</option>
+                            <option>1-3 år</option>
+                            <option>Flere år</option>
+                        </select>
                     </p>
                 </div>
 
