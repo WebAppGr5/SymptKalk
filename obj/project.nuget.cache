@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5LzQurxTu5HgCPBQfY48yPQXgj0HjShsus25BFSOnUzf3aW3Ns3sN7vkLBm3VrpuXc6tROV2mJJKbxGGSvYyQA==",
+  "dgSpecHash": "tStk06d9KFsUHiLJ6UHNxfeSmL9Kw/RtVYNdnmuFV/dUTdPwo9oGPXp8Y8dnTHKYbg/xtt+CHkOERLhOBb1CLw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rober\\source\\repos\\obligDiagnoseVerktøyet\\obligDiagnoseVerktøyy.csproj",
+  "projectFilePath": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\obligDiagnoseVerktøyy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rober\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\rober\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
