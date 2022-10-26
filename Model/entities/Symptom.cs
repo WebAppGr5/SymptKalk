@@ -25,6 +25,8 @@ namespace obligDiagnoseVerktøyy.Model.entities
         [RegularExpression(@"^[a-zA-Z0-9]{0,700}$")]
         public String beskrivelse { get; set; }
 
+        public int varighet { get; set; }
+
         [JsonIgnore]
         public List<SymptomSymptomBilde> symptomSymptomBilde { get; set; }
     }

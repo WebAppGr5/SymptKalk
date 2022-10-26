@@ -1,4 +1,5 @@
-﻿using obligDiagnoseVerktøyy.Model.entities;
+﻿using obligDiagnoseVerktøyy.Model.DTO;
+using obligDiagnoseVerktøyy.Model.entities;
 using obligDiagnoseVerktøyy.Repository.interfaces;
 using ObligDiagnoseVerktøyy.Data;
 using System.Linq;
@@ -29,9 +30,11 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
 
         }
 
-        public List<SymptomBilde> hentSymptomBilder(List<int> symptomIdEnTrenger)
+        public List<SymptomBilde> hentSymptomBilder(List<SymptomDTO> symptomer)
         {
-
+            List<int> symptomIdEnTrenger = symptomer.ConvertAll((x) => x.id).ToList();
+            List<int> varighet = symptomer.ConvertAll((x) => x.varighet).ToList();
+        
             List<SymptomBilde> symptomBilder = db.symptomBilde.ToList();
             List<SymptomBilde> tilRetunering = new List<SymptomBilde>();
 
@@ -44,7 +47,15 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
                 foreach (int symptomId in syptomIder)
                 {
                     if (symptomIdEnTrenger.Contains(symptomId))
-                        counter++;
+                    {
+                        Symptom symptom = db.symptom.Where((x) => x.symptomId == symptomId).First();
+                        SymptomDTO symptomDTO = symptomer.Where((x) => x.id == symptomId).First();
+                        if(symptom.varighet <= symptomDTO.varighet)
+                        {
+                            counter++;
+                        }
+                    }
+                     
 
                     if (counter == symptomIdEnTrenger.Count)
                     {
@@ -57,34 +68,6 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
 
             return tilRetunering;
         }
-        public List<SymptomBilde> hentSymptomBilder(List<Symptom> symptomer)
-        {
-            List<int> symptomIdEnTrenger = symptomer.ConvertAll((x) => x.symptomId);
 
-            List<SymptomBilde> symptomBilder = db.symptomBilde.ToList();
-            List<SymptomBilde> tilRetunering = new List<SymptomBilde>();
-
-            foreach (var symptomBilde in symptomBilder)
-            {
-                int counter = 0;
-
-                //Med spesifikt symptombilde
-                List<int> syptomIder = db.symptomSymptomBilde.Where((x) => x.symptomBildeId == symptomBilde.symptomBildeId).ToList().ConvertAll((x) => x.symptomId);
-                foreach (int symptomId in syptomIder)
-                {
-                    if (symptomIdEnTrenger.Contains(symptomId))
-                        counter++;
-
-                    if (counter == symptomer.Count)
-                    {
-
-                        tilRetunering.Add(symptomBilde);
-                        break;
-                    }
-                }
-            }
-         
-            return tilRetunering;
-        }
     }
 }

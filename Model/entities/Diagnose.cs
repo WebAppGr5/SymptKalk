@@ -22,9 +22,6 @@ namespace obligDiagnoseVerktøyy.Model.entities
 
         public List<SymptomBilde> symptomBilde { get; set;  }
 
-        [Required]
-        [MaxLength(3)]
-        [RegularExpression(@"^[0-9]{1-3}")]
         public int diagnoseGruppeId { get; set; }
 
 
