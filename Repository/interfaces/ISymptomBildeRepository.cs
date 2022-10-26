@@ -1,4 +1,5 @@
-﻿using obligDiagnoseVerktøyy.Model.entities;
+﻿using obligDiagnoseVerktøyy.Model.DTO;
+using obligDiagnoseVerktøyy.Model.entities;
 
 namespace obligDiagnoseVerktøyy.Repository.interfaces
 {
@@ -8,7 +9,7 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
 
         public List<SymptomBildeListModel> hentSymptomBilderListModels();
         public List<SymptomBilde> hentSymptomBilder();
-        public List<SymptomBilde> hentSymptomBilder(List<int> symptomIdEnTrenger);
-        public List<SymptomBilde> hentSymptomBilder(List<Symptom> symptomer);
+        public List<SymptomBilde> hentSymptomBilder(List<SymptomDTO> symptomIdEnTrenger);
+
     }
 }

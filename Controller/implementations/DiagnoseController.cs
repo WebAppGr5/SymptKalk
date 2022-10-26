@@ -17,7 +17,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using obligDiagnoseVerktøyy.Repository.implementation;
 using Microsoft.Extensions.Logging;
-
+using obligDiagnoseVerktøyy.Model.DTO;
 
 namespace obligDiagnoseVerktøyy.Controllers.implementations
 {
@@ -44,58 +44,12 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             this._symptomRepository = symptomRepository;
         }
 
-        public IActionResult listen1(List<string> symptomliste)  {
+    
 
-            try
-            {
-                //Liste over id(som i database id) av symptomer i entitet Symptom
-                List<int> ids = new List<int>();
-                //Relativt til første id i databasen, med tanke på symptomer
-                for (int i = 0; i < symptomliste.Count; i++)
-                {
-                    string val = symptomliste.ElementAt(i);
-                    //Hvorvidt en har symptomet
-                    if (val == "checked")
-                    {
-                        ids.Add(i);
-                    }
-
-                }
-                List<SymptomBilde> symptombilder = _symptomBildeRepository.hentSymptomBilder(ids);
-                List<DiagnoseListModel> diagnoser = _diagnoseRepository.hentDiagnoser(symptombilder);
-                return Ok(diagnoser);
-            }
-            catch(Exception ex)
-            {
-                _logger.LogError("Klarte ikke å konverte mellom listen over false/true kinda strenger for at et symptom er tilstede, til liste over diagnoser");
-                return BadRequest(new List<Diagnose>());
-            }
-        //=50
-        }
-
-        //Liste over streng av int, tilsvarende id; "1" "2" "3" ...
-        public IActionResult listen2( List<string> symptomliste)
-        {
-
-            try {
-
-                List<int> ids = new List<int>();
-
-                List<int> symptomListe = symptomliste.ConvertAll((x) => int.Parse(x.ToString()));
-                List<SymptomBilde> symptombilder = _symptomBildeRepository.hentSymptomBilder(ids);
-                List<DiagnoseListModel> diagnoser = _diagnoseRepository.hentDiagnoser(symptombilder);
-                return Ok(diagnoser);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Klarte ikke å konverte mellom listen over false/true kinda strenger for at et symptom er tilstede, til liste over diagnoser");
-                return BadRequest(new List<Diagnose>());
-            }
-
-        }
         //Liste over int id, f.eks 1 2 4 6 7
-        public IActionResult listen3( List<int> symptomliste)
+        public IActionResult getDiagnoserGittSymptomer( [FromBody] List<SymptomDTO> symptomliste)
         {
+            
 
             try
             {
@@ -112,68 +66,8 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         }
 
 
-        public IActionResult getDiagnoserGittSymptomer1(List<Symptom> symptomer)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    List<SymptomBilde> symptombilder = _symptomBildeRepository.hentSymptomBilder(symptomer);
-                    List<DiagnoseListModel> diagnoser = _diagnoseRepository.hentDiagnoser(symptombilder);
-                    return Ok(diagnoser);
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError("listen over symptomer klarte ikke input valideringen");
-                    return BadRequest("Something went wrong");
-                }
-            }
-
-
-            else
-    {
-        _logger.LogError("Listen av symptomene feilet input valideringen");
-        return BadRequest("Something went wrong");
-
-            }
-          }
-
-        //Ikke ferdig
-
-        public IActionResult getDiagnoserGittSymptomer2( String symptomer)
-        {
-
-                try
-                {
-                    if (symptomer == null)
-                        return NotFound(new List<DiagnoseListModel>());
-
-                    List<int> symptomListe = symptomer.Split("-").ToList().ConvertAll((x) => int.Parse(x.ToString()));
-                    List<SymptomBilde> symptombilder = _symptomBildeRepository.hentSymptomBilder(symptomListe);
-                    List<DiagnoseListModel> diagnoser = _diagnoseRepository.hentDiagnoser(symptombilder);
-                    return Ok(diagnoser);
-                }
-
-                catch (Exception ex)
-                {
-                   _logger.LogError("Kunne ikke konvertere streng av symptom id'er til liste over diagnoser");
-                  return BadRequest("Something went wrong");
-                }
-            }
-
-        public IActionResult getSymptomer()
-        {
-            try
-            {
-                return Ok(_symptomRepository.hentSymptomer());
-             }
-
-            catch (Exception ex) {
-               _logger.LogError("Kunne ikke hente symptomer");
-               return BadRequest("Something went wrong");
-            }
-         }
-
+     
+        [HttpGet]
         public IActionResult getSymptomerGittGruppeId(int id)
         {
             try
@@ -187,7 +81,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
                 return BadRequest("Something went wrong");
             }
         }
-
+        [HttpGet]
         public IActionResult getDiagnoseGrupper()
         {
             try
@@ -196,6 +90,20 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
             catch (Exception ex) {
                 _logger.LogError("Kunne ikke hente diagnose grupper");
+                return BadRequest("Something went wrong");
+            }
+        }
+        [HttpGet]
+        public IActionResult getSymptomer()
+        {
+            try
+            {
+                return Ok(_symptomRepository.hentSymptomer());
+            }
+
+            catch (Exception ex)
+            {
+                _logger.LogError("Kunne ikke hente symptomer");
                 return BadRequest("Something went wrong");
             }
         }
@@ -210,8 +118,8 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
                 return BadRequest("Something went wrong");
             }
         }
-
-        public IActionResult getDiagnoserGittId( int id)
+        [HttpGet]
+        public IActionResult getDiagnoserGittId(int id)
         {
             try
             {
@@ -223,7 +131,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
                 return BadRequest("Something went wrong");
             }
         }
-
+        [HttpGet]
         public IActionResult getSymptomGrupper()
         {
             try

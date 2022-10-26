@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="dropdown.js"></script>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+            crossorigin="anonymous"></script>
+    <script src="/js/dropdown.js"></script>
+    <script src="/js/ajax.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <title>Title</title>
+
+    <script>
+
+        $((x) => {
+            $(".knapp").click((e) = {
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="header">
+
+        <img class="doktor-ikon" src="/img/user-doctor-solid.svg" alt="doktor-ikon" />
+        Symptomkalkulator
+
+    </div>
+
+
+
+    <div class="bokser">
+        <div class="boks boks1">
+            <div class="underoverskrift">
+                <h2>Kryss av dine symptomer:</h2>
+            </div>
+
+            <div>
+                <button class="knapp" onclick="kategoriHode()">Hode</button>
+
+                <div id="hode" style="display:none">
+                    <input type="checkbox" id="vondt bak øyne" name="1" value="Hode">
+                    <label for="vondt bak øyne"> Vondt bak øynene</label>
+
+                    <label class="varighet" for="varighet1">Velg varighet</label>
+                    <select id="varighet1">
+                        <option>--</option>
+                        <option>1-3 dager</option>
+                        <option>Flere dager</option>
+                        <option>1-3 uker</option>
+                        <option>1-3 måneder</option>
+                        <option>Flere måneder</option>
+                        <option>1-3 år</option>
+                        <option>Flere år</option>
+                    </select>
+
+                    <br>
+
+                    <input type="checkbox" id="vondt i nakken" name="1" value="Hode">
+                    <label for="vondt i nakken">Vondt bak i nakken</label>
+
+                    <label class="varighet" for="varighet2">Velg varighet</label>
+                    <select id="varighet2">
+                        <option>--</option>
+                        <option>1-3 dager</option>
+                        <option>Flere dager</option>
+                        <option>1-3 uker</option>
+                        <option>1-3 måneder</option>
+                        <option>Flere måneder</option>
+                        <option>1-3 år</option>
+                        <option>Flere år</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button class="knapp" onclick="kategoriOverkropp()">Overkropp</button>
+
+                <div id="overkropp" style="display:none">
+                    <p>
+                        <input type="checkbox" id="vondt i bryst" name="1" value="Hode">
+                        <label for="vondt bak øyne"> Vondt bak øynene</label>
+                    </p>
+                    <p>
+                        <input type="checkbox" id="armesmerter" name="1" value="Hode">
+                        <label for="vondt i nakken">Vondt bak i nakken</label>
+                    </p>
+                </div>
+
+            </div>
+
+            <div>
+                <button class="knapp" onclick="kategoriUnderkropp()">Underkropp</button>
+                <div id="underkropp" style="display:none">
+                    hefiwofew
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="boks boks2">
+            <div class="underoverskrift">
+                <h2>Diagnoser:</h2>
+            </div>
+
+            <div class="diagnosetekst">
+                <p>
+
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+</html>
+

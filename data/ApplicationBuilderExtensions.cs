@@ -15,13 +15,14 @@ namespace ObligDiagnoseVerktøyy.data
 
             var serviceProvider = scopedServices.ServiceProvider;
             var db = serviceProvider.GetRequiredService<ApplicationDbContext>();
+  
             db.symptom.ToList().ForEach((x) => db.Remove(x));
             db.diagnose.ToList().ForEach((x) => db.Remove(x));
             db.diagnoseGruppe.ToList().ForEach((x) => db.Remove(x));
-       
+            db.symptomSymptomBilde.ToList().ForEach((x) => db.Remove(x));
             db.symptomGruppe.ToList().ForEach((x) => db.Remove(x));
             db.symptomBilde.ToList().ForEach((x) => db.Remove(x));
-            db.symptomSymptomBilde.ToList().ForEach((x) => db.Remove(x));
+
 
             db.SaveChanges();
   
@@ -54,6 +55,12 @@ namespace ObligDiagnoseVerktøyy.data
                     diagnoseGruppeId=3,
                     beskrivelse="mage problem",
                     navn="mage"
+                },
+                new DiagnoseGruppe
+                {
+                    diagnoseGruppeId=4,
+                    beskrivelse="hud problem",
+                    navn="hud"
                 }
             };
             diagnoseGrupper.ForEach((x) => db.diagnoseGruppe.Add(x));
@@ -144,6 +151,7 @@ namespace ObligDiagnoseVerktøyy.data
                     beskrivelse = "vondt i mage",
                     navn = "vondt i mage",
                     symptomId = 1,
+                    varighet = 1,
                     symptomGruppeId =3
                 },
                    new Symptom
@@ -151,30 +159,35 @@ namespace ObligDiagnoseVerktøyy.data
                     beskrivelse = "vondt i lunge",
                     navn = "vondt i lunge",
                     symptomId = 2,
+                     varighet = 1,
                     symptomGruppeId= 2
                 },   new Symptom
                 {
                     beskrivelse = "vondt i mage",
                     navn = "vondt i lunge",
                     symptomId = 3,
+                   varighet = 1,
                     symptomGruppeId =2
                 },   new Symptom
                 {
                     beskrivelse = "vondt i hjerte",
                     navn = "vondt i hjerte",
                     symptomId = 4,
+                 varighet = 1,
                    symptomGruppeId=4
                 },   new Symptom
                 {
                     beskrivelse = "har hodepine",
                     navn = "hodepine",
                     symptomId = 5,
+                   varighet = 1,
                    symptomGruppeId=4
                 },   new Symptom
                 {
                     beskrivelse = "er kvalm",
                     navn = "opplever kvalme",
                     symptomId = 6,
+                    varighet = 1,
                    symptomGruppeId=4
                 }
             };

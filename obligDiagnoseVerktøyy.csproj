@@ -9,8 +9,6 @@
   <ItemGroup>
     <Folder Include="Controller\interfaces\" />
     <Folder Include="Migrations\" />
-    <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
   <ItemGroup>
