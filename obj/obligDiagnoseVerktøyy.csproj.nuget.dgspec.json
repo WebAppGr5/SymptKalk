@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj": {}
+    "C:\\Users\\rober\\source\\repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj": {
+    "C:\\Users\\rober\\source\\repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj",
+        "projectUniqueName": "C:\\Users\\rober\\source\\repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj",
         "projectName": "obligDiagnoseVerktøyy",
-        "projectPath": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj",
+        "projectPath": "C:\\Users\\rober\\source\\repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj",
         "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\obj\\",
+        "outputPath": "C:\\Users\\rober\\source\\repos\\SymptKalkulatoren\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

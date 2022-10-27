@@ -48,9 +48,9 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
                 {
                     if (symptomIdEnTrenger.Contains(symptomId))
                     {
-                        Symptom symptom = db.symptom.Where((x) => x.symptomId == symptomId).First();
+                        int varighetOppMotSymptomBilde = db.symptomSymptomBilde.Where((x) => x.symptomId == symptomId && x.symptomBildeId == symptomBilde.symptomBildeId).First().varighet;
                         SymptomDTO symptomDTO = symptomer.Where((x) => x.id == symptomId).First();
-                        if(symptom.varighet <= symptomDTO.varighet)
+                        if(varighetOppMotSymptomBilde <= symptomDTO.varighet)
                         {
                             counter++;
                         }

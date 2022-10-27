@@ -3874,9 +3874,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj",
+      "projectUniqueName": "C:\\Users\\rober\\source\\repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj",
       "projectName": "obligDiagnoseVerktøyy",
-      "projectPath": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj",
+      "projectPath": "C:\\Users\\rober\\source\\repos\\SymptKalkulatoren\\obligDiagnoseVerktøyy.csproj",
       "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\obj\\",
       "projectStyle": "PackageReference",

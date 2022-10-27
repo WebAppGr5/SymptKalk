@@ -1,12 +1,6 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\bin",
-    "\\Controller",
-    "\\Controller\\implementations",
-    "\\Controller\\interfaces",
-    "\\Model",
-    "\\Model\\entities"
+    ""
   ],
   "PreviewInSolutionExplorer": false
 }
