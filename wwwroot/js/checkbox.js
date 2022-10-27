@@ -14,11 +14,11 @@
     $("select.varighet001").toggle(this.checked);
 }); */
 
-function checkbox (Checked) {
+/* function checkbox (Checked) {
     if (Checked) {
         document.getElementById("varighet001").selectedIndex = 1;
     }
     else {
         document.getElementById("varighet001").selectedIndex = 0;
     }
-}
+} */
