@@ -13,7 +13,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
         [MaxLength(3)]
         [RegularExpression(@"^[0-9]{1,3}$")]
         public int symptomBildeId { get; set; }
-        
+        public int varighet { get; set; }
         public Symptom symptom { get; set; }
         public SymptomBilde symptomBilde { get; set; }
 

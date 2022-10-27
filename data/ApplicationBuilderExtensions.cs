@@ -151,7 +151,7 @@ namespace ObligDiagnoseVerktøyy.data
                     beskrivelse = "vondt i mage",
                     navn = "vondt i mage",
                     symptomId = 1,
-                    varighet = 1,
+
                     symptomGruppeId =3
                 },
                    new Symptom
@@ -159,35 +159,33 @@ namespace ObligDiagnoseVerktøyy.data
                     beskrivelse = "vondt i lunge",
                     navn = "vondt i lunge",
                     symptomId = 2,
-                     varighet = 1,
+
                     symptomGruppeId= 2
                 },   new Symptom
                 {
                     beskrivelse = "vondt i mage",
                     navn = "vondt i lunge",
                     symptomId = 3,
-                   varighet = 1,
+  
                     symptomGruppeId =2
                 },   new Symptom
                 {
                     beskrivelse = "vondt i hjerte",
                     navn = "vondt i hjerte",
                     symptomId = 4,
-                 varighet = 1,
                    symptomGruppeId=4
                 },   new Symptom
                 {
                     beskrivelse = "har hodepine",
                     navn = "hodepine",
                     symptomId = 5,
-                   varighet = 1,
+
                    symptomGruppeId=4
                 },   new Symptom
                 {
                     beskrivelse = "er kvalm",
                     navn = "opplever kvalme",
                     symptomId = 6,
-                    varighet = 1,
                    symptomGruppeId=4
                 }
             };
@@ -255,36 +253,43 @@ namespace ObligDiagnoseVerktøyy.data
                 new SymptomSymptomBilde
                 {
                     symptomBildeId = 1,
+                                         varighet = 1,
                     symptomId =1
                 },
                 new SymptomSymptomBilde
                 {
                     symptomBildeId = 2,
+                                         varighet = 1,
                     symptomId =3
                 },
                     new SymptomSymptomBilde
                 {
                     symptomBildeId = 2,
+                                         varighet = 1,
                     symptomId =4
                 },
                 new SymptomSymptomBilde
                 {
                     symptomBildeId =5,
+                                         varighet = 1,
                     symptomId =1
                 },
                     new SymptomSymptomBilde
                 {
                     symptomBildeId = 3,
+                                         varighet = 1,
                     symptomId =2
                 },
                 new SymptomSymptomBilde
                 {
                     symptomBildeId = 1,
+                                         varighet = 1,
                     symptomId =4
                 },
                 new SymptomSymptomBilde
                 {
                     symptomBildeId = 3,
+                                         varighet = 1,
                     symptomId =1
                 }
         };
