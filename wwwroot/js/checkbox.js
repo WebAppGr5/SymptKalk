@@ -15,14 +15,14 @@ $('[type="checkbox"][id="001"]').click(function () {
 }); 
 */
 function checkbox(inp) {
-    let checkBox = document.getElementById("varighet" + String(inp.id));
+    let dropwdown = document.getElementById("varighet" + String(inp.id));
     if (inp.checked) {
 
-        checkBox.selectedIndex = 1;
-        checkBox.style.display = "inline";
+        dropwdown.selectedIndex = 1;
+        dropwdown.style.display = "inline";
     }
     else {
-        checkBox.selectedIndex = 0;
-        checkBox.style.display = "none";
+        dropwdown.selectedIndex = 0;
+        dropwdown.style.display = "none";
     }
 } 
