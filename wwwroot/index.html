@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/css/index.css">
-    <script src="dropdown.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/dropdown.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/checkbox.js"></script>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.6.1.js"
             integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
             crossorigin="anonymous"></script>
-    <script src="/js/dropdown.js"></script>
-    <script src="/js/ajax.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <title>Title</title>
@@ -27,7 +27,7 @@
 
     <div class="header">
 
-        <img class="doktor-ikon" src="/img/user-doctor-solid.svg" alt="doktor-ikon" />
+        <img class="doktor-ikon" src="img/docImg.svg" alt="doktor-ikon" />
         Symptomkalkulator
 
     </div>
@@ -41,14 +41,17 @@
             </div>
 
             <div>
-                <button class="knapp" onclick="kategoriHode()">Hode</button>
+
+                <button class="knapp" onclick="kategoriHode()">Hodet
+                    <img class="dropDownIkon" src="img/pilned.png" alt="dropdown ikon">
+                </button>
 
                 <div id="hode" style="display:none">
-                    <input type="checkbox" id="vondt bak øyne" name="1" value="Hode">
-                    <label for="vondt bak øyne"> Vondt bak øynene</label>
+                    <input type="checkbox" id="001" name="1" value="Hode" onclick="checkbox(this.checked)">
+                    <label for="001">Stiv i nakken</label>
 
-                    <label class="varighet" for="varighet1">Velg varighet</label>
-                    <select id="varighet1">
+                    <label class="varighet" for="varighet001">Velg varighet</label>
+                    <select class="varighet" id="varighet001">
                         <option>--</option>
                         <option>1-3 dager</option>
                         <option>Flere dager</option>
@@ -61,64 +64,342 @@
 
                     <br>
 
-                    <input type="checkbox" id="vondt i nakken" name="1" value="Hode">
-                    <label for="vondt i nakken">Vondt bak i nakken</label>
+                    <input type="checkbox" id="002" name="1" value="Hode">
+                    <label for="002">Hevelse rundt øynene</label>
 
-                    <label class="varighet" for="varighet2">Velg varighet</label>
-                    <select id="varighet2">
-                        <option>--</option>
-                        <option>1-3 dager</option>
-                        <option>Flere dager</option>
-                        <option>1-3 uker</option>
-                        <option>1-3 måneder</option>
-                        <option>Flere måneder</option>
-                        <option>1-3 år</option>
-                        <option>Flere år</option>
-                    </select>
+                    <br>
+
+                    <input type="checkbox" id="003" name="1" value="Hode">
+                    <label for="003">Svimmelhet</label>
+
+                    <br>
+
+                    <input type="checkbox" id="004" name="1" value="Hode">
+                    <label for="004">Tung pust</label>
+
+                    <br>
+
+                    <input type="checkbox" id="005" name="1" value="Hode">
+                    <label for="005">Hodepine</label>
+
+                    <br>
+
+                    <input type="checkbox" id="006" name="1" value="Hode">
+                    <label for="006">Feber</label>
+
+                    <br>
+
+                    <input type="checkbox" id="007" name="1" value="Hode">
+                    <label for="007">Sår hals</label>
+
+                    <br>
+
+                    <input type="checkbox" id="008" name="1" value="Hode">
+                    <label for="008">Kvalme</label>
+
+                    <br>
+
+                    <input type="checkbox" id="009" name="1" value="Hode">
+                    <label for="009">Tretthet</label>
+
+                    <br>
+
+                    <input type="checkbox" id="010" name="1" value="Hode">
+                    <label for="010">Tørrhoste</label>
+
+                    <br>
+
+                    <input type="checkbox" id="011" name="1" value="Hode">
+                    <label for="011">Pustestopp om natten</label>
+
+                    <br>
+
+                    <input type="checkbox" id="012" name="1" value="Hode">
+                    <label for="012">Konsentrasjonsproblemer</label>
                 </div>
             </div>
 
             <div>
-                <button class="knapp" onclick="kategoriOverkropp()">Overkropp</button>
+                <button class="knapp" onclick="kategoriOverkropp()">Overkropp
+                    <img class="dropDownIkon" src="img/pilned.png" alt="dropdown ikon">
+                </button>
 
                 <div id="overkropp" style="display:none">
-                    <p>
-                        <input type="checkbox" id="vondt i bryst" name="1" value="Hode">
-                        <label for="vondt bak øyne"> Vondt bak øynene</label>
-                    </p>
-                    <p>
-                        <input type="checkbox" id="armesmerter" name="1" value="Hode">
-                        <label for="vondt i nakken">Vondt bak i nakken</label>
-                    </p>
+
+                        <input type="checkbox" id="101" name="1" value="Overkropp">
+                        <label for="101">Brystsmerter</label>
+
+                    <br>
+
+                        <input type="checkbox" id="102" name="1" value="Overkropp">
+                        <label for="102">Kaldsvetting</label>
+
+                    <br>
+
+                    <input type="checkbox" id="103" name="1" value="Overkropp">
+                    <label for="103">Muskelsmerter</label>
+
+                    <br>
+
+                    <input type="checkbox" id="104" name="1" value="Overkropp">
+                    <label for="104">Ryggsmerter</label>
+
+                    <br>
+
+                    <input type="checkbox" id="105" name="1" value="Overkropp">
+                    <label for="105">Krum rygg</label>
+
+                    <br>
+
+                    <input type="checkbox" id="106" name="1" value="Overkropp">
+                    <label for="106">Magesmerter</label>
+
+                    <br>
+
+                    <input type="checkbox" id="107" name="1" value="Overkropp">
+                    <label for="107">Vekttap</label>
+
+                    <br>
+
+                    <input type="checkbox" id="108" name="1" value="Overkropp">
+                    <label for="108">Påvirket allmenntilstand</label>
+
+                    <br>
+
+                    <input type="checkbox" id="109" name="1" value="Overkropp">
+                    <label for="109">Rød og varm hud</label>
+
+                    <br>
+
+                    <input type="checkbox" id="110" name="1" value="Overkropp">
+                    <label for="110">Høyt blodtrykk</label>
+
+                    <br>
+
+                    <input type="checkbox" id="111" name="1" value="Overkropp">
+                    <label for="111">Overvekt</label>
+
+                    <br>
+
+                    <input type="checkbox" id="112" name="1" value="Overkropp">
+                    <label for="112">Stive ledd</label>
+
+                    <br>
+
+                    <input type="checkbox" id="113" name="1" value="Overkropp">
+                    <label for="113">Smerte i ledd</label>
+
+                    <br>
+
+                    <input type="checkbox" id="114" name="1" value="Overkropp">
+                    <label for="114">Hovne ledd</label>
+
+                    <br>
+
+                    <input type="checkbox" id="115" name="1" value="Overkropp">
+                    <label for="115">Ømme ledd</label>
+
+                    <br>
+
+                    <input type="checkbox" id="116" name="1" value="Overkropp">
+                    <label for="116">Kuler under huden (ofte albue eller fingerledd)</label>
                 </div>
 
             </div>
 
             <div>
-                <button class="knapp" onclick="kategoriUnderkropp()">Underkropp</button>
+                <button class="knapp" onclick="kategoriUnderkropp()">Underkropp
+                    <img class="dropDownIkon" src="img/pilned.png" alt="dropdown ikon">
+                </button>
+
                 <div id="underkropp" style="display:none">
-                    hefiwofew
+
+                    <input type="checkbox" id="201" name="1" value="Underkropp">
+                    <label for="201">Blod i urinen</label>
+
+                    <br>
+
+                    <input type="checkbox" id="202" name="1" value="Underkropp">
+                    <label for="202">Beinbrudd</label>
+
+                    <br>
+
+                    <input type="checkbox" id="203" name="1" value="Underkropp">
+                    <label for="203">Diaré</label>
+
+                    <br>
+
+                    <input type="checkbox" id="204" name="1" value="Underkropp">
+                    <label for="204">Kraftig smerte ved menstruasjon</label>
+
+                    <br>
+
+                    <input type="checkbox" id="205" name="1" value="Underkropp">
+                    <label for="205">Smerte ved samleie</label>
+
+                    <br>
+
+                    <input type="checkbox" id="206" name="1" value="Underkropp">
+                    <label for="206">Vanskeligheter for å bli gravid</label>
+
+                    <br>
+
+                    <input type="checkbox" id="207" name="1" value="Underkropp">
+                    <label for="207">Smerte ved avføring</label>
+
+                    <br>
+
+                    <input type="checkbox" id="208" name="1" value="Underkropp">
+                    <label for="208">Hevelse og smerte i leggene og/eller lårene</label>
+
+                    <br>
+
+                    <input type="checkbox" id="209" name="1" value="Underkropp">
+                    <label for="209">Stive ledd</label>
+
+                    <br>
+
+                    <input type="checkbox" id="210" name="1" value="Underkropp">
+                    <label for="210">Smerte i ledd</label>
+
+                    <br>
+
+                    <input type="checkbox" id="211" name="1" value="Underkropp">
+                    <label for="211">Hovne ledd</label>
+
+                    <br>
+
+                    <input type="checkbox" id="212" name="1" value="Underkropp">
+                    <label for="212">Ømme ledd</label>
+
+                    <br>
+
+                    <input type="checkbox" id="213" name="1" value="Underkropp">
+                    <label for="213">Svie ved vannlating</label>
+
+                    <br>
+
+                    <input type="checkbox" id="214" name="1" value="Underkropp">
+                    <label for="214">Utflod fra skjede</label>
+
+                    <br>
+
+                    <input type="checkbox" id="215" name="1" value="Underkropp">
+                    <label for="215">Utflod fra penis</label>
+
+                    <br>
+
+                    <input type="checkbox" id="216" name="1" value="Underkropp">
+                    <label for="216">Smerte i pung/testikkel</label>
+
+                    <br>
+
+                    <input type="checkbox" id="217" name="1" value="Underkropp">
+                    <label for="217">Småblødninger mellom menstruasjonene</label>
+
                 </div>
             </div>
 
         </div>
 
-
         <div class="boks boks2">
-            <div class="underoverskrift">
-                <h2>Diagnoser:</h2>
+            <div>
+                <h2 class="underoverskrift">Diagnoser:</h2>
+                <div>
+                    <h4> Atrieflimmer </h4>
+                    Atrieflimmer oppstår i større grad hos menn enn kvinner.
+                    <br><br>
+                    Ved atrieflimmer dunker hjertet uregelmessig og unormalt fort. Anfallet kan variere i tid fra et par
+                    minutter opptil noen dager. Etterhvert vil man etterhvert kunne oppleve kronisk atrieflimmer. Når
+                    man får et anfall av atrieflimmer kan pulsen øke til mer enn 140 slag i minuttet.
+                    <br><br>
+                    Opplever du et slikt anfall burde du ringe 113. Behandling vil variere av hvor lenge du har hatt det
+                    og hvor mye det påvirker deg.
+                </div>
+                <br>
+                <div>
+                    <h4>Akutt bihulebetennelse</h4>
+                    Oppstår gjerne i etterkant av en virusinfeksjon (forkjølelse). Bihulebetennelse går vanligvis over
+                    uten behandling. Ved en akutt bihulebetennelse, går det over i løpet av ca. 4 uker. Dersom
+                    bihulebetennelsen varer mer enn 3 måneder betegnes den som kronisk og det anbefales å gå til legen.
+                </div>
+                <br>
+                <div>
+                    <h4>Beinskjørhet (Osteoporose)</h4>
+                    Kvinner blir beinskjøre i større grad enn menn fordi de i utgangspunktet har lavere beinmasse, og
+                    fordi kvinner har økt tap av beinvev fra de kommer i overgangsalderen.
+                </div>
+                <br>
+                <div>
+                    <h4>Crohns sykdom (Kronisk tarmsykdom)</h4>
+                    Crohns sykdom er en sykdom som går under samlebetegnelsen inflammatorisk tarmsykdom. Crohns sykdom
+                    er en betennelse som oppstår i tarmen, men den skyldes ikke en infeksjon. Plagene ved Crohns sykdom
+                    kommer periodevis, og dermed kan du ha perioder uten noen symptomer (kalles remisjon). Det er
+                    usikkert hva som forårsaker Crohns sykdom, men er trolig en kombinasjon av ulike faktorer, blant
+                    annet genetisk sårbarhet.
+                    <br><br>
+                    Anbefales å gå til lege for behandling.
+                </div>
+                <br>
+                <div>
+                    <h4>Endometriose</h4>
+                    Sykdom som bare oppstår hos kvinner.
+                    <br><br>
+                    Slimhinnen som befinner seg innsiden av livmoren kalles
+                    endometriet. Hver måned vokser denne som resultat av hormonpåvirkning under menstruasjonssyklusen.
+                    Endometriose er en tilstand hvor vev som ligner livmorslimhinnen, vokser utenfor livmorhulen.
+                    Endometriose reagerer på hormonsvingninger, og er en østrogen-avhengig tilstand.
+                    <br><br>
+                    Anbefales å gå til legen for behandling.
+                </div>
+                <br>
+                <div>
+                    <h4>Influensa</h4>
+                    Influensa varer oftest i sju til ti dager. Influensaviruset finnes i luftveiene. Influensa gir
+                    feber, luftveissymptomer og muskelsmerter. Dette går som regel over av seg selv. Hvis man er gravid,
+                    eldre eller kronisk syk er man mer utsatt for alvorlig sykdom.
+                    <br><br>
+                    Ingen behandling er nødvendig, kan tas smertestillende, men oppleves det sterke smerter burde man
+                    gå til lege for sjekk. Hvis det er behov for akutt helsehjelp ring 113.
+                </div>
+                <br>
+                <div>
+                    <h4>Klamydia</h4>
+                    Klamydia er en seksuelt overførbart infeksjonn som sjeldent gir symptomer eller plager. Ubehandlet
+                    klamydia kan føre til bekkenninføring og betennelse i bitestiklene hos menn. Bruk av kondom, test
+                    og behandling er viktig. Infeksjonen kan være i urinrør, livmorhals og eggledere hos kvinner og i
+                    urinrør og bitestikkel hos menn. Klamydia smitter også ved analsex.
+                </div>
+                <br>
+                <div>
+                    <h4>Leddgikt</h4>
+                    Sykdommen starter vanligvis i 50-årene, men kan rammes i alle aldre. Som regel begynner symptomer
+                    i små ledd som i hendene og føttene, men etterhvert kan det oppstå i større ledd. Deretter kan det
+                    komme større smerter.
+                    <br><br>
+                    Anbefales å gå til legen for behandling.
+                </div>
+                <br>
+                <div>
+                    <h4>Søvnapnè</h4>
+                    Søvnapné og skyldes ofte trange luftveier i nese og svelg. Har du søvnapné kan du i løpet av natten
+                    våkne slutte å puste i noen sekunder, du vil våkne etter noen sekunder med en gispende lyd. Dette
+                    kan oppstå flere ganger i løpet av natten og medføre at man ikke for nok dyp søvn.
+                    <br><br>
+                    Det er viktig å få behandling hvis man opplever søvnapné, da dette ikke blir bedre av seg selv.
+                </div>
+                <br>
+                <div>
+                    <h4>Dyp venetrombose (blodpropp i bena)</h4>
+                    Oppstår oftest i leggene, men blodproppen kan også sitte over kneet, i bekkenet eller i armen.
+                    Blodpropper over kneet kan fraktes videre til lungene og blodpropp i lungene kan være en farlig
+                    tilstand. Dersom deler av proppen løsner og føres med blodstrømmen til lungene, kan det bli livstruende.
+                    <br><br>
+                    Viktig å gå til lege ved mistanke om blodpropp.
+                </div>
             </div>
-
-            <div class="diagnosetekst">
-                <p>
-
-                </p>
-            </div>
-
         </div>
     </div>
-
-
 </body>
 </html>
 

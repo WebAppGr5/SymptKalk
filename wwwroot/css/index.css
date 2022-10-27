@@ -3,7 +3,7 @@
 }
 
 body {
-    background-image: url("/img/bakgrunn.jpg");
+    background-image: url("../img/bakgrunn.jpg");
 
 }
 
@@ -29,6 +29,7 @@ body {
     align-items: stretch;
     height: fit-content;
     opacity: 80%;
+    margin-bottom: 40px;
 }
 
 .boks {
@@ -56,18 +57,19 @@ body {
     color: white;
     padding: 10px;
     display: inline-block;
-    width: 120px;
-    font-size: 15px;
+    width: 180px;
+    font-size: 18px;
     border-radius: 10px;
     border: none;
     margin: 15px;
+    text-align-all: center;
 }
 
 .knapp:hover {
     background-color: #585858;
 }
 
-.varighet {
-    border: 2px black;
-    margin-left: 220px;
+.dropDownIkon {
+    width: 20px;
+    margin-left: 20px;
 }
