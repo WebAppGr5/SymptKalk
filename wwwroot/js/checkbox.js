@@ -1,4 +1,4 @@
-/* function checkbox() {
+ function checkbox() {
     var checkBox = document.getElementById("001");
     var dropdown = document.getElementById("varighet001");
 
@@ -8,17 +8,21 @@
     else {
         dropdown.style.display = "none";
     }
-} */
-
-/* $('[type="checkbox"][id="001"]').click(function () {
+} 
+/**
+$('[type="checkbox"][id="001"]').click(function () {
     $("select.varighet001").toggle(this.checked);
-}); */
+}); 
+*/
+function checkbox(inp) {
+    let checkBox = document.getElementById("varighet" + String(inp.id));
+    if (inp.checked) {
 
-/* function checkbox (Checked) {
-    if (Checked) {
-        document.getElementById("varighet001").selectedIndex = 1;
+        checkBox.selectedIndex = 1;
+        checkBox.style.display = "inline";
     }
     else {
-        document.getElementById("varighet001").selectedIndex = 0;
+        checkBox.selectedIndex = 0;
+        checkBox.style.display = "none";
     }
-} */
+} 

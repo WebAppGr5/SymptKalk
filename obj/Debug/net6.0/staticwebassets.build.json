@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bni+cgC5Oe4fXxY6hJat/e66P445b201WbuWH0L+y0s=",
+  "Hash": "+/AG86gHGb7VKXubZT7jemMtqfEtXbECEMMG4XM3V3Q=",
   "Source": "obligDiagnoseVerktøyy",
   "BasePath": "_content/obligDiagnoseVerktøyy",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "obligDiagnoseVerktøyy\\wwwroot",
       "Source": "obligDiagnoseVerktøyy",
-      "ContentRoot": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\css\\index.css",
+      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\css\\index.css",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "css/index.css",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\css\\index.css"
     },
     {
-      "Identity": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\img\\bakgrunn.jpg",
+      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\img\\bakgrunn.jpg",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "img/bakgrunn.jpg",
       "AssetKind": "All",
@@ -51,12 +51,12 @@
       "OriginalItemSpec": "wwwroot\\img\\bakgrunn.jpg"
     },
     {
-      "Identity": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\img\\user-doctor-solid.svg",
+      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\img\\docImg.svg",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
-      "RelativePath": "img/user-doctor-solid.svg",
+      "RelativePath": "img/docImg.svg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -65,13 +65,30 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\img\\user-doctor-solid.svg"
+      "OriginalItemSpec": "wwwroot\\img\\docImg.svg"
     },
     {
-      "Identity": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\img\\pilned.png",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\",
+      "BasePath": "_content/obligDiagnoseVerktøyy",
+      "RelativePath": "img/pilned.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\pilned.png"
+    },
+    {
+      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\index.html",
+      "SourceId": "obligDiagnoseVerktøyy",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -85,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\js\\ajax.js",
+      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\js\\ajax.js",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "js/ajax.js",
       "AssetKind": "All",
@@ -102,10 +119,27 @@
       "OriginalItemSpec": "wwwroot\\js\\ajax.js"
     },
     {
-      "Identity": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\js\\dropdown.js",
+      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\js\\checkbox.js",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\",
+      "BasePath": "_content/obligDiagnoseVerktøyy",
+      "RelativePath": "js/checkbox.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\checkbox.js"
+    },
+    {
+      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\js\\dropdown.js",
+      "SourceId": "obligDiagnoseVerktøyy",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "js/dropdown.js",
       "AssetKind": "All",
@@ -119,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\js\\dropdown.js"
     },
     {
-      "Identity": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\SymptKalkFronted.iml",
+      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\SymptKalkFronted.iml",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\source\\repos\\obliggDiagnoseKalkulator\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalkulatoren\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "SymptKalkFronted.iml",
       "AssetKind": "All",

@@ -7,6 +7,10 @@ body {
 
 }
 
+.varighet {
+    display:none
+}
+
 .header {
     font-size: 60px;
     padding: 40px;
