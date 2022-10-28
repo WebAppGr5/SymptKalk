@@ -14,6 +14,56 @@ $('[type="checkbox"][id="001"]').click(function () {
     $("select.varighet001").toggle(this.checked);
 }); 
 */
+function list() {
+var ID = [];
+
+//Hode
+for (i=001; i < 013; i++ ){
+var check  = document.getElementById(i);
+    if (check.checked){
+        if(i in ID === false){
+           ID += i;
+        }
+    }
+    else{
+        if(i in ID === true){
+            ID -= i;
+        }
+    }
+    i++;
+}
+//Overkropp
+for (i=101; i < 117; i++ ){
+var check  = document.getElementById(i);
+    if (check.checked){
+        if(i in ID === false){
+           ID += i;
+        }
+    }
+    else{
+        if(i in ID === true){
+            ID -= i;
+        }
+    }
+    i++;
+}
+//underkropp
+for (i=201; i < 218; i++ ){
+var check  = document.getElementById(i);
+    if (check.checked){
+        if(i in ID === false){
+           ID += i;
+        }
+    }
+    else{
+        if(i in ID === true){
+            ID -= i;
+        }
+    }
+    i++;
+}
+}
+
 function checkbox(inp) {
     let dropwdown = document.getElementById("varighet" + String(inp.id));
     if (inp.checked) {
