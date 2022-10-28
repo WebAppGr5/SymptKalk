@@ -43,14 +43,34 @@ function hentDiagnoser() {
 
     });
 }
-function hentSymptomerGittSymptomGruppeId(id) {
+function hentSymptomerGittSymptomGruppeId(id, name) {
 
     $.get({
         url: "Diagnose/getSymptomerGittGruppeId",
         data: { id: Number(id) },
         contentType: "application/json; charset=utf-8"
     }).done((res) => {
+        res.forEach((symptom) => {
 
+     
+            let html = "<input type='checkbox' id='" + String(symptom.symptomId)+"' name='1' value='" + String(name) + "' onclick='checkbox(this)'>";
+            html += "<label for='" + String(symptom.symptomId) + "'>" + String(symptom.navn) + "</label>";
+
+            html += "<label class='varighet' for='varighet" + String(symptom.symptomId) + "'>Velg varighet</label>";
+            html += "<select class='varighet' id='varighet" + String(symptom.symptomId) + "'>";
+            html += "   <option>--</option>";
+            html += "    <option>1-3 dager</option>";
+            html += "    <option>Flere dager</option>";
+            html += "     <option>1-3 uker</option>";
+            html += "     <option>1-3 måneder</option>";
+            html += "       <option>Flere måneder</option>";
+            html += "       <option>1-3 år</option>";
+            html += "       <option>Flere år</option>";
+            html += "    </select>";
+
+            html += "     <br/>";
+           $(html).appendTo("#symGruppe" + String(symptom.symptomGruppeId));
+        });
     });
 }
 function hentDiagnoserGittDiagnoseGruppe(id) {
@@ -60,7 +80,7 @@ function hentDiagnoserGittDiagnoseGruppe(id) {
         data: { id: Number(id) },
         contentType: "application/json; charset=utf-8"
     }).done((res) => {
-
+      
     });
 }
     function hentSymptomGrupper() {
@@ -69,7 +89,20 @@ function hentDiagnoserGittDiagnoseGruppe(id) {
             data: {},
             contentType: "application/json; charset=utf-8"
          }).done((res) => {
-            
+             res.forEach((symGruppe) => {
+                 let html = "<div id='meny" + String(symGruppe.symptomGruppeId) + "' >";
+                 html += "<button class='knapp' onclick='toggleKategori(\"symGruppe" + String(symGruppe.symptomGruppeId) + "\")'>" + String(symGruppe.navn);
+                 html += "<img class='dropDownIkon' src='img/pilned.png' alt='dropdown ikon'>";
+                 html += "</button>"
+
+                 html += "<div id = 'symGruppe" + String(symGruppe.symptomGruppeId) + "' style = 'display:none' >";
+
+                 html += "</div>";
+                 html += "</div>";
+                 $(html).appendTo("#symptomGrupper");
+                 hentSymptomerGittSymptomGruppeId(symGruppe.symptomGruppeId, symGruppe.navn);
+             });
+         
         });
     }
 
@@ -81,5 +114,7 @@ function hentDiagnoseGrupper() {
     }).done((res) => {
 
     });
+
+    return []
 }
 

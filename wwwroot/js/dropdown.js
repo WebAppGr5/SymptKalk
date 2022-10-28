@@ -31,3 +31,14 @@ function kategoriUnderkropp() {
     }
 }
 // husk å referere til kilde koden er hentet fra
+
+function toggleKategori(id) {
+
+    var x = document.getElementById(String(id));
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    }
+    else {
+        x.style.display = "none";
+    }
+}
