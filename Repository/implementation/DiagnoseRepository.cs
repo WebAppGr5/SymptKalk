@@ -25,7 +25,7 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
 
             });
 
-            List<DiagnoseListModel> diagnoseListModel = diagnoser.ConvertAll((x) => new DiagnoseListModel { beskrivelse = x.beskrivelse, diagnoseGruppeId = x.diagnoseGruppeId, navn = x.navn });
+            List<DiagnoseListModel> diagnoseListModel = diagnoser.Distinct().ToList().ConvertAll((x) => new DiagnoseListModel { beskrivelse = x.beskrivelse, diagnoseGruppeId = x.diagnoseGruppeId, navn = x.navn });
             return diagnoseListModel;
         }
 
@@ -43,7 +43,7 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         }
         public List<Diagnose> hentDiagnoser(int diagnoseGruppeId)
         {
-            List<Diagnose> diagnoser = db.diagnose.Where((x) => x.diagnoseGruppeId == diagnoseGruppeId).Distinct().ToList();
+            List<Diagnose> diagnoser = db.diagnose.Where((x) => x.diagnoseGruppeId == diagnoseGruppeId).ToList();
             return diagnoser;
         }
     }
