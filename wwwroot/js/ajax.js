@@ -31,9 +31,12 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
             html += "      </div>";
             html += "         <br>";
             $(html).appendTo("#diagnoser");
-    });
+        });
+        swal("Fikk hentet diagnosene", "Symptomene og varigheten til de ulike symptomene endret seg - det gjorde også diagnosene", "success")
 
-         });
+    }).fail((x) => {
+        swal("Fikk ikke hentet diagnosene", "Prøv igjen senere", "error")
+    });
 }
 
 function hentSymptomer() {
@@ -84,6 +87,7 @@ function hentSymptomerGittSymptomGruppeId(id, name) {
             html += "     <br/>";
            $(html).appendTo("#symGruppe" + String(symptom.symptomGruppeId));
         });
+        swal("Velkommen til symptom kalkulatoren", "Trykk på de ulike checkboxene gjemt under svarte knappene, og varier hvor lenge du har hatt symptomet. \n Når du gjør dette vil du få diagnoser som inneholder de symptomene du har ", "info")
     });
 }
 function hentDiagnoserGittDiagnoseGruppe(id) {
