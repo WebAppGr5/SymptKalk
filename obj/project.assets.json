@@ -3874,11 +3874,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rober\\Source\\Repos\\symptokalk\\obligDiagnoseVerktøyy.csproj",
+      "projectUniqueName": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\obligDiagnoseVerktøyy.csproj",
       "projectName": "obligDiagnoseVerktøyy",
-      "projectPath": "C:\\Users\\rober\\Source\\Repos\\symptokalk\\obligDiagnoseVerktøyy.csproj",
+      "projectPath": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\obligDiagnoseVerktøyy.csproj",
       "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rober\\Source\\Repos\\symptokalk\\obj\\",
+      "outputPath": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

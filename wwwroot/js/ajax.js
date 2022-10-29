@@ -7,19 +7,31 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
 
     let listeTilSend = [];
 
-    inputConverted.forEach((ele,idx) => {
+    inputConverted.forEach((ele, idx) => {
         let symptomDTO = {
             id: ele,
             varighet: inputVarighetValgListeConverted[idx]
         }
         listeTilSend.push(symptomDTO);
     });
-         $.post({
-             url: "Diagnose/getDiagnoserGittSymptomer",
-             data: JSON.stringify(listeTilSend),
-             contentType: "application/json; charset=utf-8",
-             dataType: 'json',
-         }).done((res) => {
+    $.post({
+        url: "Diagnose/getDiagnoserGittSymptomer",
+        data: JSON.stringify(listeTilSend),
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+    }).done((res) => {
+        $("#diagnoser").empty();
+        let html = "<h2 class='underoverskrift'>Diagnoser:</h2>";
+        $(html).appendTo("#diagnoser");
+        res.forEach((diagnose) => {
+            let html = "";
+            html += "<div>";
+            html += "<h4> " + String(diagnose.navn) + "</h4 > ";
+            html += String(diagnose.beskrivelse);
+            html += "      </div>";
+            html += "         <br>";
+            $(html).appendTo("#diagnoser");
+    });
 
          });
 }
@@ -58,7 +70,7 @@ function hentSymptomerGittSymptomGruppeId(id, name) {
             html += "<label for='" + String(symptom.symptomId) + "'>" + String(symptom.navn) + "</label>";
 
             html += "<label class='varighet' for='varighet" + String(symptom.symptomId) + "'>Velg varighet</label>";
-            html += "<select class='varighet' id='varighet" + String(symptom.symptomId) + "'>";
+            html += "<select class='varighet' id='varighet" + String(symptom.symptomId) + "'  onchange='sendIdAndSelectListToServer()'>";
             html += "   <option>--</option>";
             html += "    <option>1-3 dager</option>";
             html += "    <option>Flere dager</option>";

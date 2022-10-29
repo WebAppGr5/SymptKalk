@@ -173,7 +173,7 @@ namespace ObligDiagnoseVerktøyy.data
                     beskrivelse = "vondt i hjerte",
                     navn = "vondt i hjerte",
                     symptomId = 4,
-                   symptomGruppeId=4
+                   symptomGruppeId=1
                 },   new Symptom
                 {
                     beskrivelse = "har hodepine",
