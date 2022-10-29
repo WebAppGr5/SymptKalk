@@ -14,7 +14,7 @@ $('[type="checkbox"][id="001"]').click(function () {
     $("select.varighet001").toggle(this.checked);
 }); 
 */
-function list() {
+/*function list() {
 var ID = [];
 
 //Hode
@@ -62,7 +62,26 @@ var check  = document.getElementById(i);
     }
     i++;
 }
+console.log(ID);
+}*/
+
+function checked(){
+
+let sympt = document.querySelectorAll('input[name="1"]:checked');
+var IDs = [];
+sympt.forEach((checkbox)=> {
+    if(id in IDs === false) {
+        IDs.push(checkbox.id);
+        }
+    });
+if (sympt === false){
+    if(id in IDs === true){
+            IDs.Remove(id);
+        }
+    }
+return IDs;
 }
+//https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ Linken til hvor jeg fant koden jeg brukte for dette
 
 function checkbox(inp) {
     let dropwdown = document.getElementById("varighet" + String(inp.id));
