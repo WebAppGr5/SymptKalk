@@ -66,8 +66,8 @@ console.log(ID);
 }*/
 
 function checked(){
-
 let sympt = document.querySelectorAll('input[name="1"]:checked');
+let tid = document.
 var IDs = [];
 sympt.forEach((checkbox)=> {
     if(id in IDs === false) {
@@ -82,6 +82,12 @@ if (sympt === false){
 return IDs;
 }
 //https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ Linken til hvor jeg fant koden jeg brukte for dette
+
+function tidsint() {
+    let symptomID = document.querySelectorAll('input[name="1"').id;
+    let tid = document.getElementById("varighet"+symptomID);
+    swal("tid:"+tid);
+}
 
 function checkbox(inp) {
     let dropwdown = document.getElementById("varighet" + String(inp.id));
