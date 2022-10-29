@@ -148,8 +148,8 @@ namespace ObligDiagnoseVerktøyy.data
             {
                 new Symptom
                 {
-                    beskrivelse = "vondt i mage",
-                    navn = "vondt i mage",
+                    beskrivelse = "problemet med syre",
+                    navn = "syre problem i magesekk",
                     symptomId = 1,
 
                     symptomGruppeId =3
@@ -164,10 +164,10 @@ namespace ObligDiagnoseVerktøyy.data
                 },   new Symptom
                 {
                     beskrivelse = "vondt i mage",
-                    navn = "vondt i lunge",
+                    navn = "vondt i mage",
                     symptomId = 3,
   
-                    symptomGruppeId =2
+                    symptomGruppeId =3  
                 },   new Symptom
                 {
                     beskrivelse = "vondt i hjerte",
@@ -204,7 +204,7 @@ namespace ObligDiagnoseVerktøyy.data
                 },
                    new SymptomBilde
                 {
-                    diagnoseId = 2,
+                    diagnoseId = 4,
                     symptomBildeId = 2,
                     beskrivelse = "lunge problem",
                     navn = "lunge vansker"
@@ -252,44 +252,38 @@ namespace ObligDiagnoseVerktøyy.data
             {
                 new SymptomSymptomBilde
                 {
-                    symptomBildeId = 1,
-                                         varighet = 1,
+                    symptomBildeId = 7,
+                                         varighet = 2,
                     symptomId =1
                 },
                 new SymptomSymptomBilde
                 {
-                    symptomBildeId = 2,
+                    symptomBildeId = 6,
                                          varighet = 1,
                     symptomId =3
                 },
                     new SymptomSymptomBilde
                 {
-                    symptomBildeId = 2,
-                                         varighet = 1,
+                    symptomBildeId = 3,
+                                         varighet =3,
                     symptomId =4
-                },
-                new SymptomSymptomBilde
-                {
-                    symptomBildeId =5,
-                                         varighet = 1,
-                    symptomId =1
                 },
                     new SymptomSymptomBilde
                 {
-                    symptomBildeId = 3,
+                    symptomBildeId =5,
                                          varighet = 1,
                     symptomId =2
                 },
                 new SymptomSymptomBilde
                 {
                     symptomBildeId = 1,
-                                         varighet = 1,
+                                         varighet = 2,
                     symptomId =4
                 },
                 new SymptomSymptomBilde
                 {
-                    symptomBildeId = 3,
-                                         varighet = 1,
+                    symptomBildeId = 6,
+                                         varighet = 4,
                     symptomId =1
                 }
         };
