@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UMBgGCCJiOnVdu00XwCoavgA38z+1UhY5n5094YwM54=",
+  "Hash": "dTYP0iwipAGbJViNos51NLOooTB/ujs9+u0gAflRXm8=",
   "Source": "obligDiagnoseVerktøyy",
   "BasePath": "_content/obligDiagnoseVerktøyy",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "obligDiagnoseVerktøyy\\wwwroot",
       "Source": "obligDiagnoseVerktøyy",
-      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\css\\index.css",
+      "Identity": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\css\\index.css",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "css/index.css",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\css\\index.css"
     },
     {
-      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\img\\bakgrunn.jpg",
+      "Identity": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\img\\bakgrunn.jpg",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "img/bakgrunn.jpg",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\img\\bakgrunn.jpg"
     },
     {
-      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\img\\docImg.svg",
+      "Identity": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\img\\docImg.svg",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "img/docImg.svg",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\img\\docImg.svg"
     },
     {
-      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\img\\pilned.png",
+      "Identity": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\img\\pilned.png",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "img/pilned.png",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\img\\pilned.png"
     },
     {
-      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\index.html",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\js\\ajax.js",
+      "Identity": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\js\\ajax.js",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "js/ajax.js",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\js\\ajax.js"
     },
     {
-      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\js\\checkbox.js",
+      "Identity": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\js\\checkbox.js",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "js/checkbox.js",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\js\\checkbox.js"
     },
     {
-      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\js\\dropdown.js",
+      "Identity": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\js\\dropdown.js",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "js/dropdown.js",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\js\\dropdown.js"
     },
     {
-      "Identity": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\SymptKalkFronted.iml",
+      "Identity": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\SymptKalkFronted.iml",
       "SourceId": "obligDiagnoseVerktøyy",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\wwwroot\\",
       "BasePath": "_content/obligDiagnoseVerktøyy",
       "RelativePath": "SymptKalkFronted.iml",
       "AssetKind": "All",

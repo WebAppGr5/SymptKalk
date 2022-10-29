@@ -44,8 +44,35 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             this._symptomRepository = symptomRepository;
         }
 
-    
+        
+        public IActionResult changePadState( [FromBody] DiagnoseDTO diagnoseDTO)
+        {
+            try
+            {
+                _diagnoseRepository.updatePadState(diagnoseDTO.diagnoseId,diagnoseDTO.padState);
+                return Ok(diagnoseDTO);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Kunne ikke endre hengelås tilstand");
+                return BadRequest();
+            }
+        }
 
+        [HttpGet]
+        public IActionResult forgetDiagnose(int id)
+        {
+            try
+            {
+                _diagnoseRepository.deleteDiagnose(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Kunne ikke slette diagnosen");
+                return BadRequest();
+            }
+        }
         //Liste over int id, f.eks 1 2 4 6 7
         public IActionResult getDiagnoserGittSymptomer( [FromBody] List<SymptomDTO> symptomliste)
         {

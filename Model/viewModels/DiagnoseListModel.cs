@@ -9,10 +9,11 @@ namespace obligDiagnoseVerktøyy.Model.entities
         public string navn {get; set; } 
 
         public string beskrivelse { get; set; } //Forklaringen kan hentes ut herfra
-        public int diagnoseGruppeId { get; set; }
+        public int diagnoseId { get; set; }
+
+        public int padState { get; set; }
 
 
-   
     }
 
 }

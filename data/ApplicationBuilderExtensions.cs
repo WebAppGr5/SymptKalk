@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using obligDiagnoseVerktøyy.Model.entities;
 using ObligDiagnoseVerktøyy.Data;
+using System.Xml;
 using static System.Reflection.Metadata.BlobBuilder;
 
 namespace ObligDiagnoseVerktøyy.data
@@ -106,39 +107,45 @@ namespace ObligDiagnoseVerktøyy.data
                     diagnoseId = 1,
                     beskrivelse = "vondt i venstre-del av hjerte",
                     diagnoseGruppeId = 1,
-                    navn = "venstre-del hjerte sykdommen"
+                    navn = "venstre-del hjerte sykdommen",
+                    padState = 0
                 },
                       new Diagnose
                 {
                   diagnoseId = 2,
                     beskrivelse = "vondt i høyre-del av hjerte",
                     diagnoseGruppeId = 1,
-                    navn = "høyre-del hjerte sykdommen"
+                    navn = "høyre-del hjerte sykdommen",
+                    padState = 0
                 },
                             new Diagnose
                 {
                     diagnoseId = 3,
                     beskrivelse = "vondt i venstre lunge",
                     diagnoseGruppeId = 2,
-                    navn = "venstre lunge sykdom"
+                    navn = "venstre lunge sykdom",
+                    padState = 0
                 },      new Diagnose
                 {
                     diagnoseId = 4,
                     beskrivelse = "vondt i høyre lunge",
                     diagnoseGruppeId = 2,
-                    navn = "høyre lunge sykdom"
+                    navn = "høyre lunge sykdom",
+                    padState = 0
                 },      new Diagnose
                 {
                     diagnoseId = 5,
                     beskrivelse = "vondt i tarm",
                     diagnoseGruppeId = 3,
-                    navn = "tarm sykdommen"
+                    navn = "tarm sykdommen",
+                    padState = 0
                 },      new Diagnose
                 {
                     diagnoseId = 6,
                     beskrivelse = "vondt i makesekk",
                     diagnoseGruppeId = 3,
-                    navn = "magesekk sykdommen"
+                    navn = "magesekk sykdommen",
+                    padState = 0
                 }
             };
             diagnoser.ForEach((x) => db.diagnose.Add(x));
