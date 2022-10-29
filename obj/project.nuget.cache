@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GG9GCIiAQTgAr+4J5kc5b7LmCr1gOaRzxGQyYURhNaqjQRXxHPwh7aqWv8Z+dgM0hWY4pp3hod+XhecXBck0XQ==",
+  "dgSpecHash": "Jd/RUHAfyqXx0KAfsUI3ZvbqoBzyZfb9C18lANl27ghOSmlCZdDgLHO8zOR9UHiMyUQvqKHrBJbyIlXV7BsqUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rober\\Source\\Repos\\symptokalk\\obligDiagnoseVerktøyy.csproj",
+  "projectFilePath": "C:\\Users\\rober\\Source\\Repos\\SymptKalk2\\obligDiagnoseVerktøyy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rober\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\rober\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

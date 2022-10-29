@@ -1,4 +1,4 @@
- function checkbox() {
+function checkbox() {
     var checkBox = document.getElementById("001");
     var dropdown = document.getElementById("varighet001");
 
@@ -8,7 +8,7 @@
     else {
         dropdown.style.display = "none";
     }
-} 
+}
 /**
 $('[type="checkbox"][id="001"]').click(function () {
     $("select.varighet001").toggle(this.checked);
@@ -65,28 +65,36 @@ var check  = document.getElementById(i);
 console.log(ID);
 }*/
 
-function checked(){
-let sympt = document.querySelectorAll('input[name="1"]:checked');
-let tid = document.
-var IDs = [];
-sympt.forEach((checkbox)=> {
-    if(id in IDs === false) {
-        IDs.push(checkbox.id);
+function checked() {
+    let sympt = document.querySelectorAll('input[name="1"]:checked');
+    let id = sympt.id;
+    var IDs = [];
+    sympt.forEach((checkbox) => {
+        if (id in IDs === false) {
+            IDs.push(checkbox.id);
         }
     });
-if (sympt === false){
-    if(id in IDs === true){
+    if (sympt === false) {
+        if (id in IDs === true) {
             IDs.Remove(id);
         }
     }
-return IDs;
+    return IDs;
 }
-//https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ Linken til hvor jeg fant koden jeg brukte for dette
 
-function tidsint() {
-    let symptomID = document.querySelectorAll('input[name="1"').id;
-    let tid = document.getElementById("varighet"+symptomID);
-    swal("tid:"+tid);
+
+function sendIdAndSelectListToServer() {
+    let symptomIDs = checked();
+    let varigheter = [];
+    symptomIDs.forEach((symId) => {
+        let valg = document.getElementById("varighet" + String(symId)).selectedIndex;
+        varigheter.push(valg);
+
+    });
+
+    hentDiagnoserGittSymptomer(symptomIDs, varigheter);
+
+
 }
 
 function checkbox(inp) {
@@ -100,4 +108,5 @@ function checkbox(inp) {
         dropwdown.selectedIndex = 0;
         dropwdown.style.display = "none";
     }
+    sendIdAndSelectListToServer()
 } 
