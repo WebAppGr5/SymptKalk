@@ -48,6 +48,7 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
         swal("Fikk ikke hentet diagnosene", "Prøv igjen senere", "error")
     });
 }
+
 function changePadState(diagnoseId, currentState) {
     let wantedState = 0;
     if (Number(currentState) == 0)
@@ -66,8 +67,8 @@ function changePadState(diagnoseId, currentState) {
         data: JSON.stringify(diagnoseDTO),
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
-    }).done((res) => {
-        swal("Fikk utført endringen", "Fra nå av vil du huske hvorvidt dette er en akutell diagnose", "success")
+    }).done(async (res) => {
+        await swal("Fikk utført endringen", "Fra nå av vil du huske hvorvidt dette er en akutell diagnose", "success")
         sendIdAndSelectListToServer();
     }).fail((x) => {
         swal("Kunne ikke endre hengelås tilstand", "Prøv igjen senere", "error")
@@ -80,8 +81,8 @@ function forgetDiagnose(diagnoseId) {
         url: "Diagnose/forgetDiagnose",
         data: { id: Number(diagnoseId) },
         contentType: "application/json; charset=utf-8"
-    }).done((res) => {
-        swal("Diagnosen er nå glemt", "Fra nå av vil du aldri se denne diagnosen mer", "success");
+    }).done(async (res) => {
+        await swal("Diagnosen er nå glemt", "Fra nå av vil du aldri se denne diagnosen mer", "success");
         sendIdAndSelectListToServer();
     }).fail((x) => {
         swal("Kunne ikke å fjerne diagnosen", "Prøv igjen senere", "error")
