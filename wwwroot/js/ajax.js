@@ -69,7 +69,7 @@ function hentSymptomerGittSymptomGruppeId(id, name) {
         res.forEach((symptom) => {
 
      
-            let html = "<input type='checkbox' id='" + String(symptom.symptomId)+"' name='1' value='" + String(name) + "' onclick='checkbox(this)'>";
+            let html = "<input class='symptomene' type='checkbox' id='" + String(symptom.symptomId)+"' name='1' value='" + String(name) + "' onclick='checkbox(this)'>";
             html += "<label for='" + String(symptom.symptomId) + "'>" + String(symptom.navn) + "</label>";
 
             html += "<label class='varighet' for='varighet" + String(symptom.symptomId) + "'>Velg varighet</label>";
