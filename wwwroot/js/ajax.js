@@ -47,6 +47,9 @@ function hentSymptomer() {
         }).done((res) => {
             var IDList = document.querySelectorAll('input[name="1"]:checked').value;
             tidsint();
+            if (IDList.length = 30) {
+                swal("Det er litt mange symptomer, det er ikke sikkert du får et akkurat resultat. Om du opplever alle disse symptomene anbefales det å dra til legen og få tatt noen tester.");
+            }
         });
 }
 
@@ -69,7 +72,7 @@ function hentSymptomerGittSymptomGruppeId(id, name) {
         res.forEach((symptom) => {
 
      
-            let html = "<input type='checkbox' id='" + String(symptom.symptomId)+"' name='1' value='" + String(name) + "' onclick='checkbox(this)'>";
+            let html = "<input type='checkbox' id='" + String(symptom.symptomId)+"' name='1' value='" + String(name) + "' onclick='checkbox(this)'>"+String(class)="symptomene";
             html += "<label for='" + String(symptom.symptomId) + "'>" + String(symptom.navn) + "</label>";
 
             html += "<label class='varighet' for='varighet" + String(symptom.symptomId) + "'>Velg varighet</label>";
