@@ -31,8 +31,7 @@ function hentSymptomer() {
             contentType: "application/json; charset=utf-8"
         }).done((res) => {
             var IDList = document.querySelectorAll('input[name="1"]:checked').value;
-            }
-
+            tidsint();
         });
 }
 
