@@ -6,7 +6,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
     public class Diagnose
     {
         [Key]
-        [RegularExpression(@"^[0-9]{1-4}$")]
+
         public int diagnoseId { get; set;   }
 
         [Required]
@@ -25,6 +25,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
         public int diagnoseGruppeId { get; set; }
 
 
+       public int padState { get; set; }
 
         public DiagnoseGruppe diagnoseGruppe { get; set; }
 

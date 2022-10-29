@@ -26,7 +26,17 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
         res.forEach((diagnose) => {
             let html = "";
             html += "<div>";
-            html += "<h4> " + String(diagnose.navn) + "</h4 > ";
+            html += "<h3> " + String(diagnose.navn);
+
+            if (Number(diagnose.padState) == 0) {
+                html += "     <i class='fa-solid fa-lock fa-2xl' onclick='changePadState(\"" + String(diagnose.diagnoseId) + "\",\"" + String(diagnose.padState) + "\")'></i>";
+            }
+            if (Number(diagnose.padState) == 1) {
+                html += "      <i class='fas  fa-lock-open fa-2xl' onclick='changePadState(\"" + String(diagnose.diagnoseId) + "\",\"" + String(diagnose.padState) + "\")'></i>";
+            }
+
+            html += "      <i  class='fa-solid fa-xmark  fa-2xl' onclick='forgetDiagnose(\"" + String(diagnose.diagnoseId) + "\")'></i>"
+            html += "</h3 > ";
             html += String(diagnose.beskrivelse);
             html += "      </div>";
             html += "         <br>";
@@ -36,6 +46,45 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
 
     }).fail((x) => {
         swal("Fikk ikke hentet diagnosene", "Prøv igjen senere", "error")
+    });
+}
+function changePadState(diagnoseId, currentState) {
+    let wantedState = 0;
+    if (Number(currentState) == 0)
+        wantedState = 1;
+    else
+        wantedState = 0;
+
+    let diagnoseDTO = {
+        diagnoseId: Number(diagnoseId),
+        padState: Number(wantedState)
+    }
+
+
+    $.post({
+        url: "Diagnose/changePadState",
+        data: JSON.stringify(diagnoseDTO),
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+    }).done((res) => {
+        swal("Fikk utført endringen", "Fra nå av vil du huske hvorvidt dette er en akutell diagnose", "success")
+        sendIdAndSelectListToServer();
+    }).fail((x) => {
+        swal("Kunne ikke endre hengelås tilstand", "Prøv igjen senere", "error")
+    });
+}
+
+function forgetDiagnose(diagnoseId) {
+    
+    $.get({
+        url: "Diagnose/forgetDiagnose",
+        data: { id: Number(diagnoseId) },
+        contentType: "application/json; charset=utf-8"
+    }).done((res) => {
+        swal("Diagnosen er nå glemt", "Fra nå av vil du aldri se denne diagnosen mer", "success");
+        sendIdAndSelectListToServer();
+    }).fail((x) => {
+        swal("Kunne ikke å fjerne diagnosen", "Prøv igjen senere", "error")
     });
 }
 
