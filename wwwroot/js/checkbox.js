@@ -14,7 +14,7 @@ $('[type="checkbox"][id="001"]').click(function () {
     $("select.varighet001").toggle(this.checked);
 }); 
 */
-function list() {
+/*function list() {
 var ID = [];
 
 //Hode
@@ -62,6 +62,31 @@ var check  = document.getElementById(i);
     }
     i++;
 }
+console.log(ID);
+}*/
+
+function checked(){
+let sympt = document.querySelectorAll('input[name="1"]:checked');
+let tid = document.
+var IDs = [];
+sympt.forEach((checkbox)=> {
+    if(id in IDs === false) {
+        IDs.push(checkbox.id);
+        }
+    });
+if (sympt === false){
+    if(id in IDs === true){
+            IDs.Remove(id);
+        }
+    }
+return IDs;
+}
+//https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ Linken til hvor jeg fant koden jeg brukte for dette
+
+function tidsint() {
+    let symptomID = document.querySelectorAll('input[name="1"').id;
+    let tid = document.getElementById("varighet"+symptomID);
+    swal("tid:"+tid);
 }
 
 function checkbox(inp) {
