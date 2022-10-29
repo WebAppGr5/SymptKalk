@@ -22,15 +22,17 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
          }).done((res) => {
 
          });
-    }
+}
 
-    function hentSymptomer() {
+function hentSymptomer() {
         $.get({
             url: "Diagnose/getSymptomer",
             data: {},
             contentType: "application/json; charset=utf-8"
         }).done((res) => {
-       
+            var IDList = document.querySelectorAll('input[name="1"]:checked').value;
+            }
+
         });
 }
 

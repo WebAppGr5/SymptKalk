@@ -76,10 +76,10 @@ sympt.forEach((checkbox)=> {
     });
 if (sympt === false){
     if(id in IDs === true){
-        IDs -= id;
+            IDs.Remove(id);
         }
     }
-
+return IDs;
 }
 //https://www.javascripttutorial.net/javascript-dom/javascript-checkbox/ Linken til hvor jeg fant koden jeg brukte for dette
 
