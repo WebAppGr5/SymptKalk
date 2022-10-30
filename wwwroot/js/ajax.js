@@ -118,6 +118,8 @@ function hentSymptomer() {
         }).done((res) => {
             var IDList = document.querySelectorAll('input[name="1"]:checked').value;
             tidsint();
+        }).fail((x) => {
+        swal("Noe gikk galt", "prøv igjen senere", "error")
         });
 }
 
