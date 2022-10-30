@@ -4,8 +4,8 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
 {
     public interface ISymptomRepository
     {
-        public List<SymptomListModel> hentSymptomerListModels();
-        public List<Symptom> hentSymptomer();
-        public List<SymptomListModel> hentSymptomer(int symptomGruppeId);
+  
+        public Task<List<Symptom>> hentSymptomer();
+        public Task<List<SymptomListModel>> hentSymptomer(int symptomGruppeId);
     }
 }

@@ -48,7 +48,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
  
 
         [HttpGet]
-        public IActionResult forgetDiagnose(int id)
+        public async Task<IActionResult> forgetDiagnose(int id)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
 
-        public IActionResult update ([FromBody] Diagnose diagnose)
+        public async Task<IActionResult> update ([FromBody] Diagnose diagnose)
         {
 
             try
@@ -78,7 +78,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
 
-        public IActionResult add([FromBody] Diagnose diagnose)
+        public async Task<IActionResult> add([FromBody] Diagnose diagnose)
         {
 
             try
@@ -94,7 +94,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
 
-        public IActionResult nyDiagnose([FromBody] DiagnoseDTO diagnose)
+        public async Task<IActionResult> nyDiagnose([FromBody] DiagnoseDTO diagnose)
         {
 
             try
@@ -111,15 +111,15 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         }
 
         //Liste over int id, f.eks 1 2 4 6 7
-        public IActionResult getDiagnoserGittSymptomer( [FromBody] List<SymptomDTO> symptomliste)
+        public async Task<IActionResult> getDiagnoserGittSymptomer( [FromBody] List<SymptomDTO> symptomliste)
         {
             
 
             try
             {
 
-                List<SymptomBilde> symptombilder = _symptomBildeRepository.hentSymptomBilder(symptomliste);
-                List<DiagnoseListModel> diagnoser = _diagnoseRepository.hentDiagnoser(symptombilder);
+                List<SymptomBilde> symptombilder = await _symptomBildeRepository.hentSymptomBilder(symptomliste);
+                List<DiagnoseListModel> diagnoser = await _diagnoseRepository.hentDiagnoser(symptombilder);
                 return Ok(diagnoser);
             }
             catch (Exception ex)
@@ -132,11 +132,11 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
 
      
         [HttpGet]
-        public IActionResult getSymptomerGittGruppeId(int id)
+        public async Task<IActionResult> getSymptomerGittGruppeId(int id)
         {
             try
             {
-                return Ok(_symptomRepository.hentSymptomer(id));
+                return Ok(await _symptomRepository.hentSymptomer(id));
             }
 
             catch (Exception ex)
@@ -146,11 +146,11 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
         [HttpGet]
-        public IActionResult getDiagnoseGrupper()
+        public async Task<IActionResult> getDiagnoseGrupper()
         {
             try
             {
-                return Ok(_diagnoseGruppeRepository.hentDiagnoseGrupper());
+                return Ok(await _diagnoseGruppeRepository.hentDiagnoseGrupper());
             }
             catch (Exception ex) {
                 _logger.LogError("Kunne ikke hente diagnose grupper");
@@ -158,11 +158,11 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
         [HttpGet]
-        public IActionResult getSymptomer()
+        public async Task<IActionResult> getSymptomer()
         {
             try
             {
-                return Ok(_symptomRepository.hentSymptomer());
+                return Ok(await _symptomRepository.hentSymptomer());
             }
 
             catch (Exception ex)
@@ -171,11 +171,11 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
                 return BadRequest("Something went wrong");
             }
         }
-        public IActionResult getDiagnoser()
+        public async Task<IActionResult> getDiagnoser()
         {
             try
             {
-                return Ok(_diagnoseRepository.hentDiagnoser());
+                return Ok(await  _diagnoseRepository.hentDiagnoser());
             }
             catch (Exception ex){
                 _logger.LogError("Kunne ikke hente diagnoser");
@@ -183,11 +183,11 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
         [HttpGet]
-        public IActionResult getDiagnoserGittId(int id)
+        public async Task<IActionResult> getDiagnoserGittId(int id)
         {
             try
             {
-                return Ok(_diagnoseRepository.hentDiagnoser(id));
+                return Ok(await _diagnoseRepository.hentDiagnoser(id));
             }
             catch (Exception ex)
             {
@@ -196,21 +196,18 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
         [HttpGet]
-        public IActionResult getSymptomGrupper()
+        public async Task<IActionResult> getSymptomGrupper()
         {
             try
             {
-                return Ok(_symptomGruppeRepository.hentSymptomGrupper());
+                return Ok(await _symptomGruppeRepository.hentSymptomGrupper());
             }
             catch (Exception ex){
                 _logger.LogError("Kunne ikke hente symptom grupper");
                 return BadRequest("Something went wrong");
             }
         }
-        public String test()
-        {
-            return "det gikk";
-        }
+  
     }
 
       

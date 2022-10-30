@@ -7,9 +7,7 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
     {
 
 
-        public List<SymptomBildeListModel> hentSymptomBilderListModels();
-        public List<SymptomBilde> hentSymptomBilder();
-        public List<SymptomBilde> hentSymptomBilder(List<SymptomDTO> symptomIdEnTrenger);
+        public Task<List<SymptomBilde>> hentSymptomBilder(List<SymptomDTO> symptomIdEnTrenger);
 
     }
 }

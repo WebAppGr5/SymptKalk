@@ -15,24 +15,11 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
             this.db = db;
         }
 
-        public List<SymptomBildeListModel> hentSymptomBilderListModels()
-        {
-            List<SymptomBilde> symptomBilde = db.symptomBilde.ToList();
 
-            List<SymptomBildeListModel> symptomListModel = symptomBilde.ConvertAll((x) => new SymptomBildeListModel {beskrivelse=x.beskrivelse,diagnoseId=x.diagnoseId,navn=x.navn,symptomBildeId=x.symptomBildeId});
-            return symptomListModel;
-        }
-        public List<SymptomBilde> hentSymptomBilder()
-        {
-            List<SymptomBilde> symptomBilde = db.symptomBilde.ToList();
-            return symptomBilde;
-
-        }
-
-        public List<SymptomBilde> hentSymptomBilder(List<SymptomDTO> symptomer)
+        public async  Task<List<SymptomBilde>> hentSymptomBilder(List<SymptomDTO> symptomer)
         {
             List<int> symptomIdEnTrenger = symptomer.ConvertAll((x) => x.id).ToList();
-            List<int> varighet = symptomer.ConvertAll((x) => x.varighet).ToList();
+
         
             List<SymptomBilde> symptomBilder = db.symptomBilde.ToList();
             List<SymptomBilde> tilRetunering = new List<SymptomBilde>();
