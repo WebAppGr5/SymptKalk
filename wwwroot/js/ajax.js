@@ -92,7 +92,7 @@ function utforEndring() {
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
     }).done(async (res) => {
-         swal("Fikk endret diagnosen", "Fikk endret diagnosen", "success");
+         await swal("Fikk endret diagnosen", "Fikk endret diagnosen", "success");
         sendIdAndSelectListToServer();
     }).fail((x) => {
         swal("Fikk ikk endre", "Prøv igjen senere", "error")
