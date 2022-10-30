@@ -126,8 +126,30 @@ function hentDiagnoser() {
         url: "Diagnose/getDiagnoser",
         data: {},
         contentType: "application/json; charset=utf-8"
-    }).done((res) => {
+    }).done(async (res) => {
 
+        $("#diagnoser").empty();
+        let html = "<h2 class='underoverskrift'>Diagnoser:</h2>";
+        $(html).appendTo("#diagnoser");
+        res.forEach((diagnose) => {
+            let html = "";
+            html += "<div>";
+            html += "<h3> " + String(diagnose.navn);
+
+
+
+            html += "      <i  class='fa-solid fa-xmark  fa-2xl' onclick='forgetDiagnose(\"" + String(diagnose.diagnoseId) + "\")'></i>"
+            html += "      <button class='knapp2' onclick='endre(\"" + String(diagnose.navn) + "\",\"" + String(diagnose.beskrivelse) + "\",\"" + String(diagnose.diagnoseId) + "\")'>Endre</button>"
+            html += "</h3 > ";
+            html += String(diagnose.beskrivelse);
+            html += "      </div>";
+            html += "         <br>";
+            $(html).appendTo("#diagnoser");
+        });
+        await swal("Fikk hentet diagnosene", "Ved å trykke på checkboxene og ved å variere hvor lenge en har hatt ulike symptomer, så vil listen over diagnoser du kan ha endre seg", "success")
+
+    }).fail((x) => {
+        swal("Fikk ikke hentet diagnosene", "Prøv igjen senere", "error")
     });
 }
 function hentSymptomerGittSymptomGruppeId(id, name) {
@@ -190,7 +212,7 @@ function hentDiagnoserGittDiagnoseGruppe(id) {
                  $(html).appendTo("#symptomGrupper");
                  hentSymptomerGittSymptomGruppeId(symGruppe.symptomGruppeId, symGruppe.navn);
              });
-             hentDiagnoserGittSymptomer([], [])
+             hentDiagnoser();
         });
     }
 
