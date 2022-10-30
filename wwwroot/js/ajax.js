@@ -36,6 +36,7 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
             }
 
             html += "      <i  class='fa-solid fa-xmark  fa-2xl' onclick='forgetDiagnose(\"" + String(diagnose.diagnoseId) + "\")'></i>"
+            html += "      <button  onclick='endre(\"" + String(diagnose.navn) + "\",\"" + String(diagnose.beskrivelse) + "\",\"" + String(diagnose.diagnoseId) + "\")'>Endre</button>"
             html += "</h3 > ";
             html += String(diagnose.beskrivelse);
             html += "      </div>";
@@ -68,7 +69,33 @@ function nyDiagnose() {
         data: JSON.stringify(diagnoseDTO),
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
-    }).done((res) => {
+    }).done(async (res) => {
+        await swal("Fikk lagret diagnosen", "Fikk lagret diagnosen", "success");
+        sendIdAndSelectListToServer();
+    }).fail((x) => {
+        swal("Fikk ikke legge til", "Prøv igjen senere", "error")
+    });
+
+
+}
+
+function utforEndring() {
+
+    let diagnose = {
+        diagnoseId: Number($("#diagnoseIdEndre").val()) ,
+        navn: String($("#navnDiagnose").val()),
+        beskrivelse: String($("#beskrivelseDiagnose").val())
+    }
+    $.post({
+        url: "Diagnose/update",
+        data: JSON.stringify(diagnose),
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+    }).done(async (res) => {
+         swal("Fikk endret diagnosen", "Fikk endret diagnosen", "success");
+        sendIdAndSelectListToServer();
+    }).fail((x) => {
+        swal("Fikk ikk endre", "Prøv igjen senere", "error")
     });
 
 

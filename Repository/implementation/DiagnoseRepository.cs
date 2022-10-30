@@ -63,12 +63,12 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         public void update(Diagnose diagnose)
         {
             Diagnose diagnosen = db.diagnose.Where((x) => x.diagnoseId == diagnose.diagnoseId).ToList().First();
-
-                diagnosen.padState = diagnose.padState;
+            if (diagnose.padState != null)
+                diagnosen.padState = diagnosen.padState;
                 if (diagnose.navn != null)
                       diagnosen.navn = diagnose.navn;
                 if (diagnose.beskrivelse != null)
-                     diagnosen.beskrivelse = diagnosen.beskrivelse;
+                     diagnosen.beskrivelse = diagnose.beskrivelse;
             db.diagnose.Update(diagnosen);
             db.SaveChanges();
 
