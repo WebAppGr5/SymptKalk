@@ -48,7 +48,22 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
         swal("Fikk ikke hentet diagnosene", "Prøv igjen senere", "error")
     });
 }
+function nyDiagnose() {
+    let diagnoseDTO = {
+        navn: String($("#navnDiagnose").val()),
+        beskrivelse: String($("#beskrivelseDiagnose").val()),
+        symptomer: checked()
+    }
+    $.post({
+        url: "Diagnose/nyDiagnose",
+        data: JSON.stringify(diagnoseDTO),
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+    }).done((res) => {
+    });
 
+
+}
 function changePadState(diagnoseId, currentState) {
     let wantedState = 0;
     if (Number(currentState) == 0)
@@ -63,7 +78,7 @@ function changePadState(diagnoseId, currentState) {
 
 
     $.post({
-        url: "Diagnose/changePadState",
+        url: "Diagnose/update",
         data: JSON.stringify(diagnoseDTO),
         contentType: "application/json; charset=utf-8",
         dataType: 'json',

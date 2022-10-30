@@ -44,17 +44,40 @@
                 <h2>Kryss av dine symptomer:</h2>
             </div>
             <div id="symptomGrupper">
-                      </div>
+            </div>
 
         </div>
 
         <div class="boks boks2">
             <div id="diagnoser">
-         
+
                 <h2 class='underoverskrift'>Diagnoser:</h2>
             </div>
         </div>
     </div>
+    <div class="bokser">
+
+        <div class="boks boks1">
+            <div>
+                <h2 class='underoverskrift'>Ny diagnose:</h2>
+                <span>
+                    Ny diagnose vil ha symptomene du krysset av
+                </span>
+                <div>
+                    <label for="navnDiagnose">Navn</label>
+                    <input id="navnDiagnose" />
+                </div>
+                <div>
+                    <label for="beskrivelseDiagnose">Beskrivelse</label>
+                    <textarea id="beskrivelseDiagnose"></textarea>
+                </div>
+
+
+
+                <button id="nyDiagnose" onclick="nyDiagnose()">Ny diagnose</button>
+            </div>
+        </div>
+        </div>
 </body>
 </html>
 
