@@ -227,4 +227,3 @@ function hentDiagnoseGrupper() {
 
     return []
 }
-

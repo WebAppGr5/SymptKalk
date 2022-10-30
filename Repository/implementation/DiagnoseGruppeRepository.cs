@@ -1,4 +1,5 @@
-﻿using obligDiagnoseVerktøyy.Model.entities;
+﻿using Microsoft.EntityFrameworkCore;
+using obligDiagnoseVerktøyy.Model.entities;
 using obligDiagnoseVerktøyy.Repository.interfaces;
 using ObligDiagnoseVerktøyy.Data;
 
@@ -13,17 +14,10 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
             this.db = db;
         }
 
-        public List<DiagnoseGruppeListModel> hentDiagnoseGrupperListModels()
-        {
-            List<DiagnoseGruppe> diagnoseGruppe = db.diagnoseGruppe.ToList();
 
-            List < DiagnoseGruppeListModel> diagnoseGruppeListModel  = diagnoseGruppe.ConvertAll((x) => new DiagnoseGruppeListModel { beskrivelse = x.beskrivelse, diagnoseGruppeId = x.diagnoseGruppeId, navn = x.navn });
-            return diagnoseGruppeListModel;
-        }
-
-        public List<DiagnoseGruppe> hentDiagnoseGrupper()
+        public async Task<List<DiagnoseGruppe>> hentDiagnoseGrupper()
         {
-            List<DiagnoseGruppe> diagnoseGruppe = db.diagnoseGruppe.ToList();
+            List<DiagnoseGruppe> diagnoseGruppe = await db.diagnoseGruppe.ToListAsync();
 
             return diagnoseGruppe;
         }

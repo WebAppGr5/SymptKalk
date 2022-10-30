@@ -3,6 +3,7 @@ using obligDiagnoseVerktøyy.Model.entities;
 using obligDiagnoseVerktøyy.Repository.interfaces;
 using ObligDiagnoseVerktøyy.Data;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using obligDiagnoseVerktøyy.Model.DTO;
 
 namespace obligDiagnoseVerktøyy.Repository.implementation
@@ -16,22 +17,22 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         {
             this.db = db;
         }
-        public List<DiagnoseListModel> hentDiagnoser(List<SymptomBilde> symptomBilder)
+        public async Task<List<DiagnoseListModel>> hentDiagnoser(List<SymptomBilde> symptomBilder)
         {
             List<Diagnose> diagnoser = new List<Diagnose>();
-            symptomBilder.ForEach((x) =>
+            symptomBilder.ForEach(async (x) =>
             {
-                Diagnose diagnose = db.diagnose.Where((y) => x.diagnoseId == y.diagnoseId).First();
+                Diagnose diagnose = await  db.diagnose.Where((y) => x.diagnoseId == y.diagnoseId).FirstAsync();
                 diagnoser.Add(diagnose);
 
             });
 
-            List<DiagnoseListModel> diagnoseListModel = diagnoser.Distinct().ToList().ConvertAll((x) => new DiagnoseListModel { beskrivelse = x.beskrivelse, diagnoseId = x.diagnoseId, navn = x.navn});
+            List<DiagnoseListModel> diagnoseListModel =  diagnoser.Distinct().ToList().ConvertAll((x) => new DiagnoseListModel { beskrivelse = x.beskrivelse, diagnoseId = x.diagnoseId, navn = x.navn});
             return diagnoseListModel;
         }
 
 
-        public void addDiagnose(DiagnoseDTO diagnosDto)
+        public async void addDiagnose(DiagnoseDTO diagnosDto)
         {
             Diagnose diagnose = new Diagnose { beskrivelse = diagnosDto.beskrivelse, navn = diagnosDto.navn,diagnoseGruppeId = 4};
             db.diagnose.Add(diagnose);
@@ -51,51 +52,45 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
                     { symptomBildeId = symptomBilde.symptomBildeId, symptomId = symptomId[i], varighet = diagnosDto.varigheter[i] };
                 db.symptomSymptomBilde.Add(symptomSymptomBilde);
             }
-            db.SaveChanges();
+            await db.SaveChangesAsync();
         }
-        public void update(Diagnose diagnose)
+        public async void update(Diagnose diagnose)
         {
-            Diagnose diagnosen = db.diagnose.Where((x) => x.diagnoseId == diagnose.diagnoseId).ToList().First();
+            Diagnose diagnosen = await db.diagnose.Where((x) => x.diagnoseId == diagnose.diagnoseId).FirstAsync();
 
                 if (diagnose.navn != null)
                       diagnosen.navn = diagnose.navn;
                 if (diagnose.beskrivelse != null)
                      diagnosen.beskrivelse = diagnose.beskrivelse;
-            db.diagnose.Update(diagnosen);
-            db.SaveChanges();
+             db.diagnose.Update(diagnosen);
+             await db.SaveChangesAsync();
 
         }
 
-        public void Add(Diagnose diagnose)
+        public async void Add(Diagnose diagnose)
         {
 
-            db.diagnose.Add(diagnose);
-            db.SaveChanges();
+            await  db.diagnose.AddAsync(diagnose);
+            await db.SaveChangesAsync();
 
         }
-        public void deleteDiagnose(int diagnoseId)
+        public async  void deleteDiagnose(int diagnoseId)
         {
-            Diagnose diagnose = db.diagnose.Find(diagnoseId);
+            Diagnose diagnose = await  db.diagnose.FindAsync(diagnoseId);
            
             db.diagnose.Remove(diagnose);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
         }
-        public List<DiagnoseListModel> hentDiagnoserListModels()
-        {
-            List<Diagnose> diagnoser = db.diagnose.ToList();
 
-            List<DiagnoseListModel> diagnoseListModel = diagnoser.ConvertAll((x) => new DiagnoseListModel {beskrivelse=x.beskrivelse, diagnoseId = x.diagnoseId, navn=x.navn});
-            return diagnoseListModel;
-        }
-        public List<Diagnose> hentDiagnoser()
+        public async  Task<List<Diagnose>> hentDiagnoser()
         {
-            List<Diagnose> diagnoser = db.diagnose.ToList();
+            List<Diagnose> diagnoser = await  db.diagnose.ToListAsync();
             return diagnoser;
         }
-        public List<Diagnose> hentDiagnoser(int diagnoseGruppeId)
+        public async  Task<List<Diagnose>> hentDiagnoser(int diagnoseGruppeId)
         {
-            List<Diagnose> diagnoser = db.diagnose.Where((x) => x.diagnoseGruppeId == diagnoseGruppeId).ToList();
+            List<Diagnose> diagnoser = await  db.diagnose.Where((x) => x.diagnoseGruppeId == diagnoseGruppeId).ToListAsync();
             return diagnoser;
         }
     }

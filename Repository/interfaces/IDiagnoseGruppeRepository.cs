@@ -5,8 +5,8 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
     public interface IDiagnoseGruppeRepository
     {
 
-        public List<DiagnoseGruppeListModel> hentDiagnoseGrupperListModels();
-        public List<DiagnoseGruppe> hentDiagnoseGrupper();
+
+        public  Task<List<DiagnoseGruppe>> hentDiagnoseGrupper();
 
 
     }
