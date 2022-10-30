@@ -25,7 +25,6 @@ namespace obligDiagnoseVerktøyy.Model.entities
         public int diagnoseGruppeId { get; set; }
 
 
-       public int padState { get; set; }
 
         public DiagnoseGruppe diagnoseGruppe { get; set; }
 

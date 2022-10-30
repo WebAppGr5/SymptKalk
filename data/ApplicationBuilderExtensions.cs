@@ -107,45 +107,39 @@ namespace ObligDiagnoseVerktøyy.data
                     diagnoseId = 1,
                     beskrivelse = "vondt i venstre-del av hjerte",
                     diagnoseGruppeId = 1,
-                    navn = "venstre-del hjerte sykdommen",
-                    padState = 0
+                    navn = "venstre-del hjerte sykdommen"
                 },
                       new Diagnose
                 {
                   diagnoseId = 2,
                     beskrivelse = "vondt i høyre-del av hjerte",
                     diagnoseGruppeId = 1,
-                    navn = "høyre-del hjerte sykdommen",
-                    padState = 0
+                    navn = "høyre-del hjerte sykdommen"
                 },
                             new Diagnose
                 {
                     diagnoseId = 3,
                     beskrivelse = "vondt i venstre lunge",
                     diagnoseGruppeId = 2,
-                    navn = "venstre lunge sykdom",
-                    padState = 0
+                    navn = "venstre lunge sykdom"
                 },      new Diagnose
                 {
                     diagnoseId = 4,
                     beskrivelse = "vondt i høyre lunge",
                     diagnoseGruppeId = 2,
-                    navn = "høyre lunge sykdom",
-                    padState = 0
+                    navn = "høyre lunge sykdom"
                 },      new Diagnose
                 {
                     diagnoseId = 5,
                     beskrivelse = "vondt i tarm",
                     diagnoseGruppeId = 3,
-                    navn = "tarm sykdommen",
-                    padState = 0
+                    navn = "tarm sykdommen"
                 },      new Diagnose
                 {
                     diagnoseId = 6,
                     beskrivelse = "vondt i makesekk",
                     diagnoseGruppeId = 3,
-                    navn = "magesekk sykdommen",
-                    padState = 0
+                    navn = "magesekk sykdommen"
                 }
             };
             diagnoser.ForEach((x) => db.diagnose.Add(x));

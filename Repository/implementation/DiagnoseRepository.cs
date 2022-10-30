@@ -26,17 +26,10 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
 
             });
 
-            List<DiagnoseListModel> diagnoseListModel = diagnoser.Distinct().ToList().ConvertAll((x) => new DiagnoseListModel { beskrivelse = x.beskrivelse, diagnoseId = x.diagnoseId, navn = x.navn,padState=x.padState});
+            List<DiagnoseListModel> diagnoseListModel = diagnoser.Distinct().ToList().ConvertAll((x) => new DiagnoseListModel { beskrivelse = x.beskrivelse, diagnoseId = x.diagnoseId, navn = x.navn});
             return diagnoseListModel;
         }
-        public void updatePadState(int id, int padState)
-        {
-            Diagnose diagnosen = db.diagnose.Where((x) => x.diagnoseId == id).ToList().First();
-            diagnosen.padState = padState;
-            db.diagnose.Update(diagnosen);
-            db.SaveChanges();
 
-        }
 
         public void addDiagnose(DiagnoseDTO diagnosDto)
         {
@@ -63,8 +56,7 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         public void update(Diagnose diagnose)
         {
             Diagnose diagnosen = db.diagnose.Where((x) => x.diagnoseId == diagnose.diagnoseId).ToList().First();
-            if (diagnose.padState != null)
-                diagnosen.padState = diagnosen.padState;
+
                 if (diagnose.navn != null)
                       diagnosen.navn = diagnose.navn;
                 if (diagnose.beskrivelse != null)
