@@ -52,12 +52,12 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
             db.SaveChanges();
 
             List<int> symptomId = diagnosDto.symptomer.ConvertAll((x) => int.Parse(x));
-            symptomId.ForEach((x) =>
+            for(int i = 0; i < symptomId.Count; i++ )
             {
                 SymptomSymptomBilde symptomSymptomBilde = new SymptomSymptomBilde
-                    { symptomBildeId = symptomBilde.symptomBildeId, symptomId = x, varighet = 1 };
+                    { symptomBildeId = symptomBilde.symptomBildeId, symptomId = symptomId[i], varighet = diagnosDto.varigheter[i] };
                 db.symptomSymptomBilde.Add(symptomSymptomBilde);
-            });
+            }
             db.SaveChanges();
         }
         public void update(Diagnose diagnose)
