@@ -68,11 +68,32 @@ body {
     margin: 15px;
     text-align-all: center;
 }
+.input {
+    font-size: 18px;
+    margin-right: 20px;
+    margin-left: 20px;
+    background:white
+}
+.knapp2 {
+    background-color: black;
+    font-family: Georgia;
+    color: white;
+    padding: 10px;
+    display: inline-block;
+    width: 90px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    margin: 15px;
+    text-align-all: center;
+}
 
 .knapp:hover {
     background-color: #585858;
 }
-
+.knapp2:hover {
+    background-color: #585858;
+}
 .dropDownIkon {
     width: 20px;
     margin-left: 20px;

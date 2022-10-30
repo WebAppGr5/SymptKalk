@@ -18,7 +18,8 @@
 
     <title>Title</title>
     <script defer>
-        $(document).ready(function () {
+        $(document).ready(async function () {
+            await swal("Velkommen til symptom kalkulatoren", "Trykk på de ulike checkboxene gjemt under svarte knappene, og varier hvor lenge du har hatt symptomet. \n Når du gjør dette vil du få diagnoser som inneholder de symptomene du har ", "info")
             hentSymptomGrupper();
 
         });
@@ -65,20 +66,19 @@
                     Når en endrer diagnose ved å trykke på endre knapp ved siden av diagnose, og trykker utfør endring, så
                     vil ikke diagnosen få nye symptomer/varigheter.
                 </span>
-                <input type="hidden" id="diagnoseIdEndre" />
+                <input class="boks boks1" type="hidden" id="diagnoseIdEndre" />
                 <div>
-                    <label for="navnDiagnose">Navn</label>
-                    <input id="navnDiagnose" />
+                    <label for="navnDiagnose"><strong>Navn</strong></label><br />
+                    <input class="input" id="navnDiagnose" />
                 </div>
                 <div>
-                    <label for="beskrivelseDiagnose">Beskrivelse</label>
-                    <textarea id="beskrivelseDiagnose"></textarea>
+                    <label for="beskrivelseDiagnose"><strong>Beskrivelse</strong></label><br/><textarea class="boks boks1" id="beskrivelseDiagnose"></textarea>
                 </div>
 
 
 
-                <button id="nyDiagnose" onclick="nyDiagnose()">Lagre diagnose</button>
-                <button id="endreDiagnose" onclick="utforEndring()">Utfør endring</button>
+                <button class="knapp" id="nyDiagnose" onclick="nyDiagnose()">Lagre diagnose</button>
+                <button class="knapp" id="endreDiagnose" onclick="utforEndring()">Utfør endring</button>
             </div>
         </div>
         </div>
