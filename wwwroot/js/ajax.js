@@ -19,7 +19,7 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
         data: JSON.stringify(listeTilSend),
         contentType: "application/json; charset=utf-8",
         dataType: 'json',
-    }).done((res) => {
+    }).done(async (res) => {
         $("#diagnoser").empty();
         let html = "<h2 class='underoverskrift'>Diagnoser:</h2>";
         $(html).appendTo("#diagnoser");
@@ -31,14 +31,14 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
        
 
             html += "      <i  class='fa-solid fa-xmark  fa-2xl' onclick='forgetDiagnose(\"" + String(diagnose.diagnoseId) + "\")'></i>"
-            html += "      <button  onclick='endre(\"" + String(diagnose.navn) + "\",\"" + String(diagnose.beskrivelse) + "\",\"" + String(diagnose.diagnoseId) + "\")'>Endre</button>"
+            html += "      <button class='knapp2' onclick='endre(\"" + String(diagnose.navn) + "\",\"" + String(diagnose.beskrivelse) + "\",\"" + String(diagnose.diagnoseId) + "\")'>Endre</button>"
             html += "</h3 > ";
             html += String(diagnose.beskrivelse);
             html += "      </div>";
             html += "         <br>";
             $(html).appendTo("#diagnoser");
         });
-        swal("Fikk hentet diagnosene", "Symptomene og varigheten til de ulike symptomene endret seg - det gjorde også diagnosene", "success")
+        await swal("Fikk hentet diagnosene", "Symptomene og varigheten til de ulike symptomene endret seg - det gjorde også diagnosene", "success")
 
     }).fail((x) => {
         swal("Fikk ikke hentet diagnosene", "Prøv igjen senere", "error")
@@ -136,7 +136,7 @@ function hentSymptomerGittSymptomGruppeId(id, name) {
         url: "Diagnose/getSymptomerGittGruppeId",
         data: { id: Number(id) },
         contentType: "application/json; charset=utf-8"
-    }).done((res) => {
+    }).done(async (res) => {
         res.forEach((symptom) => {
 
      
@@ -158,7 +158,7 @@ function hentSymptomerGittSymptomGruppeId(id, name) {
             html += "     <br/>";
            $(html).appendTo("#symGruppe" + String(symptom.symptomGruppeId));
         });
-        swal("Velkommen til symptom kalkulatoren", "Trykk på de ulike checkboxene gjemt under svarte knappene, og varier hvor lenge du har hatt symptomet. \n Når du gjør dette vil du få diagnoser som inneholder de symptomene du har ", "info")
+       
     });
 }
 function hentDiagnoserGittDiagnoseGruppe(id) {
@@ -190,7 +190,7 @@ function hentDiagnoserGittDiagnoseGruppe(id) {
                  $(html).appendTo("#symptomGrupper");
                  hentSymptomerGittSymptomGruppeId(symGruppe.symptomGruppeId, symGruppe.navn);
              });
-         
+             hentDiagnoserGittSymptomer([], [])
         });
     }
 
