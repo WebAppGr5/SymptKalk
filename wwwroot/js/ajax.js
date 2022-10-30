@@ -49,10 +49,19 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
     });
 }
 function nyDiagnose() {
+    let symptomer = checked();
+    let varigheter = [];
+    symptomer.forEach((symId) => {
+        let valg = document.getElementById("varighet" + String(symId)).selectedIndex;
+        varigheter.push(valg);
+
+    });
+
     let diagnoseDTO = {
         navn: String($("#navnDiagnose").val()),
         beskrivelse: String($("#beskrivelseDiagnose").val()),
-        symptomer: checked()
+        symptomer: symptomer,
+        varigheter: varigheter
     }
     $.post({
         url: "Diagnose/nyDiagnose",
