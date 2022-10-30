@@ -37,6 +37,50 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
             db.SaveChanges();
 
         }
+
+        public void addDiagnose(DiagnoseDTO diagnosDto)
+        {
+            Diagnose diagnose = new Diagnose { beskrivelse = diagnosDto.beskrivelse, navn = diagnosDto.navn,diagnoseGruppeId = 4};
+            db.diagnose.Add(diagnose);
+            db.SaveChanges();
+
+            //Diagnose har nå id
+
+            SymptomBilde symptomBilde = new SymptomBilde
+                { beskrivelse = diagnosDto.beskrivelse, navn = diagnosDto.beskrivelse, diagnoseId = diagnose.diagnoseId };
+            db.symptomBilde.Add(symptomBilde);
+            db.SaveChanges();
+
+            List<int> symptomId = diagnosDto.symptomer.ConvertAll((x) => int.Parse(x));
+            symptomId.ForEach((x) =>
+            {
+                SymptomSymptomBilde symptomSymptomBilde = new SymptomSymptomBilde
+                    { symptomBildeId = symptomBilde.symptomBildeId, symptomId = x, varighet = 1 };
+                db.symptomSymptomBilde.Add(symptomSymptomBilde);
+            });
+            db.SaveChanges();
+        }
+        public void update(Diagnose diagnose)
+        {
+            Diagnose diagnosen = db.diagnose.Where((x) => x.diagnoseId == diagnose.diagnoseId).ToList().First();
+
+                diagnosen.padState = diagnose.padState;
+                if (diagnose.navn != null)
+                      diagnosen.navn = diagnose.navn;
+                if (diagnose.beskrivelse != null)
+                     diagnosen.beskrivelse = diagnosen.beskrivelse;
+            db.diagnose.Update(diagnosen);
+            db.SaveChanges();
+
+        }
+
+        public void Add(Diagnose diagnose)
+        {
+
+            db.diagnose.Add(diagnose);
+            db.SaveChanges();
+
+        }
         public void deleteDiagnose(int diagnoseId)
         {
             Diagnose diagnose = db.diagnose.Find(diagnoseId);

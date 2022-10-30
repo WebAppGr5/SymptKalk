@@ -15,7 +15,6 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
             this.db = db;
         }
 
-
         public List<SymptomBildeListModel> hentSymptomBilderListModels()
         {
             List<SymptomBilde> symptomBilde = db.symptomBilde.ToList();

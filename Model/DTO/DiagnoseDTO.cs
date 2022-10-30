@@ -2,8 +2,8 @@
 {
     public class DiagnoseDTO
     {
-        public int diagnoseId { get; set; }
-        public int padState { get; set; }
-
+        public string navn { get; set; }
+        public string beskrivelse { get; set; } 
+        public List<string> symptomer { get; set; }
     }
 }

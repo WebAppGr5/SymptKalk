@@ -45,19 +45,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         }
 
         
-        public IActionResult changePadState( [FromBody] DiagnoseDTO diagnoseDTO)
-        {
-            try
-            {
-                _diagnoseRepository.updatePadState(diagnoseDTO.diagnoseId,diagnoseDTO.padState);
-                return Ok(diagnoseDTO);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Kunne ikke endre hengelås tilstand");
-                return BadRequest();
-            }
-        }
+ 
 
         [HttpGet]
         public IActionResult forgetDiagnose(int id)
@@ -73,6 +61,55 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
                 return BadRequest();
             }
         }
+
+        public IActionResult update ([FromBody] Diagnose diagnose)
+        {
+
+            try
+            {
+                _diagnoseRepository.update(diagnose);
+                return Ok(diagnose);
+            }
+            catch (Exception ex)
+            {
+                _diagnoseRepository.update(diagnose);
+                _logger.LogError("Klarte ikke å endre diagnose");
+                return BadRequest(new List<Diagnose>());
+            }
+        }
+
+        public IActionResult add([FromBody] Diagnose diagnose)
+        {
+
+            try
+            {
+                _diagnoseRepository.Add(diagnose);
+                return Ok(diagnose);
+            }
+            catch (Exception ex)
+            {
+     
+                _logger.LogError("Klarte ikke å lage diagnose");
+                return BadRequest(new List<Diagnose>());
+            }
+        }
+
+        public IActionResult nyDiagnose([FromBody] DiagnoseDTO diagnose)
+        {
+
+            try
+            {
+                _diagnoseRepository.addDiagnose(diagnose);
+                return Ok(diagnose);
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError("Klarte ikke å lage diagnose");
+                return BadRequest(new List<Diagnose>());
+            }
+        }
+
         //Liste over int id, f.eks 1 2 4 6 7
         public IActionResult getDiagnoserGittSymptomer( [FromBody] List<SymptomDTO> symptomliste)
         {
