@@ -28,12 +28,7 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
             html += "<div>";
             html += "<h3> " + String(diagnose.navn);
 
-            if (Number(diagnose.padState) == 0) {
-                html += "     <i class='fa-solid fa-lock fa-2xl' onclick='changePadState(\"" + String(diagnose.diagnoseId) + "\",\"" + String(diagnose.padState) + "\")'></i>";
-            }
-            if (Number(diagnose.padState) == 1) {
-                html += "      <i class='fas  fa-lock-open fa-2xl' onclick='changePadState(\"" + String(diagnose.diagnoseId) + "\",\"" + String(diagnose.padState) + "\")'></i>";
-            }
+       
 
             html += "      <i  class='fa-solid fa-xmark  fa-2xl' onclick='forgetDiagnose(\"" + String(diagnose.diagnoseId) + "\")'></i>"
             html += "      <button  onclick='endre(\"" + String(diagnose.navn) + "\",\"" + String(diagnose.beskrivelse) + "\",\"" + String(diagnose.diagnoseId) + "\")'>Endre</button>"
@@ -99,31 +94,6 @@ function utforEndring() {
     });
 
 
-}
-function changePadState(diagnoseId, currentState) {
-    let wantedState = 0;
-    if (Number(currentState) == 0)
-        wantedState = 1;
-    else
-        wantedState = 0;
-
-    let diagnoseDTO = {
-        diagnoseId: Number(diagnoseId),
-        padState: Number(wantedState)
-    }
-
-
-    $.post({
-        url: "Diagnose/update",
-        data: JSON.stringify(diagnoseDTO),
-        contentType: "application/json; charset=utf-8",
-        dataType: 'json',
-    }).done(async (res) => {
-        await swal("Fikk utført endringen", "Fra nå av vil du huske hvorvidt dette er en akutell diagnose", "success")
-        sendIdAndSelectListToServer();
-    }).fail((x) => {
-        swal("Kunne ikke endre hengelås tilstand", "Prøv igjen senere", "error")
-    });
 }
 
 function forgetDiagnose(diagnoseId) {
