@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rober\\source\\repos\\SymptKalk2\\obligDiagnoseVerktøyy.csproj": {}
+    "C:\\Users\\rober\\OneDrive\\Dokumenter\\GitHub\\SymptKalkttetet\\obligDiagnoseVerktøyy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rober\\source\\repos\\SymptKalk2\\obligDiagnoseVerktøyy.csproj": {
+    "C:\\Users\\rober\\OneDrive\\Dokumenter\\GitHub\\SymptKalkttetet\\obligDiagnoseVerktøyy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\obligDiagnoseVerktøyy.csproj",
+        "projectUniqueName": "C:\\Users\\rober\\OneDrive\\Dokumenter\\GitHub\\SymptKalkttetet\\obligDiagnoseVerktøyy.csproj",
         "projectName": "obligDiagnoseVerktøyy",
-        "projectPath": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\obligDiagnoseVerktøyy.csproj",
+        "projectPath": "C:\\Users\\rober\\OneDrive\\Dokumenter\\GitHub\\SymptKalkttetet\\obligDiagnoseVerktøyy.csproj",
         "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rober\\source\\repos\\SymptKalk2\\obj\\",
+        "outputPath": "C:\\Users\\rober\\OneDrive\\Dokumenter\\GitHub\\SymptKalkttetet\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
