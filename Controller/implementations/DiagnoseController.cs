@@ -117,7 +117,9 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
 
             try
             {
-
+                if (symptomliste.Count == 0)
+                    return Ok(await _diagnoseRepository.hentDiagnoser());
+                    
                 List<SymptomBilde> symptombilder = await _symptomBildeRepository.hentSymptomBilder(symptomliste);
                 List<DiagnoseListModel> diagnoser = await _diagnoseRepository.hentDiagnoser(symptombilder);
                 return Ok(diagnoser);
