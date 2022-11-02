@@ -7,6 +7,8 @@ using obligDiagnoseVerktøyy.Repository.implementation;
 using obligDiagnoseVerktøyy.Repository.interfaces;
 using Microsoft.Extensions.Logging;
 
+using Microsoft.AspNetCore.Builder;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,8 +29,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 
 
-
-
+builder.Services.AddCors();
 builder.Services.AddLogging();
 
 builder.Services.AddOptions();
@@ -54,13 +55,18 @@ else
     app.UseHsts();
 }
 
-
 app.UseHttpsRedirection();
 DefaultFilesOptions options = new DefaultFilesOptions();
 options.DefaultFileNames.Clear();
 options.DefaultFileNames.Add("/index.html");
 app.UseDefaultFiles(options);
 app.UseStaticFiles();
+app.UseCors(builder =>
+{
+    builder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+});
 
 app.UseRouting();
 
@@ -70,7 +76,7 @@ var loggerFactory = app.Services.GetService<ILoggerFactory>();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Diagnose}/{action=test}/{id?}");
-
+//
 
 app.PrepareDatabase()
     .GetAwaiter()

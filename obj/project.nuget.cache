@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "MFTqpChdLDShd0j7+walq+AErDHV8eWBjRRZJidoj4ik2fcEXiCYQ4It/KuWZtYIy9ZtKVTrqvciEpjTBSZxZA==",
+  "dgSpecHash": "FTV0Ihmjy8ybIuHljEoG/8t49AMTY9vQnhehlR+siC1XIre5HqTgiieunPh/TiI/fPmNzudr4H3pUYAVNGKwKw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rober\\source\\repos\\DiagnoseKalkulator\\obligDiagnoseVerktøyy.csproj",
+  "projectFilePath": "C:\\Users\\rober\\Source\\Repos\\SymptKalkfafaf\\obligDiagnoseVerktøyy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rober\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\rober\\.nuget\\packages\\microsoft.aspnet.cors\\5.2.9\\microsoft.aspnet.cors.5.2.9.nupkg.sha512",
     "C:\\Users\\rober\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\rober\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\rober\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
@@ -88,6 +89,16 @@
       "level": "Warning",
       "warningLevel": 1,
       "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://packages.nuget.org/v1/FeedService.svc/'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Cors 5.2.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Cors",
+      "targetGraphs": [
+        "net6.0"
+      ]
     }
   ]
 }
