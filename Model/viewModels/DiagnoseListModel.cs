@@ -11,8 +11,6 @@ namespace obligDiagnoseVerktøyy.Model.entities
         public string beskrivelse { get; set; } //Forklaringen kan hentes ut herfra
         public int diagnoseId { get; set; }
 
-        public int padState { get; set; }
-
 
     }
 

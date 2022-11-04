@@ -214,7 +214,7 @@ function hentDiagnoserGittDiagnoseGruppe(id) {
                  $(html).appendTo("#symptomGrupper");
                  hentSymptomerGittSymptomGruppeId(symGruppe.symptomGruppeId, symGruppe.navn);
              });
-             hentDiagnoser();
+
         });
     }
 

@@ -22,9 +22,12 @@ namespace obligDiagnoseVerktøyy.Model.entities
 
         [Required]
         [MaxLength(700)]
-        [RegularExpression(@"^[a-zA-Z0-9]{0,700}$")]
         public String beskrivelse { get; set; }
 
+
+        [Required]
+        [MaxLength(5000)]
+        public String dypForklaring { get; set; }
 
 
         [JsonIgnore]

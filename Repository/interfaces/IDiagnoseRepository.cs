@@ -1,5 +1,6 @@
 ﻿using obligDiagnoseVerktøyy.Model.DTO;
 using obligDiagnoseVerktøyy.Model.entities;
+using obligDiagnoseVerktøyy.Model.viewModels;
 
 namespace obligDiagnoseVerktøyy.Repository.interfaces
 {
@@ -14,6 +15,7 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
         public void update(Diagnose diagnose);
         public void Add(Diagnose diagnose);
         public void addDiagnose(DiagnoseDTO diagnosDto);
+        public Task<DiagnoseDetailModel> hentDiagnoseGittDiagnoseId(int diagnoseId);
 
 
     }

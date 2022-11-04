@@ -1,13 +1,13 @@
 
 
 using Microsoft.EntityFrameworkCore;
-using ObligDiagnoseVerktøyy.data;
 using ObligDiagnoseVerktøyy.Data;
 using obligDiagnoseVerktøyy.Repository.implementation;
 using obligDiagnoseVerktøyy.Repository.interfaces;
 using Microsoft.Extensions.Logging;
 
 using Microsoft.AspNetCore.Builder;
+using ObligDiagnoseVerktøyy.data;
 
 
 var builder = WebApplication.CreateBuilder(args);

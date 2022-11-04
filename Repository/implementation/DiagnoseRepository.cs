@@ -5,6 +5,7 @@ using ObligDiagnoseVerktøyy.Data;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using obligDiagnoseVerktøyy.Model.DTO;
+using obligDiagnoseVerktøyy.Model.viewModels;
 
 namespace obligDiagnoseVerktøyy.Repository.implementation
 {
@@ -82,7 +83,17 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
             await db.SaveChangesAsync();
 
         }
+        public async  Task<DiagnoseDetailModel> hentDiagnoseGittDiagnoseId(int diagnoseId)
+        {
+            Diagnose diagnose = await  db.diagnose.FindAsync(diagnoseId);
+            DiagnoseDetailModel diagnoseListModle = new DiagnoseDetailModel()
+            {
+                beskrivelse = diagnose.beskrivelse, diagnoseId = diagnose.diagnoseId, navn = diagnose.navn,
+                dypForklaring = diagnose.dypForklaring
+            };
+            return diagnoseListModle;
 
+        }
         public async  Task<List<Diagnose>> hentDiagnoser()
         {
             List<Diagnose> diagnoser = await  db.diagnose.ToListAsync();
