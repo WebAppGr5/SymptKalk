@@ -3898,9 +3898,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rober\\Source\\Repos\\SymptKalkfafaf\\obligDiagnoseVerktøyy.csproj",
+      "projectUniqueName": "C:\\Users\\rober\\source\\repos\\SymptKalkfafaf\\obligDiagnoseVerktøyy.csproj",
       "projectName": "obligDiagnoseVerktøyy",
-      "projectPath": "C:\\Users\\rober\\Source\\Repos\\SymptKalkfafaf\\obligDiagnoseVerktøyy.csproj",
+      "projectPath": "C:\\Users\\rober\\source\\repos\\SymptKalkfafaf\\obligDiagnoseVerktøyy.csproj",
       "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\rober\\Source\\Repos\\SymptKalkfafaf\\obj\\",
       "projectStyle": "PackageReference",

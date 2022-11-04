@@ -2,6 +2,7 @@
 using obligDiagnoseVerktøyy.Model.entities;
 using obligDiagnoseVerktøyy.Repository.interfaces;
 using ObligDiagnoseVerktøyy.Data;
+using obligDiagnoseVerktøyy.Model.viewModels;
 
 namespace obligDiagnoseVerktøyy.Repository.implementation
 {
@@ -19,6 +20,17 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
 
             List<SymptomListModel> symptomList = symptomer.ConvertAll((x) => new SymptomListModel {beskrivelse=x.beskrivelse,navn=x.navn,symptomGruppeId=x.symptomGruppeId,symptomId=x.symptomId });
             return symptomList;
+        }
+        public async Task<SymptomDetailModel> hentSymptomGittSymptomId(int symptomId)
+        {
+             Symptom symptom = await  db.symptom.FindAsync(symptomId);
+             SymptomDetailModel symptomDetail = new SymptomDetailModel()
+             {
+                 beskrivelse = symptom.beskrivelse, dypForklaring = symptom.dypForklaring, navn = symptom.navn,
+                 symptomGruppeId = symptom.symptomGruppeId, symptomId = symptom.symptomId
+             };
+            return symptomDetail;
+
         }
         public async Task<List<SymptomListModel>> hentSymptomer(int symptomGruppeId)
         {

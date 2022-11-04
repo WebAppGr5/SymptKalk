@@ -1,13 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace obligDiagnoseVerktøyy.Model.entities
+﻿namespace obligDiagnoseVerktøyy.Model.viewModels
 {
-    public class SymptomGruppeListModel
+    public class SymptomGruppeDetailModel
     {
         public int symptomGruppeId { get; set; }
         public string navn { get; set; } //Forklaringen kan hentes ut herfra
 
         public string beskrivelse { get; set; } //Forklaringen kan hentes ut herfra
-
+        public String dypForklaring { get; set; }
     }
 }

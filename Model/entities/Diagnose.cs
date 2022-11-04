@@ -24,7 +24,9 @@ namespace obligDiagnoseVerktøyy.Model.entities
 
         public int diagnoseGruppeId { get; set; }
 
-
+        [Required]
+        [MaxLength(5000)]
+        public String dypForklaring { get; set; }
 
         public DiagnoseGruppe diagnoseGruppe { get; set; }
 

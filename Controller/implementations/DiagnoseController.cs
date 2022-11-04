@@ -94,6 +94,49 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
 
+        public async Task<IActionResult> hentDiagnoseGittDiagnoseId(int id)
+        {
+            try
+            {
+                
+                return Ok(_diagnoseRepository.hentDiagnoseGittDiagnoseId(id));
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError("Kunne ikke hente diagnose");
+                return BadRequest("Kunne ikke hente diagnose");
+            }
+        }
+
+        public async Task<IActionResult> hentSymptomGittSymptomId(int id)
+        {
+            try
+            {
+                return Ok(_symptomRepository.hentSymptomGittSymptomId(id));
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError("Klarte ikke å hente symptom");
+                return BadRequest("Klarte ikke å hente symptom");
+            }
+        }
+
+        public async Task<IActionResult> hentSymptomGruppeGittSymptomGruppeId(int id)
+        {
+            try
+            {
+                return Ok(_symptomGruppeRepository.hentSymptomGruppeGittSymptomGruppeId(id));
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError("Klarte ikke å hente symptom gruppe");
+                return BadRequest("Kunne ikke hente symptom gruppe");
+            }
+        }
+
         public async Task<IActionResult> nyDiagnose([FromBody] DiagnoseDTO diagnose)
         {
 
@@ -118,7 +161,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             try
             {
                 if (symptomliste.Count == 0)
-                    return Ok(await _diagnoseRepository.hentDiagnoser());
+                    return Ok(new List<Diagnose>());
                     
                 List<SymptomBilde> symptombilder = await _symptomBildeRepository.hentSymptomBilder(symptomliste);
                 List<DiagnoseListModel> diagnoser = await _diagnoseRepository.hentDiagnoser(symptombilder);

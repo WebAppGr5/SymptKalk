@@ -1,4 +1,5 @@
 ﻿using obligDiagnoseVerktøyy.Model.entities;
+using obligDiagnoseVerktøyy.Model.viewModels;
 
 namespace obligDiagnoseVerktøyy.Repository.interfaces
 {
@@ -7,6 +8,6 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
 
 
         public Task<List<SymptomGruppe>> hentSymptomGrupper();
-
+        public Task<SymptomGruppeDetailModel> hentSymptomGruppeGittSymptomGruppeId(int symptomGruppeId);
     }
 }
