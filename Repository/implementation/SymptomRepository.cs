@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Data.SqlTypes;
+using Microsoft.EntityFrameworkCore;
 using obligDiagnoseVerktøyy.Model.entities;
 using obligDiagnoseVerktøyy.Repository.interfaces;
 using ObligDiagnoseVerktøyy.Data;
@@ -24,7 +25,11 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         public async Task<SymptomDetailModel> hentSymptomGittSymptomId(int symptomId)
         {
              Symptom symptom = await  db.symptom.FindAsync(symptomId);
-             SymptomDetailModel symptomDetail = new SymptomDetailModel()
+
+             if (symptom == null)
+                 throw new SqlNullValueException("symptom returned with null value");
+
+            SymptomDetailModel symptomDetail = new SymptomDetailModel()
              {
                  beskrivelse = symptom.beskrivelse, dypForklaring = symptom.dypForklaring, navn = symptom.navn,
                  symptomGruppeId = symptom.symptomGruppeId, symptomId = symptom.symptomId

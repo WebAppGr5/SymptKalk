@@ -14,7 +14,7 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
         public void deleteDiagnose(int diagnoseId);
         public void update(Diagnose diagnose);
         public void Add(Diagnose diagnose);
-        public void addDiagnose(DiagnoseDTO diagnosDto);
+        public void addDiagnose(DiagnoseCreateDTO diagnoseDto);
         public Task<DiagnoseDetailModel> hentDiagnoseGittDiagnoseId(int diagnoseId);
 
 

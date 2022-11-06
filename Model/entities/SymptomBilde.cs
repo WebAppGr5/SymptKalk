@@ -6,8 +6,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
     public class SymptomBilde
     {
         [Key]
-        [MaxLength(3)]
-        [RegularExpression(@"^[0-9]{0,3}$")]
+        [RegularExpression(@"^[0-9]{1,6}$")]
         public int symptomBildeId { get; set; }
         
         [Required]
@@ -15,8 +14,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
         public List<SymptomSymptomBilde> symptomSymptomBilde { get; set; }
        
         [Required]
-        [MaxLength(3)]
-        [RegularExpression(@"^[0-9]{0,3}$")]
+        [RegularExpression(@"^[0-9]{1,6}$")]
         public int diagnoseId { get; set; }
 
  
@@ -32,7 +30,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
 
         public string beskrivelse { get; set; }
 
-        [Required]
+
         [MaxLength(5000)]
         public String dypForklaring { get; set; }
 

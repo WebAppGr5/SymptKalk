@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using obligDiagnoseVerktøyy.Repository.implementation;
 using Microsoft.Extensions.Logging;
 using obligDiagnoseVerktøyy.Model.DTO;
+using System.Data.SqlTypes;
 
 namespace obligDiagnoseVerktøyy.Controllers.implementations
 {
@@ -50,10 +51,20 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         [HttpGet]
         public async Task<IActionResult> forgetDiagnose(int id)
         {
+            if (id < 0)
+            {
+                _logger.LogInformation("Bad id input");
+                return BadRequest("Bad id input");
+            }
             try
             {
                 _diagnoseRepository.deleteDiagnose(id);
                 return Ok();
+            }
+            catch (EntityNotFoundException ex)
+            {
+                _logger.LogError("bad id");
+                return NotFound("bad id");
             }
             catch (Exception ex)
             {
@@ -62,44 +73,59 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
 
-        public async Task<IActionResult> update ([FromBody] Diagnose diagnose)
+        public async Task<IActionResult> update ([FromBody] DiagnoseChangeDTO diagnose)
         {
+            if (ModelState.IsValid)
+            {
 
-            try
-            {
-                _diagnoseRepository.update(diagnose);
-                return Ok(diagnose);
+                try
+                {
+                    Diagnose diagnosen = new Diagnose
+                    {
+                        beskrivelse = diagnose.beskrivelse, diagnoseGruppe = null, diagnoseGruppeId = -1,
+                        diagnoseId = diagnose.diagnoseId, dypForklaring = diagnose.dypForklaring, navn = diagnose.navn,
+                        symptomBilde = null
+                    };
+                    _diagnoseRepository.update(diagnosen);
+                    return Ok(diagnose);
+                }
+                catch (EntityNotFoundException ex)
+                {
+                    _logger.LogError("bad id");
+                    return NotFound("bad id");
+                }
+                catch (Exception ex)
+                {
+
+                    _logger.LogError("Klarte ikke å endre diagnose");
+                    return BadRequest(new List<Diagnose>());
+                }
             }
-            catch (Exception ex)
+            else
             {
-                _diagnoseRepository.update(diagnose);
-                _logger.LogError("Klarte ikke å endre diagnose");
-                return BadRequest(new List<Diagnose>());
+                _logger.LogInformation("diagnose got bad server input");
+                return BadRequest("diagnose got bad server input");
             }
         }
 
-        public async Task<IActionResult> add([FromBody] Diagnose diagnose)
-        {
-
-            try
-            {
-                _diagnoseRepository.Add(diagnose);
-                return Ok(diagnose);
-            }
-            catch (Exception ex)
-            {
-     
-                _logger.LogError("Klarte ikke å lage diagnose");
-                return BadRequest(new List<Diagnose>());
-            }
-        }
 
         public async Task<IActionResult> hentDiagnoseGittDiagnoseId(int id)
         {
+            if (id < 0)
+            {
+                _logger.LogError("Bad id input");
+                return BadRequest("Bad id input");
+            }
+
             try
             {
-                
+
                 return Ok(_diagnoseRepository.hentDiagnoseGittDiagnoseId(id));
+            }
+            catch (EntityNotFoundException ex)
+            {
+                _logger.LogError("bad id");
+                return NotFound("bad id");
             }
             catch (Exception ex)
             {
@@ -111,9 +137,19 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
 
         public async Task<IActionResult> hentSymptomGittSymptomId(int id)
         {
+            if (id < 0)
+            {
+                _logger.LogError("Bad id input");
+                return BadRequest("Bad id input");
+            }
             try
             {
                 return Ok(_symptomRepository.hentSymptomGittSymptomId(id));
+            }
+            catch (EntityNotFoundException ex)
+            {
+                _logger.LogError("bad id");
+                return NotFound("bad id");
             }
             catch (Exception ex)
             {
@@ -125,9 +161,19 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
 
         public async Task<IActionResult> hentSymptomGruppeGittSymptomGruppeId(int id)
         {
+            if (id < 0)
+            {
+                _logger.LogInformation("Bad id input");
+                return BadRequest("Bad id input");
+            }
             try
             {
                 return Ok(_symptomGruppeRepository.hentSymptomGruppeGittSymptomGruppeId(id));
+            }
+            catch (EntityNotFoundException ex)
+            {
+                _logger.LogError("bad id");
+                return NotFound("bad id");
             }
             catch (Exception ex)
             {
@@ -137,20 +183,39 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
 
-        public async Task<IActionResult> nyDiagnose([FromBody] DiagnoseDTO diagnose)
+        public async Task<IActionResult> nyDiagnose([FromBody] DiagnoseCreateDTO diagnose)
         {
-
-            try
+            if (ModelState.IsValid)
             {
-                _diagnoseRepository.addDiagnose(diagnose);
-                return Ok(diagnose);
-            }
-            catch (Exception ex)
-            {
+                try
+                {
+                    if (diagnose.symptomer.Count != diagnose.varigheter.Count || diagnose.symptomer.Count == 0)
+                    {
+                        _logger.LogInformation("diagnose got bad server input");
+                        return BadRequest("diagnose got bad server input");
+                    }
+                    _diagnoseRepository.addDiagnose(diagnose);
+                    return Ok(diagnose);
+                }
+                catch (EntityNotFoundException ex)
+                {
+                    _logger.LogError("bad id");
+                    return NotFound("bad id");
+                }
+                catch (Exception ex)
+                {
 
-                _logger.LogError("Klarte ikke å lage diagnose");
-                return BadRequest(new List<Diagnose>());
+                    _logger.LogError("Klarte ikke å lage diagnose");
+                    return BadRequest(new List<Diagnose>());
+                }
             }
+            else
+            {
+                _logger.LogInformation("diagnose got bad server input");
+                return BadRequest("diagnose got bad server input");
+            }
+
+
         }
 
         //Liste over int id, f.eks 1 2 4 6 7
@@ -160,12 +225,22 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
 
             try
             {
+                
                 if (symptomliste.Count == 0)
                     return Ok(new List<Diagnose>());
                     
                 List<SymptomBilde> symptombilder = await _symptomBildeRepository.hentSymptomBilder(symptomliste);
-                List<DiagnoseListModel> diagnoser = await _diagnoseRepository.hentDiagnoser(symptombilder);
+                if(symptombilder.Count == 0)
+                {
+                    return Ok(new List<Diagnose>());
+                }
+                    List<DiagnoseListModel> diagnoser = await _diagnoseRepository.hentDiagnoser(symptombilder);
                 return Ok(diagnoser);
+            }
+            catch (EntityNotFoundException ex)
+            {
+                _logger.LogError("bad id");
+                return NotFound("bad id");
             }
             catch (Exception ex)
             {
@@ -179,11 +254,21 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         [HttpGet]
         public async Task<IActionResult> getSymptomerGittGruppeId(int id)
         {
-            try
+            
+                if ( id < 0)
+                {
+                    _logger.LogError("Bad id input");
+                    return BadRequest("Bad id input");
+                }
+                try
             {
                 return Ok(await _symptomRepository.hentSymptomer(id));
             }
-
+                catch (EntityNotFoundException ex)
+                {
+                    _logger.LogError("bad id");
+                    return NotFound("bad id");
+                }
             catch (Exception ex)
             {
                 _logger.LogError("Kunne ikke hente symptomer gitt id");
@@ -197,6 +282,11 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             {
                 return Ok(await _diagnoseGruppeRepository.hentDiagnoseGrupper());
             }
+            catch (EntityNotFoundException ex)
+            {
+                _logger.LogError("bad id");
+                return NotFound("bad id");
+            }
             catch (Exception ex) {
                 _logger.LogError("Kunne ikke hente diagnose grupper");
                 return BadRequest("Something went wrong");
@@ -209,7 +299,11 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             {
                 return Ok(await _symptomRepository.hentSymptomer());
             }
-
+            catch (EntityNotFoundException ex)
+            {
+                _logger.LogError("bad id");
+                return NotFound("bad id");
+            }
             catch (Exception ex)
             {
                 _logger.LogError("Kunne ikke hente symptomer");
@@ -222,6 +316,11 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             {
                 return Ok(await  _diagnoseRepository.hentDiagnoser());
             }
+            catch (EntityNotFoundException ex)
+            {
+                _logger.LogError("bad id");
+                return NotFound("bad id");
+            }
             catch (Exception ex){
                 _logger.LogError("Kunne ikke hente diagnoser");
                 return BadRequest("Something went wrong");
@@ -230,10 +329,20 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         [HttpGet]
         public async Task<IActionResult> getDiagnoserGittId(int id)
         {
-            try
+            if (id < 0)
+            {
+                _logger.LogError("Bad id input");
+                return BadRequest("Bad id input");
+            }
+                try
             {
                 return Ok(await _diagnoseRepository.hentDiagnoser(id));
             }
+                catch (EntityNotFoundException ex)
+                {
+                    _logger.LogError("bad id");
+                    return NotFound("bad id");
+                }
             catch (Exception ex)
             {
                 _logger.LogError("Kunne ikke hente diagnoser gitt id");
@@ -243,14 +352,29 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         [HttpGet]
         public async Task<IActionResult> getSymptomGrupper()
         {
-            try
+            if (ModelState.IsValid)
             {
-                return Ok(await _symptomGruppeRepository.hentSymptomGrupper());
+                try
+                {
+                    return Ok(await _symptomGruppeRepository.hentSymptomGrupper());
+                }
+                catch (EntityNotFoundException ex)
+                {
+                    _logger.LogError("bad id");
+                    return NotFound("bad id");
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError("Kunne ikke hente symptom grupper");
+                    return BadRequest("Something went wrong");
+                }
             }
-            catch (Exception ex){
-                _logger.LogError("Kunne ikke hente symptom grupper");
-                return BadRequest("Something went wrong");
+            else
+            {
+                _logger.LogInformation("Symptomgruppe got bad server input");
+                return BadRequest("Symptomgruppe got bad server input");
             }
+
         }
   
     }
