@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Data.SqlTypes;
+using Microsoft.AspNetCore.Identity;
 using obligDiagnoseVerktøyy.Model.entities;
 using obligDiagnoseVerktøyy.Repository.interfaces;
 using ObligDiagnoseVerktøyy.Data;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using obligDiagnoseVerktøyy.Model.DTO;
 using obligDiagnoseVerktøyy.Model.viewModels;
+using obligDiagnoseVerktøyy.Controllers.implementations;
 
 namespace obligDiagnoseVerktøyy.Repository.implementation
 {
@@ -24,6 +27,8 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
             symptomBilder.ForEach(async (x) =>
             {
                 Diagnose diagnose = await  db.diagnose.Where((y) => x.diagnoseId == y.diagnoseId).FirstAsync();
+                if (diagnose == null)
+                    throw new EntityNotFoundException("Diagnose returned with null value");
                 diagnoser.Add(diagnose);
 
             });
@@ -33,16 +38,21 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         }
 
 
-        public async void addDiagnose(DiagnoseDTO diagnosDto)
+        public async void addDiagnose(DiagnoseCreateDTO diagnosDto)
         {
-            Diagnose diagnose = new Diagnose { beskrivelse = diagnosDto.beskrivelse, navn = diagnosDto.navn,diagnoseGruppeId = 4};
+            Diagnose diagnose = new Diagnose { beskrivelse = diagnosDto.beskrivelse, navn = diagnosDto.navn,diagnoseGruppeId = 4,dypForklaring = diagnosDto.dypForklaring};
+            if (diagnosDto.dypForklaring == null)
+                diagnose.dypForklaring = diagnose.beskrivelse;
             db.diagnose.Add(diagnose);
             db.SaveChanges();
 
             //Diagnose har nå id
 
             SymptomBilde symptomBilde = new SymptomBilde
-                { beskrivelse = diagnosDto.beskrivelse, navn = diagnosDto.beskrivelse, diagnoseId = diagnose.diagnoseId };
+                { beskrivelse = diagnosDto.beskrivelse, navn = diagnosDto.beskrivelse, diagnoseId = diagnose.diagnoseId,dypForklaring = " "};
+
+
+
             db.symptomBilde.Add(symptomBilde);
             db.SaveChanges();
 
@@ -59,11 +69,15 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         {
             Diagnose diagnosen = await db.diagnose.Where((x) => x.diagnoseId == diagnose.diagnoseId).FirstAsync();
 
-                if (diagnose.navn != null)
+            if (diagnosen == null)
+                throw new EntityNotFoundException("Diagnose returned with null value");
+
                       diagnosen.navn = diagnose.navn;
-                if (diagnose.beskrivelse != null)
-                     diagnosen.beskrivelse = diagnose.beskrivelse;
-             db.diagnose.Update(diagnosen);
+                      diagnosen.beskrivelse = diagnose.beskrivelse;
+                      diagnosen.dypForklaring = diagnose.dypForklaring;
+                      if (diagnosen.dypForklaring == null)
+                          diagnosen.dypForklaring = diagnosen.beskrivelse;
+            db.diagnose.Update(diagnosen);
              await db.SaveChangesAsync();
 
         }
@@ -78,7 +92,9 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         public async  void deleteDiagnose(int diagnoseId)
         {
             Diagnose diagnose = await  db.diagnose.FindAsync(diagnoseId);
-           
+            if (diagnose == null)
+                throw new EntityNotFoundException("Diagnose returned with null value");
+
             db.diagnose.Remove(diagnose);
             await db.SaveChangesAsync();
 
@@ -86,6 +102,8 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         public async  Task<DiagnoseDetailModel> hentDiagnoseGittDiagnoseId(int diagnoseId)
         {
             Diagnose diagnose = await  db.diagnose.FindAsync(diagnoseId);
+            if (diagnose == null)
+                throw new EntityNotFoundException("Diagnose returned with null value");
             DiagnoseDetailModel diagnoseListModle = new DiagnoseDetailModel()
             {
                 beskrivelse = diagnose.beskrivelse, diagnoseId = diagnose.diagnoseId, navn = diagnose.navn,

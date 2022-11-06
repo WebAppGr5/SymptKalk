@@ -38,7 +38,7 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
             html += "         <br>";
             $(html).appendTo("#diagnoser");
         });
-        await swal("Fikk hentet diagnosene", "Symptomene og varigheten til de ulike symptomene endret seg - det gjorde også diagnosene", "success")
+
 
     }).fail((x) => {
         swal("Fikk ikke hentet diagnosene", "Prøv igjen senere", "error")

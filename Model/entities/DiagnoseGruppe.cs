@@ -5,11 +5,11 @@ namespace obligDiagnoseVerktøyy.Model.entities
     public class DiagnoseGruppe
     {
         [Key]
-        [RegularExpression(@"^[0-9]{1-3}$")]
+        [RegularExpression(@"^[0-9]{1,6}$")]
         public int diagnoseGruppeId { get; set;  }
+
         [Required]
-        [MaxLength(15)]
-        [RegularExpression(@"^[a-zA-Z]{3,20}$")]
+        [RegularExpression(@"^[a-zA-Z0-9\s-]{3,20}$")]
         public string navn { get; set; } //Forklaringen kan hentes ut herfra
       //
 
@@ -20,7 +20,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
 
         public string beskrivelse { get; set; } //Forklaringen kan hentes ut herfra
 
-        [Required]
+
         [MaxLength(5000)]
         public String dypForklaring { get; set; }
     }

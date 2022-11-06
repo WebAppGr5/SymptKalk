@@ -6,17 +6,16 @@ namespace obligDiagnoseVerktøyy.Model.entities
     public class Symptom
     {
         [Key]
+        [RegularExpression(@"^[0-9]{1,6}$")]
         public int symptomId { get; set; }
 
         [Required]
         [MaxLength(20)]
         [MinLength(3)]
-        [RegularExpression(@"^[a-zA-Z]{3,20}$")]
+        [RegularExpression(@"^[a-zA-Z0-9\s-]{3,20}$")]
         public String navn { get; set; }
 
         [Required]
-        [MaxLength(3)]
-        [RegularExpression(@"^[0-9]{1,3}$")]
         public int symptomGruppeId { get; set; }
         public SymptomGruppe symptomGruppe { get; set; }
 
@@ -25,7 +24,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
         public String beskrivelse { get; set; }
 
 
-        [Required]
+
         [MaxLength(5000)]
         public String dypForklaring { get; set; }
 

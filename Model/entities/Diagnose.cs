@@ -6,27 +6,29 @@ namespace obligDiagnoseVerktøyy.Model.entities
     public class Diagnose
     {
         [Key]
-
+        [RegularExpression(@"^[0-9]{1,6}$")]
         public int diagnoseId { get; set;   }
 
         [Required]
         [MaxLength(20)]
         [MinLength(3)]
-        [RegularExpression(@"^[a-zA-Z]{3,20}$")]
+        [RegularExpression(@"^[a-zA-Z0-9\s-]{3,20}$")]
         public string navn {get; set; }
 
+
+        [Required]
         [MaxLength(700)]
-        [RegularExpression(@"^[a-zA-Z0-9]{0,700}$")]
-        public string beskrivelse { get; set;} //Forklaringen kan hentes ut herfra
+        public string beskrivelse { get; set;} 
 
 
         public List<SymptomBilde> symptomBilde { get; set;  }
 
+        
         public int diagnoseGruppeId { get; set; }
 
-        [Required]
+
         [MaxLength(5000)]
-        public String dypForklaring { get; set; }
+        public string? dypForklaring { get; set; }
 
         public DiagnoseGruppe diagnoseGruppe { get; set; }
 
