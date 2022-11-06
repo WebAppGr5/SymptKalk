@@ -11,7 +11,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
         [Required]
         [MaxLength(15)]
         [MinLength(3)]
-        [RegularExpression(@"^[a-zA-Z]{3,15}$")]
+        [RegularExpression(@"^[a-zA-Z0-9\s-]{3,20}$")]
         public string navn { get; set; } //Forklaringen kan hentes ut herfra
 
 

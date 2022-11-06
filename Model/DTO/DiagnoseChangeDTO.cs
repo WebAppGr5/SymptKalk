@@ -9,7 +9,7 @@
             public int diagnoseId { get; set; }
             [MaxLength(20)]
             [MinLength(3)]
-            [RegularExpression(@"^[a-zA-Z]{3,20}$")]
+            [RegularExpression(@"^[a-zA-Z0-9\s-]{3,20}$")]
         public string navn { get; set; }
 
         [Required]

@@ -9,8 +9,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
         public int diagnoseGruppeId { get; set;  }
 
         [Required]
-        [MaxLength(15)]
-        [RegularExpression(@"^[a-zA-Z]{3,20}$")]
+        [RegularExpression(@"^[a-zA-Z0-9\s-]{3,20}$")]
         public string navn { get; set; } //Forklaringen kan hentes ut herfra
       //
 
