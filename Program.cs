@@ -40,7 +40,13 @@ builder.Services.AddTransient<ISymptomGruppeRepository, SymptomGruppeRepository>
 builder.Services.AddTransient<ISymptomRepository, SymptomRepository>();
 // Add services to the container.
 
-
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".DiagnoseKalkulator.Session";
+    options.IdleTimeout = TimeSpan.FromSeconds(1800); // 30 minutter
+    options.Cookie.IsEssential = true;
+});
+builder.Services.AddDistributedMemoryCache();
 
 var app = builder.Build();
 
@@ -77,7 +83,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Diagnose}/{action=test}/{id?}");
 //
-
+app.UseSession();
 app.PrepareDatabase()
     .GetAwaiter()
     .GetResult();
