@@ -10,9 +10,8 @@ namespace obligDiagnoseVerktøyy.Model.entities
         public int diagnoseId { get; set;   }
 
         [Required]
-        [MaxLength(20)]
-        [MinLength(3)]
-        [RegularExpression(@"^[a-zA-Z0-9\s-]{3,20}$")]
+
+        [RegularExpression(@"^[a-zA-Z0-9\s-]{3,40}$")]
         public string navn {get; set; }
 
 
