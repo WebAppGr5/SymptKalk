@@ -19,9 +19,7 @@ namespace obligDiagnoseVerktøyy.Model.entities
 
  
         [Required]
-        [MaxLength(30)]
-        [MinLength(3)]
-        [RegularExpression(@"^[a-zA-Z0-9\s-]{3,20}$")]
+        [RegularExpression(@"^[a-zA-Z0-9\s-]{3,40}$")]
         public string navn { get; set; }
      
 
