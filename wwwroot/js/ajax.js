@@ -45,7 +45,7 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
     });
 }
 function nyDiagnose() {
-    let symptomer = checked();
+    let symptomer = checked().map((x)=>Number(x));
     let varigheter = [];
     symptomer.forEach((symId) => {
         let valg = document.getElementById("varighet" + String(symId)).selectedIndex;

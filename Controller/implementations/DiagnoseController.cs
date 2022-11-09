@@ -242,12 +242,12 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             {
                 
                 if (symptomliste.Count == 0)
-                    return Ok(new List<Diagnose>());
+                    return Ok(new List<DiagnoseListModel>());
                     
                 List<SymptomBilde> symptombilder = await _symptomBildeRepository.hentSymptomBilder(symptomliste);
                 if(symptombilder.Count == 0)
                 {
-                    return Ok(new List<Diagnose>());
+                    return Ok(new List<DiagnoseListModel>());
                 }
                     List<DiagnoseListModel> diagnoser = await _diagnoseRepository.hentDiagnoser(symptombilder);
                     _logger.LogInformation("Returned list of symptomDTO with size " + symptomliste.Count);
@@ -407,5 +407,4 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
   
     }
 
-      
 }

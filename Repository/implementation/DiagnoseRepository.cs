@@ -55,7 +55,7 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
             db.symptomBilde.Add(symptomBilde);
             db.SaveChanges();
 
-            List<int> symptomId = diagnosDto.symptomer.ConvertAll((x) => int.Parse(x));
+            List<int> symptomId = diagnosDto.symptomer;
             for(int i = 0; i < symptomId.Count; i++ )
             {
                 SymptomSymptomBilde symptomSymptomBilde = new SymptomSymptomBilde
