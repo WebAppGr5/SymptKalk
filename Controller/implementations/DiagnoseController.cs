@@ -407,5 +407,4 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
   
     }
 
-      
 }
