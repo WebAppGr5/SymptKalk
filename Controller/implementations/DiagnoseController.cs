@@ -46,11 +46,11 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             this._symptomRepository = symptomRepository;
         }
 
-        
- 
 
-        [HttpGet]
-        public async Task<IActionResult> forgetDiagnose(int id)
+
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> forgetDiagnose([FromRoute]int id)
         {
             if (id < 0)
             {
@@ -76,6 +76,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
 
+        [HttpPost]
         public async Task<IActionResult> update ([FromBody] DiagnoseChangeDTO diagnose)
         {
             if (ModelState.IsValid)
@@ -112,8 +113,8 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
 
-
-        public async Task<IActionResult> hentDiagnoseGittDiagnoseId(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> hentDiagnoseGittDiagnoseId([FromRoute] int id)
         {
             if (id < 0)
             {
@@ -139,8 +140,8 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
                 return BadRequest("Kunne ikke hente diagnose");
             }
         }
-
-        public async Task<IActionResult> hentSymptomGittSymptomId(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> hentSymptomGittSymptomId([FromRoute] int id)
         {
             if (id < 0)
             {
@@ -166,7 +167,8 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
 
-        public async Task<IActionResult> hentSymptomGruppeGittSymptomGruppeId(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> hentSymptomGruppeGittSymptomGruppeId([FromRoute] int id)
         {
             if (id < 0)
             {
@@ -193,6 +195,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
         }
 
+        [HttpPost]
         public async Task<IActionResult> nyDiagnose([FromBody] DiagnoseCreateDTO diagnose)
         {
             if (ModelState.IsValid)
@@ -230,6 +233,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         }
 
         //Liste over int id, f.eks 1 2 4 6 7
+        [HttpPost]
         public async Task<IActionResult> getDiagnoserGittSymptomer( [FromBody] List<SymptomDTO> symptomliste)
         {
             
@@ -262,9 +266,9 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         }
 
 
-     
-        [HttpGet]
-        public async Task<IActionResult> getSymptomerGittGruppeId(int id)
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> getSymptomerGittGruppeId([FromRoute] int id)
         {
             
                 if ( id < 0)
@@ -294,7 +298,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         {
             try
             {
-                List<DiagnoseGruppe> diagnoseGruppe = await _diagnoseGruppeRepository.hentDiagnoseGrupper();
+                List<DiagnoseGruppeListModel> diagnoseGruppe = await _diagnoseGruppeRepository.hentDiagnoseGrupper();
                 _logger.LogInformation("Returned list of DiagnoseGruppe with size " + diagnoseGruppe.Count);
                 return Ok(diagnoseGruppe);
             }
@@ -313,7 +317,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         {
             try
             {
-                List<Symptom> symptomer = await _symptomRepository.hentSymptomer();
+                List<SymptomListModel> symptomer = await _symptomRepository.hentSymptomer();
                 _logger.LogInformation("Returned list of symptomer with size " + symptomer.Count);
                 return Ok(symptomer);
             }
@@ -332,7 +336,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
         {
             try
             {
-                List<Diagnose> diagnoser = await _diagnoseRepository.hentDiagnoser();
+                List<DiagnoseListModel> diagnoser = await _diagnoseRepository.hentDiagnoser();
                 _logger.LogInformation("Returned list of diagnoser with size " + diagnoser.Count);
                 return Ok(diagnoser);
             }
@@ -346,8 +350,8 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
                 return BadRequest("Something went wrong");
             }
         }
-        [HttpGet]
-        public async Task<IActionResult> getDiagnoserGittId(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> getDiagnoserGittGruppeId([FromRoute] int id)
         {
             if (id < 0)
             {
@@ -356,7 +360,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             }
                 try
                 {
-                    List<Diagnose> diagnoser = await _diagnoseRepository.hentDiagnoser(id);
+                    List<DiagnoseListModel> diagnoser = await _diagnoseRepository.hentDiagnoser(id);
                     _logger.LogInformation("Returned list of diagnoser with id " + id + " and size " + diagnoser.Count);
                 return Ok(diagnoser);
             }
@@ -378,7 +382,7 @@ namespace obligDiagnoseVerktøyy.Controllers.implementations
             {
                 try
                 {
-                    List<SymptomGruppe> symptomGrupper = await _symptomGruppeRepository.hentSymptomGrupper();
+                    List<SymptomGruppeListModel> symptomGrupper = await _symptomGruppeRepository.hentSymptomGrupper();
                     _logger.LogInformation("Returned list of symptomGrupper with size " + symptomGrupper.Count);
                     return Ok(symptomGrupper);
                 }

@@ -31,7 +31,7 @@ function hentDiagnoserGittSymptomer(inputIdList, inputVarighetValgListe) {
        
 
             html += "      <i  class='fa-solid fa-xmark  fa-2xl' onclick='forgetDiagnose(\"" + String(diagnose.diagnoseId) + "\")'></i>"
-            html += "      <button class='knapp2' onclick='endre(\"" + String(diagnose.navn) + "\",\"" + String(diagnose.beskrivelse) + "\",\"" + String(diagnose.diagnoseId) + "\")'>Endre</button>"
+            html += "      <button class='knapp2' onclick='endre(\"" + String(diagnose.diagnoseId) + "\")'>Endre</button>"
             html += "</h3 > ";
             html += String(diagnose.beskrivelse);
             html += "      </div>";
@@ -56,6 +56,7 @@ function nyDiagnose() {
     let diagnoseDTO = {
         navn: String($("#navnDiagnose").val()),
         beskrivelse: String($("#beskrivelseDiagnose").val()),
+        dypForklaring: String($("#dypForklaringDiagnose").val()),
         symptomer: symptomer,
         varigheter: varigheter
     }
@@ -79,7 +80,8 @@ function utforEndring() {
     let diagnose = {
         diagnoseId: Number($("#diagnoseIdEndre").val()) ,
         navn: String($("#navnDiagnose").val()),
-        beskrivelse: String($("#beskrivelseDiagnose").val())
+        beskrivelse: String($("#beskrivelseDiagnose").val()),
+        dypForklaring: String($("#dypForklaringDiagnose").val())
     }
     $.post({
         url: "Diagnose/update",
@@ -99,8 +101,8 @@ function utforEndring() {
 function forgetDiagnose(diagnoseId) {
     
     $.get({
-        url: "Diagnose/forgetDiagnose",
-        data: { id: Number(diagnoseId) },
+        url: "Diagnose/forgetDiagnose/" + String(diagnoseId),
+        data: { },
         contentType: "application/json; charset=utf-8"
     }).done(async (res) => {
         await swal("Diagnosen er nå glemt", "Fra nå av vil du aldri se denne diagnosen mer", "success");
@@ -122,7 +124,20 @@ function hentSymptomer() {
         swal("Noe gikk galt", "prøv igjen senere", "error")
         });
 }
-
+function hentDiagnoseGittDiagnoseId( id) {
+    $.get({
+        url: "Diagnose/hentDiagnoseGittDiagnoseId/" +String(id),
+        data: {},
+        contentType: "application/json; charset=utf-8"
+    }).done((res) => {
+        $("#navnDiagnose").val(String(res.navn));
+        $("#beskrivelseDiagnose").val(String(res.beskrivelse));
+        $("#dypForklaringDiagnose").val(String(res.dypForklaring));
+        $("#diagnoseIdEndre").val(String(res.diagnoseId));
+    }).fail((x) => {
+        swal("Noe gikk galt", "prøv igjen senere", "error")
+    });
+}
 function hentDiagnoser() {
     $.get({
         url: "Diagnose/getDiagnoser",
@@ -141,7 +156,7 @@ function hentDiagnoser() {
 
 
             html += "      <i  class='fa-solid fa-xmark  fa-2xl' onclick='forgetDiagnose(\"" + String(diagnose.diagnoseId) + "\")'></i>"
-            html += "      <button class='knapp2' onclick='endre(\"" + String(diagnose.navn) + "\",\"" + String(diagnose.beskrivelse) + "\",\"" + String(diagnose.diagnoseId) + "\")'>Endre</button>"
+            html += "      <button class='knapp2' onclick='endre(\"" + String(diagnose.diagnoseId) + "\")'>Endre</button>"
             html += "</h3 > ";
             html += String(diagnose.beskrivelse);
             html += "      </div>";
@@ -157,8 +172,8 @@ function hentDiagnoser() {
 function hentSymptomerGittSymptomGruppeId(id, name) {
 
     $.get({
-        url: "Diagnose/getSymptomerGittGruppeId",
-        data: { id: Number(id) },
+        url: "Diagnose/getSymptomerGittGruppeId/" + String(id),
+        data: { },
         contentType: "application/json; charset=utf-8"
     }).done(async (res) => {
         res.forEach((symptom) => {
@@ -188,8 +203,8 @@ function hentSymptomerGittSymptomGruppeId(id, name) {
 function hentDiagnoserGittDiagnoseGruppe(id) {
 
     $.get({
-        url: "Diagnose/getDiagnoserGittId",
-        data: { id: Number(id) },
+        url: "Diagnose/getDiagnoserGittId/" + String(id),
+        data: { },
         contentType: "application/json; charset=utf-8"
     }).done((res) => {
       

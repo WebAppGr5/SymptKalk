@@ -81,10 +81,8 @@ function checked() {
     }
     return IDs;
 }
-function endre(navn,beskrivelse,id) {
-    $("#navnDiagnose").val(String(navn));
-    $("#beskrivelseDiagnose").val(String(beskrivelse));
-    $("#diagnoseIdEndre").val(String(id));
+function endre(id) {
+    hentDiagnoseGittDiagnoseId(id);
 }
 
 function sendIdAndSelectListToServer() {

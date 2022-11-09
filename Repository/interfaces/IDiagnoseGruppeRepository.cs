@@ -6,7 +6,7 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
     {
 
 
-        public  Task<List<DiagnoseGruppe>> hentDiagnoseGrupper();
+        public  Task<List<DiagnoseGruppeListModel>> hentDiagnoseGrupper();
 
 
     }

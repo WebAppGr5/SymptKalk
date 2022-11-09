@@ -7,7 +7,7 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
     {
 
 
-        public Task<List<SymptomGruppe>> hentSymptomGrupper();
+        public Task<List<SymptomGruppeListModel>> hentSymptomGrupper();
         public Task<SymptomGruppeDetailModel> hentSymptomGruppeGittSymptomGruppeId(int symptomGruppeId);
     }
 }

@@ -38,11 +38,13 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         }
 
 
-        public async Task<List<SymptomGruppe>> hentSymptomGrupper()
+        public async Task<List<SymptomGruppeListModel>> hentSymptomGrupper()
         {
             List<SymptomGruppe> symptomGruppe = await  db.symptomGruppe.ToListAsync();
+            List<SymptomGruppeListModel> symptomGruppeList = symptomGruppe.ConvertAll((x) => new SymptomGruppeListModel
+                { beskrivelse = x.beskrivelse, navn = x.navn, symptomGruppeId = x.symptomGruppeId });
 
-            return symptomGruppe;
+            return symptomGruppeList;
         }
     }
 }

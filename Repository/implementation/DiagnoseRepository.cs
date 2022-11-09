@@ -41,8 +41,7 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         public async void addDiagnose(DiagnoseCreateDTO diagnosDto)
         {
             Diagnose diagnose = new Diagnose { beskrivelse = diagnosDto.beskrivelse, navn = diagnosDto.navn,diagnoseGruppeId = 4,dypForklaring = diagnosDto.dypForklaring};
-            if (diagnosDto.dypForklaring == null)
-                diagnose.dypForklaring = diagnose.beskrivelse;
+
             db.diagnose.Add(diagnose);
             db.SaveChanges();
 
@@ -112,15 +111,19 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
             return diagnoseListModle;
 
         }
-        public async  Task<List<Diagnose>> hentDiagnoser()
+        public async  Task<List<DiagnoseListModel>> hentDiagnoser()
         {
             List<Diagnose> diagnoser = await  db.diagnose.ToListAsync();
-            return diagnoser;
+            List<DiagnoseListModel> diagnoseListModel = diagnoser.ConvertAll((x) => new DiagnoseListModel()
+                { beskrivelse = x.beskrivelse, diagnoseId = x.diagnoseId, navn = x.navn });
+            return diagnoseListModel;
         }
-        public async  Task<List<Diagnose>> hentDiagnoser(int diagnoseGruppeId)
+        public async  Task<List<DiagnoseListModel>> hentDiagnoser(int diagnoseGruppeId)
         {
             List<Diagnose> diagnoser = await  db.diagnose.Where((x) => x.diagnoseGruppeId == diagnoseGruppeId).ToListAsync();
-            return diagnoser;
+            List<DiagnoseListModel> diagnoseListModel = diagnoser.ConvertAll((x) => new DiagnoseListModel()
+                { beskrivelse = x.beskrivelse, diagnoseId = x.diagnoseId, navn = x.navn });
+            return diagnoseListModel;
         }
     }
 }

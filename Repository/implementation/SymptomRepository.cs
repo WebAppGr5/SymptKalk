@@ -44,11 +44,12 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
             List<SymptomListModel> symptomList = symptomer.ConvertAll((x) => new SymptomListModel { beskrivelse = x.beskrivelse, navn = x.navn, symptomGruppeId = x.symptomGruppeId, symptomId = x.symptomId });
             return symptomList;
         }
-        public async Task<List<Symptom>> hentSymptomer()
+        public async Task<List<SymptomListModel>> hentSymptomer()
         {
             List<Symptom> symptomer = await db.symptom.ToListAsync();
 
-            return symptomer;
+            List<SymptomListModel> symptomList = symptomer.ConvertAll((x) => new SymptomListModel { beskrivelse = x.beskrivelse, navn = x.navn, symptomGruppeId = x.symptomGruppeId, symptomId = x.symptomId });
+            return symptomList; ;
         }
     }
 }
