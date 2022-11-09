@@ -15,11 +15,13 @@ namespace obligDiagnoseVerktøyy.Repository.implementation
         }
 
 
-        public async Task<List<DiagnoseGruppe>> hentDiagnoseGrupper()
+        public async Task<List<DiagnoseGruppeListModel>> hentDiagnoseGrupper()
         {
             List<DiagnoseGruppe> diagnoseGruppe = await db.diagnoseGruppe.ToListAsync();
-
-            return diagnoseGruppe;
+            List<DiagnoseGruppeListModel> diagnoseGruppeListModel = diagnoseGruppe.ConvertAll((x) =>
+                new DiagnoseGruppeListModel
+                    { beskrivelse = x.beskrivelse, diagnoseGruppeId = x.diagnoseGruppeId, navn = x.navn });
+            return diagnoseGruppeListModel;
         }
 
 

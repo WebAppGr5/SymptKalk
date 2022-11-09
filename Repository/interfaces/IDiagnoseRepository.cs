@@ -7,10 +7,10 @@ namespace obligDiagnoseVerktøyy.Repository.interfaces
     public interface IDiagnoseRepository
     {
 
-        public Task<List<Diagnose>> hentDiagnoser();
+        public Task<List<DiagnoseListModel>> hentDiagnoser();
 
         public Task<List<DiagnoseListModel>> hentDiagnoser(List<SymptomBilde> symptomBilder);
-        public Task<List<Diagnose>> hentDiagnoser(int diagnoseGruppeId);
+        public Task<List<DiagnoseListModel>> hentDiagnoser(int diagnoseGruppeId);
         public void deleteDiagnose(int diagnoseId);
         public void update(Diagnose diagnose);
         public void Add(Diagnose diagnose);
