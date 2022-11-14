@@ -14,9 +14,9 @@ namespace Angular.brukerController{
                 Etternavn = "Nordmann",
                 passord = "123456"
             };
-        }
 
-        
+            alleBrukere.Add(b1);
+            return alleBrukere;
+        }    
     }
-    
 }
